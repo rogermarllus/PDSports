@@ -1,0 +1,132 @@
+/* IMAGEM DE FUNDO */
+body {
+    background-image: url(../img/fundo-corrida.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--cor-branca);
+    font-family: var(--fonte-montserrat);
+}
+
+.icon {
+    stroke: #1D0F28;
+}
+
+/* CONTEUDO */
+main {
+    margin: 100px 0;
+}
+
+.cabecalho-lista-produtos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+h2 {
+    color: var(--cor-destaque);
+    font-size: var(--titulo-sessao-desktop);
+    margin: 0;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 32px;
+    background-color: var(--fundo-secundario);
+    color: var(--cor-branca);
+    display: flex;
+    flex-direction: column;
+    gap: .8em;
+}
+
+.card img {
+    border-radius: 24px;
+}
+
+.card h3 {
+    font-size: var(--titulo-sessao-desktop);
+    font-family: var(--fonte-montserrat);
+    font-weight: 400;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.card>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card div p {
+    font-family: var(--fonte-montserrat);
+    font-size: var(--titulo-sessao-desktop);
+    margin: 0;
+    font-weight: bold;
+}
+
+.botao {
+    background-color: var(--cor-destaque);
+    padding: 10px 30px;
+    border-radius: 50px;
+    color: #1D0F28;
+    font-family: var(--fonte-montserrat);
+    border: none;
+    font-size: var(--texto-desktop);
+    font-weight: bold;
+    transition: .3s;
+}
+
+.botao:hover {
+    background-color: #CFED89;
+}
+
+.card button {
+    background-color: var(--cor-destaque);
+    border: none;
+    border-radius: 20px;
+    padding: .5em;
+    transition: .3s;
+    flex: 0 0 auto;
+}
+
+.card button:hover {
+    background-color: #CFED89;
+}
+
+.icon-card {
+    width: 2em;
+    height: 2em;
+}
+
+.produtos-populares {
+    margin-top: 70px;
+}
+
+.produtos-populares h2 {
+    margin-bottom: 1.5em;
+}
+
+@media (max-width: 470px) {
+    .cabecalho-lista-produtos {
+        flex-direction: column;
+        align-items: start;
+        gap: .5em;
+    }
+
+    .cabecalho-lista-produtos button {
+        width: 100%;
+    }
+
+    h2,
+    .card h3,
+    .card div p {
+        font-size: var(--titulo-sessao-mobile);
+    }
+
+    .botao {
+        font-size: var(--texto-mobile);
+    }
+}
