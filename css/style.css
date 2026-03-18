@@ -71,6 +71,7 @@ body {
 .navigation-bar {
     background-color: var(--fundo-terciario);
     height: 95px;
+    
 }
 
 /* Define tamanho padrão para ícones grandes */
@@ -113,12 +114,14 @@ body {
     color: #1D0F28;
     font-weight: 500;
     text-decoration: none;
+    font-family: var(--fonte-montserrat);
 }
 
-/* Define tamanho e peso da fonte do botão dropdown */
+/* Define tamanho, familia e peso da fonte do botão dropdown */
 .button-dropdown-nav {
     font-size: 18px;
     font-weight: 500;
+    font-family: var(--fonte-montserrat);
 }
 
 /* Define posição relativa para servir de referência ao dropdown */
