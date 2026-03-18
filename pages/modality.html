@@ -19,116 +19,30 @@
     <main class="container">
         <section class="lista-produtos">
             <header class="cabecalho-lista-produtos">
-                <h2>Modalidade | X Produtos</h2>
-                <button class="botao">Preço <i data-lucide="arrow-down-wide-narrow" class="icon"></i></button>
+                <h2>Modalidade | Produtos</h2>
+                <div class="dropdown">
+                    <button class="botao dropdown-toggle" id="priceFilterBtn" data-bs-toggle="dropdown">
+                        Preço <i data-lucide="arrow-down-wide-narrow" class="icon"></i>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" data-range="all">Todos</a></li>
+                        <li><a class="dropdown-item" data-range="0-50">Até R$ 50</a></li>
+                        <li><a class="dropdown-item" data-range="50-100">R$ 50 - 100</a></li>
+                        <li><a class="dropdown-item" data-range="100-300">R$ 100 - 300</a></li>
+                        <li><a class="dropdown-item" data-range="300-1000">R$ 300+</a></li>
+                    </ul>
+                </div>
             </header>
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
+            <div id="products-container" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
             </div>
         </section>
 
         <section class="produtos-populares">
             <h2>Modalidade | Popular</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
-                
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col">
-                    <article class="card">
-                        <img src="../img/tenis-terrex-anylander.png" alt="Tenis terrex anylander">
-                        <h3>Tênis Terrex Anylander</h3>
-                        <div>
-                            <p>R$ 249,99</p>
-                            <button aria-label="Adicionar ao carrinho"><i data-lucide="handbag" class="icon icon-card"></i></button>
-                        </div>
-                    </article>
-                </div>
+            <div id="products-popular-container" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
             </div>
         </section>
@@ -145,6 +59,7 @@
     <script>
         lucide.createIcons();
     </script>
+    <script type="module" src="../js/modalities.js"></script>
 </body>
 
 </html>

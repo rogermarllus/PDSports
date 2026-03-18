@@ -27,6 +27,7 @@ main {
 h2 {
     color: var(--cor-destaque);
     font-size: var(--titulo-sessao-desktop);
+    font-weight: bold;
     margin: 0;
 }
 
@@ -107,6 +108,10 @@ h2 {
 
 .produtos-populares h2 {
     margin-bottom: 1.5em;
+}
+
+.dropdown-toggle::after {
+    display: none;
 }
 
 @media (max-width: 470px) {
