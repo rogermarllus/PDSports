@@ -80,8 +80,12 @@ body {
 }
 
 /* Altera a cor do ícone ao passar o mouse */
-.icon-lg:hover{
-  color: var(--cor-destaque);
+.icon-lg:hover, #user-link:hover * {
+    color: var(--cor-destaque);
+}
+
+#user-link {
+    text-decoration: none;
 }
 
 /* Estiliza o campo de busca com bordas arredondadas e espaçamento interno */
