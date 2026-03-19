@@ -18,62 +18,67 @@
 
     <main class="container">
         <section class="info-produto">
-            <article class="avaliacoes">
-                <p>4.5</p>
+            <section class="avaliacoes">
+                <p><strong>4.5</strong></p>
                 <div>
-                    <i data-lucide="star" fill=""></i>
-                    <a href="#">Ver Avaliações</a>
+                    <i data-lucide="star" fill="white" class="icone"></i>
+                    <a href="#" class="destaque">Ver Avaliações</a>
                 </div>
-            </article>
+            </section>
 
-            <article>
-                <p>Modalidade: <span>Caminhada</span></p>
-                <p>Disponibilidade: <span>Em estoque</span></p>
-            </article>
+            <dl>
+                <dt>Modalidade: </dt>
+                <dd>Caminhada</dd>
 
-            <article>
+                <dt>Disponibilidade: </dt>
+                <dd>Em estoque</dd>
+            </dl>
+
+            <section class="info-compra">
                 <div>
-                    <i data-lucide="badge-check"></i>
+                    <i data-lucide="badge-check" class="icone-destaque"></i>
                     <p>Produto original</p>
                 </div>
                 <div>
-                    <i data-lucide="rotate-ccw"></i>
+                    <i data-lucide="rotate-ccw" class="icone-destaque"></i>
                     <p>Troca em até 30 dias</p>
                 </div>
                 <div>
-                    <i data-lucide="package"></i>
+                    <i data-lucide="package" class="icone-destaque"></i>
                     <p>Envio rápido e seguro</p>
                 </div>
                 <div>
-                    <i data-lucide="shield-check"></i>
+                    <i data-lucide="shield-check" class="icone-destaque"></i>
                     <p>Garantia do fabricante</p>
+                </div>
+            </section>
+
+            <p class="info-alerta">Atenção: verifique o tamanho ou especificações antes de finalizar a compra.</p>
+        </section>
+
+        <img src="../img/produto-detalhes.png" alt="" class="img-produto">
+
+        <section class="detalhes-produto">
+            <h1>Tênis Terrex Anylander Hiking</h1>
+
+            <article>
+                <p><strong>Cor:</strong> Blanch Cargo</p>
+                <p><strong>Tamanho:</strong></p>
+                <div>
+                    <button class="btn-tamanho">36</button>
+                    <button class="btn-tamanho">37</button>
+                    <button class="btn-tamanho">38</button>
+                    <button class="btn-tamanho">39</button>
+                    <button class="btn-tamanho">40</button>
                 </div>
             </article>
 
-            <article>
-                <p>Atenção: verifique o tamanho ou especificações antes de finalizar a compra.</p>
-            </article>
-        </section>
-
-        <img src="../img/tenis-terrex-anylander.png" alt="" class="img-produto">
-
-        <section class="detalhes-produto">
-            <h2>Tênis Terrex Anylander Hiking</h2>
-
-            <p>Cor: <span>Blanch Cargo</span></p>
             <div>
-                <p>Tamanho:</p>
-                <button class="btn-tamanho">36</button>
-                <button class="btn-tamanho">37</button>
-                <button class="btn-tamanho">38</button>
-                <button class="btn-tamanho">39</button>
-                <button class="btn-tamanho">40</button>
+                <p><strong class="produto-preco">R$599,99</strong></p>
+                <p>em até 6x Sem Juros</p>
             </div>
 
-            <p>R$599,99</p>
-            <p>em até 6x Sem Juros</p>
-
-            <button>Adicionar ao Carrinho</button>
+            <button class="botao">Adicionar ao Carrinho</button>
         </section>
 
         <section class="descricao-produto">
