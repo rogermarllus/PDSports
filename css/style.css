@@ -61,6 +61,10 @@ body {
 }
 
 /* ESTILO DA BARRA DE NAVEGAÇÃO (ELIAS) */
+.logo img{
+    width: 200px;
+}
+
 .container-dropdown-options {
     border-right: 2px solid #000;
     padding-right: 15px;
@@ -138,4 +142,39 @@ body {
     display: flex;
     justify-content: space-between;
     padding-left: 10px;
+}
+
+
+/* HERO SECTION (ELIAS) */
+.hero-slide {
+  min-height: 497px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+
+
+/* Garante que o conteúdo fique acima do overlay */
+.hero-slide .container {
+  position: relative;
+  z-index: 2;
+  min-height: 497px;
+}
+
+/* Imagens de cada slide */
+.hero-1 {
+  background-image: url("../img/banner-1.png");
+}
+
+.hero-2 {
+  background-image: url("SUA-IMAGEM-2.jpg");
+}
+
+.hero-3 {
+  background-image: url("SUA-IMAGEM-3.jpg");
+}
+
+.hero-4 {
+  background-image: url("SUA-IMAGEM-4.jpg");
 }
