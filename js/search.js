@@ -151,6 +151,5 @@ async function initSearchPage() {
   }
 }
 
-// Inicialização global
 setupSearch();
 initSearchPage();
