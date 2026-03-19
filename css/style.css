@@ -61,6 +61,12 @@ body {
 }
 
 /* ESTILO DA BARRA DE NAVEGAÇÃO (ELIAS) */
+.logo img {
+    width: 200px;
+    padding-left: 15px;
+}
+
+/* Alinha o dropdown de modalidades*/
 .container-dropdown-options {
     border-right: 2px solid #000;
     padding-right: 15px;
@@ -75,11 +81,21 @@ body {
 
 /* Define tamanho padrão para ícones grandes */
 .icon-lg {
-  width: 29px;
-  height: 29px;
+    width: 29px;
+    height: 29px;
 }
 
 /* Altera a cor do ícone ao passar o mouse */
+.icon-lg:hover {
+    color: var(--cor-destaque);
+}
+
+/* Centraliza o campo de busca do meio da nav */
+.container-search {
+    display: flex;
+    justify-content: center;
+} 
+ 
 .icon-lg:hover, #user-link:hover * {
     color: var(--cor-destaque);
 }
@@ -88,10 +104,11 @@ body {
     text-decoration: none;
 }
 
-/* Estiliza o campo de busca com bordas arredondadas e espaçamento interno */
+/* Estiliza o campo de busca com bordas arredondadas, limitando a largura do inpuit e espaçamento interno */
 .search-input {
     border-radius: 25px;
     padding-left: 30px;
+    max-width: 800px;
 }
 
 /* Define a cor de fundo da segunda barra de menu */
@@ -137,9 +154,97 @@ body {
 }
 
 /* Alinha as opçoes de modalidades com espaços iguais entre si */
-.list-second-options{
+.list-second-options {
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding-left: 10px;
+}
+
+
+/* HERO SECTION (ELIAS) */
+.title-banner {
+    font-family: var(--fonte-playfair);
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-style: italic;
+}
+
+
+.lead {
+    font-family: var(--fonte-montserrat);
+    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+}
+
+.btn-custom-outline {
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+    width: clamp(160px, 25vw, 255px);
+    height: clamp(40px, 6vw, 60px);
+}
+
+.btn-custom-outline:hover {
+    background-color: #c6ff00;
+    color: #000;
+}
+
+.hero-slide {
+    min-height: clamp(320px, 60vh, 530px);
+    background-size: cover;
+    background-position: center right;
+    position: relative;
+}
+
+/* Garante que o conteúdo fique acima do overlay */
+.hero-slide .container {
+    position: relative;
+    z-index: 1;
+    min-height: 500px;
+}
+
+
+/* Imagens de cada slide */
+.hero-1 {
+    background-image: url("../img/banner-1.png");
+}
+
+.hero-2 {
+    background-image: url("../img/banner-2.png");
+}
+
+.hero-3 {
+    background-image: url("../img/banner-3.png");
+}
+
+.hero-4 {
+    background-image: url("../img/banner-4.png");
+}
+
+#hero-carousel .carousel-indicators button {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.4;
+    border: none;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
+
+#hero-carousel .carousel-indicators button.active {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+    background-color: var(--cor-destaque);
+}
+
+
+/* MEDIA QUERIES DA HERO (ELIAS)*/
+@media (max-width: 768px) {
+    .hero-slide {
+        background-position: center;
+    }
 }
