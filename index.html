@@ -25,14 +25,15 @@
     <header>
         <!-- MENU PRINCIPAL NAV -->
         <nav class="navbar navigation-bar" aria-label="Navegação principal">
-            <div class="container-fluid d-flex align-items-center justify-content-between container-primary-nav">
+            <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between">
 
                 <div class="logo">
                     <a href="index.html"><img src="img/logo 2.svg" alt="logotipo"></a>
                 </div>
 
-                <form class="d-flex w-50">
-                    <input class="form-control search-input" type="search" placeholder="Busque por um produto">
+                <form id="search-form" class="d-none d-md-flex flex-grow-1 mx-3 container-search">
+                    <input id="search-input" class="form-control search-input" type="search"
+                        placeholder="Busque por um produto">
                     <button class="btn text-white ms-2" type="submit">
                         <i data-lucide="Search" class="icon-lg"></i>
                     </button>
@@ -43,8 +44,10 @@
                         <i data-lucide="handbag" class="icon-lg"></i>
                     </a>
 
-                    <a href="pages/login.html" class="text-white p-2 rounded" aria-label="Perfil">
-                        <i data-lucide="user" class="icon-lg"></i>
+                    <a id="user-link" href="pages/login.html"
+                        class="text-white p-2 rounded d-flex align-items-center gap-2" aria-label="Perfil">
+                        <i id="user-icon" data-lucide="user" class="icon-lg"></i>
+                        <span id="user-name" class="d-none"></span>
                     </a>
                 </div>
 
@@ -79,12 +82,22 @@
                         <li><a class="dropdown-item" href="#">Esportes Outdoor</a></li>
                     </ul>
                 </div>
-                <ul class="d-flex  list-unstyled mb-0 list-second-options">
-                    <li><a href="#" class="menu-link link-underline">Futebol</a></li>
-                    <li><a href="#" class="menu-link link-underline">Basquete</a></li>
-                    <li><a href="#" class="menu-link link-underline">Corrida</a></li>
-                    <li><a href="#" class="menu-link link-underline">Musculação</a></li>
-                    <li><a href="#" class="menu-link link-underline">Natação</a></li>
+                <ul class="d-flex list-unstyled mb-0 list-second-options">
+                    <li>
+                        <a href="#" class="menu-link link-underline">Futebol</a>
+                    </li>
+                    <li class="d-none d-sm-block">
+                        <a href="#" class="menu-link link-underline">Basquete</a>
+                    </li>
+                    <li class="d-none d-md-block">
+                        <a href="#" class="menu-link link-underline">Corrida</a>
+                    </li>
+                    <li class="d-none d-lg-block">
+                        <a href="#" class="menu-link link-underline">Musculação</a>
+                    </li>
+                    <li class="d-none d-xl-block">
+                        <a href="#" class="menu-link link-underline">Natação</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -105,12 +118,12 @@
 
             <!-- Slide 1 -->
             <article class="carousel-item active hero-slide hero-1">
-                <section class="container h-100 d-flex align-items-center">
+                <section class="container d-flex align-items-center">
 
-                    <header class="text-white col-md-6">
-                        <h1 class="display-5 fst-italic">ADIZERO ADIOS PRO 4</h1>
+                    <header class="text-white col-12 col-md-8 col-lg-6">
+                        <h1 class="display-5 title-banner">ADIZERO ADIOS PRO 4</h1>
                         <p class="lead">Confortável, compacto e contextual.</p>
-                        <a href="#" class="btn btn-outline-light rounded-pill px-4">
+                        <a href="#" class="btn btn-custom-outline rounded-pill px-4">
                             Ver detalhes
                         </a>
                     </header>
@@ -119,13 +132,13 @@
             </article>
 
             <!-- Slide 2 -->
-            <article class="carousel-item active hero-slide hero-1">
-                <section class="container h-100 d-flex align-items-center">
+            <article class="carousel-item hero-slide hero-2">
+                <section class="container d-flex align-items-center">
 
-                    <header class="text-white col-md-6">
-                        <h1 class="display-5 fst-italic">ADIZERO ADIOS PRO 4</h1>
-                        <p class="lead">Confortável, compacto e contextual.</p>
-                        <a href="#" class="btn btn-outline-light rounded-pill px-4">
+                    <header class="text-white col-12 col-md-8 col-lg-6">
+                        <h1 class="display-5 title-banner">PREDATOR ELITE</h1>
+                        <p class="lead">Nível avançado, superfície de campo, feita para controle.</p>
+                        <a href="#" class="btn btn-custom-outline rounded-pill px-4">
                             Ver detalhes
                         </a>
                     </header>
@@ -134,13 +147,13 @@
             </article>
 
             <!-- Slide 3 -->
-            <article class="carousel-item active hero-slide hero-1">
-                <section class="container h-100 d-flex align-items-center">
+            <article class="carousel-item hero-slide hero-3">
+                <section class="container d-flex align-items-center">
 
-                    <header class="text-white col-md-6">
-                        <h1 class="display-5 fst-italic">ADIZERO ADIOS PRO 4</h1>
-                        <p class="lead">Confortável, compacto e contextual.</p>
-                        <a href="#" class="btn btn-outline-light rounded-pill px-4">
+                    <header class="text-white col-12 col-md-8 col-lg-6">
+                        <h1 class="display-5 title-banner">BOLA UEFA <br> CHAMPIONS <br> LEAGUE</h1>
+                        <p class="lead">superfície texturizada, precisão e desempenho.</p>
+                        <a href="#" class="btn btn-custom-outline rounded-pill px-4">
                             Ver detalhes
                         </a>
                     </header>
@@ -149,13 +162,13 @@
             </article>
 
             <!-- Slide 4 -->
-            <article class="carousel-item active hero-slide hero-1">
-                <section class="container h-100 d-flex align-items-center">
+            <article class="carousel-item hero-slide hero-4">
+                <section class="container d-flex align-items-center">
 
-                    <header class="text-white col-md-6">
-                        <h1 class="display-5 fst-italic">ADIZERO ADIOS PRO 4</h1>
-                        <p class="lead">Confortável, compacto e contextual.</p>
-                        <a href="#" class="btn btn-outline-light rounded-pill px-4">
+                    <header class="text-white col-12 col-md-8 col-lg-6">
+                        <h1 class="display-5 title-banner">CAMISA <br> ORIGINALS <br> BRASIL COB</h1>
+                        <p class="lead">Celebrando o esporte brasileiro.</p>
+                        <a href="#" class="btn btn-custom-outline rounded-pill px-4">
                             Ver detalhes
                         </a>
                     </header>
@@ -170,5 +183,7 @@
 <script>
     lucide.createIcons();
 </script>
+<script type="module" src="js/search.js"></script>
+<script type="module" src="/js/navbar.js"></script>
 
 </html>
