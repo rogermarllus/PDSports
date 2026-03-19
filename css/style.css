@@ -94,6 +94,14 @@ body {
 .container-search {
     display: flex;
     justify-content: center;
+} 
+ 
+.icon-lg:hover, #user-link:hover * {
+    color: var(--cor-destaque);
+}
+
+#user-link {
+    text-decoration: none;
 }
 
 /* Estiliza o campo de busca com bordas arredondadas, limitando a largura do inpuit e espaçamento interno */
