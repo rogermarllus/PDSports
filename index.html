@@ -31,8 +31,9 @@
                     PD<span>Sports</span>
                 </div>
 
-                <form class="d-flex w-50">
-                    <input class="form-control search-input" type="search" placeholder="Busque por um produto">
+                <form id="search-form" class="d-flex w-50">
+                    <input id="search-input" class="form-control search-input" type="search"
+                        placeholder="Busque por um produto">
                     <button class="btn text-white ms-2" type="submit">
                         <i data-lucide="Search" class="icon-lg"></i>
                     </button>
@@ -90,9 +91,10 @@
         </nav>
     </header>
 
+    <script>
+        lucide.createIcons();
+    </script>
+    <script type="module" src="js/search.js"></script>
 </body>
-<script>
-    lucide.createIcons();
-</script>
 
 </html>
