@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/modality.css">
+    <title>PD Sports | Modalidade</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <main class="container">
+        <section class="lista-produtos">
+            <header class="cabecalho-lista-produtos">
+                <h2>Modalidade | Produtos</h2>
+                <div class="dropdown">
+                    <button class="botao dropdown-toggle" id="priceFilterBtn" data-bs-toggle="dropdown">
+                        Preço <i data-lucide="arrow-down-wide-narrow" class="icon"></i>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" data-range="all">Todos</a></li>
+                        <li><a class="dropdown-item" data-range="0-50">Até R$ 50</a></li>
+                        <li><a class="dropdown-item" data-range="50-100">R$ 50 - 100</a></li>
+                        <li><a class="dropdown-item" data-range="100-300">R$ 100 - 300</a></li>
+                        <li><a class="dropdown-item" data-range="300-1000">R$ 300+</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <div id="products-container" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+
+            </div>
+        </section>
+
+        <section class="produtos-populares">
+            <h2>Modalidade | Popular</h2>
+            <div id="products-popular-container" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <script type="module" src="../js/modalities.js"></script>
+</body>
+
+</html>
