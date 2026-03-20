@@ -95,7 +95,7 @@ body {
     display: flex;
     justify-content: center;
 } 
- 
+
 .icon-lg:hover, #user-link:hover * {
     color: var(--cor-destaque);
 }
@@ -127,6 +127,7 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
+    font-family: var(--fonte-montserrat);
 }
 
 /* Define estilo padrão para os links do menu */
@@ -140,6 +141,10 @@ body {
 .button-dropdown-nav {
     font-size: 18px;
     font-weight: 500;
+}
+
+.button-dropdown-nav::after {
+    display: none;
 }
 
 /* Define posição relativa para servir de referência ao dropdown */
