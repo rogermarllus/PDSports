@@ -1,6 +1,6 @@
 /* IMAGEM DE FUNDO */
 body {
-    background-image: url(../img/fundo-corrida.png);
+    background-image: url(../img/backgrounds/backgroud-running.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

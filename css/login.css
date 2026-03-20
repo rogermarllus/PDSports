@@ -1,42 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,600;1,5..1200,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap');
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     list-style-type: none;
     text-decoration: none;
 }
-
-:root {
-    /* FONTES */
-    --fonte-prata: "Prata", serif;
-    --fonte-playfair: "Playfair", serif;
-    --fonte-montserrat: "Montserrat", sans-serif;
-
-    /* TAMANHOS DAS FONTES DESKTOP */
-    --titulo-grande-desktop: 64px;
-    --titulo-sessao-desktop: 24px;
-    --texto-desktop: 16px;
-
-    /* TAMANHOS DAS FONTES MOBILE */
-    --titulo-grande-mobile: 36px;
-    --titulo-sessao-mobile: 20px;
-    --texto-mobile: 16px;
-
-    /* CORES */
-    --cor-destaque: #C9F40E;
-    --fundo-primario: #121212;
-    --fundo-secundario: #2E2E2E;
-    --fundo-terciario: #1C1C1C;
-    --cor-branca: #FFFFFF;
-    --fundo-inputs: #8D8D8D;
-}
-
 body {
-    background-image: url(/img/background-login.png);
+    background-image: url(/img/backgrounds/background-auth.png);
     background-color: var(--fundo-primario);
     background-repeat: no-repeat;
     background-size: cover;
@@ -48,7 +15,7 @@ body {
 
 @media (max-width: 600px) {
     body {
-        background-image: url(/img/background-login.png);
+        background-image: url(/img/backgrounds/background-auth.png);
         background-position: 91%;
         background-repeat: no-repeat;
         background-size: cover;
@@ -207,7 +174,7 @@ figcaption {
     }
 }
 
-#link-back button {
+#link-back {
     border: none;
     outline: none;
     width: 14.79vw;
@@ -224,7 +191,7 @@ figcaption {
 }
 
 @media(max-width: 600px) {
-    #link-back button {
+    #link-back {
         border: none;
         outline: none;
         width: 150px;
@@ -242,7 +209,7 @@ figcaption {
 }
 
 
-#link-back button:hover {
+#link-back:hover {
     background-color: #465210;
     border: 2px solid #CFED89;
     color: #CFED89;
@@ -264,7 +231,7 @@ figcaption {
 }
 
 @media(max-width: 600px) {
-    #btn-login button {
+    #btn-login {
         border: none;
         outline: none;
         width: 150px;
