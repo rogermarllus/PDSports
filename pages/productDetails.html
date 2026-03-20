@@ -4,35 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/productDetails.css">
+    
     <link rel="icon" type="image/svg+xml" href="/img/svg/favicon.svg">
-    <title>PD Sports | Detalhes do produto</title>
+    
+    <title>PD Sports | Detalhes</title>
 </head>
 
 <body>
-    <header>
-
-    </header>
+    <header></header>
 
     <main class="container">
+
+        <!-- INFO LATERAL -->
         <section class="info-produto">
             <section class="avaliacoes">
                 <p><strong>4.5</strong></p>
                 <div>
-                    <i data-lucide="star" fill="white" class="icone"></i>
+                    <i data-lucide="star" class="icone"></i>
                     <a href="#" class="destaque">Ver Avaliações</a>
                 </div>
             </section>
 
             <dl>
                 <dt>Modalidade: </dt>
-                <dd>Caminhada</dd>
+                <dd>-</dd>
 
                 <dt>Disponibilidade: </dt>
-                <dd>Em estoque</dd>
+                <dd>-</dd>
             </dl>
 
             <section class="info-compra">
@@ -54,16 +59,21 @@
                 </div>
             </section>
 
-            <p class="info-alerta">Atenção: verifique o tamanho ou especificações antes de finalizar a compra.</p>
+            <p class="info-alerta">
+                Atenção: verifique o tamanho ou especificações antes de finalizar a compra.
+            </p>
         </section>
 
-        <img src="../img/produto-detalhes.png" alt="" class="img-produto">
+        <!-- IMAGEM -->
+        <img src="" alt="Produto" class="img-produto">
 
+        <!-- DETALHES -->
         <section class="detalhes-produto">
-            <h1>Tênis Terrex Anylander Hiking</h1>
+            <h1></h1>
 
             <article>
-                <p><strong>Cor:</strong> Blanch Cargo</p>
+                <p><strong>Cor:</strong> -</p>
+
                 <p><strong>Tamanho:</strong></p>
                 <div>
                     <button class="btn-tamanho">36</button>
@@ -75,31 +85,32 @@
             </article>
 
             <div>
-                <p><strong class="produto-preco">R$599,99</strong></p>
-                <p>em até 6x Sem Juros</p>
+                <p><strong class="produto-preco">R$ 0,00</strong></p>
+                <p>em até 6x sem juros</p>
             </div>
 
             <button class="botao">Adicionar ao Carrinho</button>
         </section>
 
+        <!-- DESCRIÇÃO -->
         <section class="descricao-produto">
             <h2>Descrição:</h2>
-            <p> Desde caminhadas na floresta até trilhas longas, este tênis adidas Terrex oferece suporte e conforto em
-                diversas condições de trilha. Da sensação despojada de um cano baixo ao amortecimento macio na
-                entressola, este tênis mistura uma sensação leve com máximo conforto. O solado Traxion sulcado oferece
-                aderência em todas as direções, para que você se sinta confiante em sua pisada.</p>
+            <p></p>
         </section>
+
     </main>
 
-    <footer>
+    <footer></footer>
 
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="../js/lucide-icons.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script type="module" src="../js/productDetails.js"></script>
 </body>
 
 </html>

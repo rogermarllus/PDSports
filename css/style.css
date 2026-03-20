@@ -257,6 +257,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: .8em;
+    transition: 0.2s;
 }
 
 .card img {
@@ -284,6 +285,11 @@ body {
     font-size: var(--titulo-sessao-desktop);
     margin: 0;
     font-weight: bold;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: #141414;
 }
 
 .botao {
