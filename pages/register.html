@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>PD Sports | Cadastro</title>
+</head>
+
+<body>
+    <form id="form-register">
+        <div id="card-register">
+            <figure>
+                <img src="/img/logo 2.svg" alt="logo-PD-Sports" id="img-logo-pd-sports">
+                <figcaption>logo PD Sports</figcaption>
+            </figure>
+
+            <h2 id="title-register">Cadastrar-se</h2>
+
+            <section id="section-input">
+                <div id="container-input">
+                    <label id="subtitle-input">Seu nome completo</label>
+                    <input type="text" id="input-name" placeholder="Nome completo">
+                </div>
+
+                <div id="container-input">
+                    <label id="subtitle-input">Seu e-mail</label>
+                    <input type="text" id="input-email" placeholder="E-mail">
+                </div>
+
+                <div id="container-input">
+                    <label id="subtitle-input">Seu telefone</label>
+                    <input type="text" id="input-phone" placeholder="Telefone">
+                </div>
+
+                <div id="container-input">
+                    <label id="subtitle-input">Data de nascimento</label>
+                    <div id="container-input-date">
+                        <input type="text" id="input-date-of-birth" placeholder="Data">
+                        <i data-lucide="calendar-days" id="icon-calendar-days"></i>
+                    </div>
+                </div>
+
+                <div id="container-input">
+                    <label id="subtitle-input">Crie uma senha</label>
+                    <input type="text" id="input-password" placeholder="Senha">
+                </div>
+
+
+
+                <div id="container-input">
+                    <label id="subtitle-input">Confirme a senha</label>
+                    <div id="container-input-date">
+                        <input type="text" id="input-confirm-password" placeholder="Confirme a senha">
+                    </div>
+                </div>
+            </section>
+
+            <div id="container-checkbox-input">
+                <input type="checkbox" name="" id="input-checkbox">
+                <p id="txt-checkbox-input">Termos de uso</p>
+            </div>
+
+            <div id="container-footer-register">
+                <p id="txt-quest-authenticated">possui uma conta? <a href="login.html" id="link-login">Entrar</a></p>
+
+                <div id="container-buttons-login">
+                    <a href="/index.html" id="link-back">
+                        <button>Voltar</button>
+                    </a>
+
+                    <a href="/pages/login.html" id="link-login">
+                        <button>Entrar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
