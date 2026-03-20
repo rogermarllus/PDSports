@@ -25,9 +25,9 @@
             </div>
 
             <div id="container-password">
-                <div id="container-input">
-                    <label id="subtitle-input">Informe sua senha</label>
-                    <input type="text" id="input-password" placeholder="Sua senha">
+                <div id="container-input-password">
+                    <label id="subtitle-input-password">Informe sua senha</label>
+                    <input type="password" id="input-password" placeholder="Sua senha">
                 </div>
                 <a href="">
                     <p id="recovery-password">Esqueci minha senha</p>
@@ -38,10 +38,7 @@
                 <a href="register.html" id="link-back">
                     <button>Voltar</button>
                 </a>
-
-                <a href="/index.html" id="link-login">
-                    <button>Entrar</button>
-                </a>
+                <button type="submit" id="btn-login">Entrar</button>
             </div>
 
             <p id="txt-quest-authenticated">Não possui uma conta? <a href="register.html"
@@ -49,8 +46,7 @@
         </div>
     </form>
 
-    <script src="/js/api.js"></script>
-    <script src="/js/auth.js"></script>
+    <script type="module" src="../js/login.js"></script>
 </body>
 
 </html>

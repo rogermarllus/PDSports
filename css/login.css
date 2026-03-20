@@ -248,7 +248,7 @@ figcaption {
     color: #CFED89;
 }
 
-#link-login button {
+#btn-login {
     border: none;
     outline: none;
     width: 14.79vw;
@@ -264,7 +264,7 @@ figcaption {
 }
 
 @media(max-width: 600px) {
-    #link-login button {
+    #btn-login button {
         border: none;
         outline: none;
         width: 150px;
@@ -280,7 +280,7 @@ figcaption {
     }
 }
 
-#link-login button:hover {
+#btn-login:hover {
     background-color: #CFED89;
 }
 
