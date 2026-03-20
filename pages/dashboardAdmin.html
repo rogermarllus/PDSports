@@ -4,36 +4,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CSS Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
-  <!-- CSS do projeto -->
-  <link rel="stylesheet" href="/css/style.css">
-  <!-- JavaScript Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <!-- JavaScript Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboardAdmin.css">
+
   <link rel="icon" type="image/svg+xml" href="/img/svg/favicon.svg">
-  <title>PD Sports | Área Administrativa</title>
+  <title>PD Sports | Admin</title>
 </head>
 
 <body>
-  <button id="btn-logout" class="btn btn-danger m-4">
-    Logout
-  </button>
 
+  <nav class="admin-navbar">
+    <div class="container">
+      <div class="admin-navbar-inner">
+        <a href="/index.html" class="admin-logo">
+          <img src="/img/svg/logo.svg" alt="PD Sports">
+        </a>
+        <div class="admin-nav-actions">
+          <a href="productList.html" class="btn-admin-nav">
+            Produtos <i data-lucide="chevron-right"></i>
+          </a>
+          <button id="btn-sair" class="btn-admin-nav">
+            Sair <i data-lucide="log-out"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container admin-container">
+
+      <section class="resumo-grid">
+
+        <article class="resumo-card">
+          <i data-lucide="dollar-sign" class="resumo-icone"></i>
+          <p class="resumo-label">Receita Total</p>
+          <p class="resumo-valor">R$ 127.845,90</p>
+        </article>
+
+        <article class="resumo-card">
+          <i data-lucide="shopping-cart" class="resumo-icone"></i>
+          <p class="resumo-label">Total de Pedidos</p>
+          <p class="resumo-valor">342</p>
+        </article>
+
+        <article class="resumo-card">
+          <i data-lucide="user" class="resumo-icone"></i>
+          <p class="resumo-label">Total Clientes</p>
+          <p class="resumo-valor">1.256</p>
+        </article>
+
+      </section>
+
+      <section class="grafico-card">
+        <h2>Vendas por dia</h2>
+
+        <div class="barras-lista">
+
+          <div class="barra-item">
+            <span class="barra-label">10 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 67%"></div>
+            </div>
+            <span class="barra-valor">R$ 15.456,00</span>
+          </div>
+
+          <div class="barra-item">
+            <span class="barra-label">11 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 82%"></div>
+            </div>
+            <span class="barra-valor">R$ 18.650,00</span>
+          </div>
+
+          <div class="barra-item">
+            <span class="barra-label">12 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 56%"></div>
+            </div>
+            <span class="barra-valor">R$ 12.890,00</span>
+          </div>
+
+          <div class="barra-item">
+            <span class="barra-label">13 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 93%"></div>
+            </div>
+            <span class="barra-valor">R$ 21.340,00</span>
+          </div>
+
+          <div class="barra-item">
+            <span class="barra-label">14 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 86%"></div>
+            </div>
+            <span class="barra-valor">R$ 19.780,00</span>
+          </div>
+
+          <div class="barra-item">
+            <span class="barra-label">15 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 73%"></div>
+            </div>
+            <span class="barra-valor">R$ 16.890,00</span>
+          </div>
+
+          <div class="barra-item">
+            <span class="barra-label">16 de mar.</span>
+            <div class="barra-track">
+              <div class="barra-fill" style="--pct: 100%"></div>
+            </div>
+            <span class="barra-valor">R$ 22.875,00</span>
+          </div>
+
+        </div>
+      </section>
+      <div class="bottom-grid">
+
+        <section class="grafico-card">
+          <h2>Top categorias</h2>
+
+          <div class="categorias-lista">
+
+            <div class="categoria-item">
+              <div class="categoria-header">
+                <span class="categoria-nome">Futebol</span>
+                <span class="categoria-pct">58,6%</span>
+              </div>
+              <div class="barra-track">
+                <div class="barra-fill" style="--pct: 58.6%"></div>
+              </div>
+            </div>
+
+            <div class="categoria-item">
+              <div class="categoria-header">
+                <span class="categoria-nome">Corrida</span>
+                <span class="categoria-pct">29,2%</span>
+              </div>
+              <div class="barra-track">
+                <div class="barra-fill" style="--pct: 29.2%"></div>
+              </div>
+            </div>
+
+            <div class="categoria-item">
+              <div class="categoria-header">
+                <span class="categoria-nome">Basquete</span>
+                <span class="categoria-pct">12,2%</span>
+              </div>
+              <div class="barra-track">
+                <div class="barra-fill" style="--pct: 12.2%"></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="grafico-card">
+          <h2>Produtos mais vendidos</h2>
+
+          <table class="produtos-tabela">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Vendidos</th>
+                <th>Receita</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Chuteira seleção Brasileira</td>
+                <td><span class="badge-vendidos">89</span></td>
+                <td>R$ 81.115</td>
+              </tr>
+              <tr>
+                <td>Camisa do Flamengo</td>
+                <td><span class="badge-vendidos">67</span></td>
+                <td>R$ 76.115</td>
+              </tr>
+              <tr>
+                <td>Tênis de corrida Sport</td>
+                <td><span class="badge-vendidos">55</span></td>
+                <td>R$ 42.135</td>
+              </tr>
+              <tr>
+                <td>Meia para treino academia</td>
+                <td><span class="badge-vendidos">32</span></td>
+                <td>R$ 24.205</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="container">
+      <p>© 2026 PD Sports. Todos os Direitos Reservados</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
   <script type="module">
-    import { logout } from "/js/auth.js";
+  import { logout } from "/js/auth.js";
 
-    document.getElementById("btn-logout").addEventListener("click", () => {
-      logout();
-      window.location.href = "/pages/login.html";
-    });
-  </script>
+  document.getElementById("btn-sair").addEventListener("click", () => {
+    logout();
+    window.location.href = "/pages/login.html";
+  });
+</script>
 </body>
 
 </html>
