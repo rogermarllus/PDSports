@@ -1,0 +1,271 @@
+body {
+    background-color: var(--fundo-primario);
+    font-family: var(--fonte-montserrat);
+    color: var(--cor-branca);
+}
+
+/* WRAPPER — mesmo max-width e padding do .container Bootstrap usado nas modalidades */
+.conta-wrapper {
+    max-width: 960px;
+    margin: 60px auto;
+    padding: 0 12px;
+}
+
+.conta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.conta-header h1 {
+    font-size: var(--titulo-sessao-desktop); /* 24px */
+    font-weight: 600;
+    color: var(--cor-destaque);
+}
+
+.btn-sair {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    background: transparent;
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-weight: 600;
+    font-size: var(--texto-desktop); /* 16px */
+    padding: 0.45em 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-sair svg {
+    width: 1em;
+    height: 1em;
+}
+
+.btn-sair:hover {
+    background-color: var(--cor-destaque);
+    color: #1D0F28;
+}
+
+.conta-card {
+    background-color: var(--fundo-secundario);
+    border-radius: 12px;
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+    min-height: 360px;
+}
+
+.conta-dados {
+    flex: 1.3;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.conta-divisor {
+    width: 1px;
+    background-color: #444;
+    margin: 1.5rem 0;
+}
+
+.conta-pedidos {
+    flex: 1;
+    padding: 1.8rem;
+}
+
+/* Títulos de seção — mesma escala dos h2 dos cards de modalidade */
+.conta-dados h2,
+.conta-pedidos h2,
+.secao-preferencias h2 {
+    font-size: var(--titulo-sessao-desktop); /* 24px */
+    font-weight: 700;
+    color: var(--cor-destaque);
+    margin-bottom: 1.2rem;
+}
+
+.campos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.campo-grupo label {
+    font-size: 0.85rem;
+    color: #aaa;
+    font-weight: 500;
+}
+
+.campo-valor {
+    background-color: var(--fundo-terciario);
+    border-radius: 6px;
+    padding: 0.55em 0.9em;
+    font-size: var(--texto-desktop); /* 16px */
+    color: var(--cor-branca);
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
+}
+
+.preferencias-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.preferencia-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55em;
+    font-size: var(--texto-desktop); /* 16px */
+    color: #ccc;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.preferencia-item input[type="checkbox"] {
+    accent-color: var(--cor-destaque);
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.pedido-card {
+    background-color: var(--fundo-terciario);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    font-size: var(--texto-desktop); /* 16px */
+    color: #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.pedido-card p {
+    margin: 0;
+}
+
+.pedido-label {
+    font-weight: 600;
+    color: var(--cor-branca);
+}
+
+.pedido-link {
+    color: var(--cor-destaque);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--texto-desktop); /* 16px */
+    margin-top: 0.4rem;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.pedido-link:hover {
+    opacity: 0.75;
+}
+
+/* SEÇÃO MODALIDADES — mesmo espaçamento do wrapper */
+.secao-modalidades {
+    max-width: 960px;
+    margin: 3rem auto 4rem;
+    padding: 0 12px;
+}
+
+.secao-modalidades h2 {
+    font-size: var(--titulo-sessao-desktop); /* 24px */
+    font-weight: 600;
+    color: var(--cor-branca);
+    margin-bottom: 1.2rem;
+}
+
+.modalidades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.modalidades-grid ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.modalidades-grid ul li a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+    font-size: var(--texto-desktop); /* 16px */
+    transition: opacity 0.2s;
+}
+
+.modalidades-grid ul li a:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .conta-wrapper {
+        width: 100%;
+        padding: 0px;
+    }
+
+    .conta-header {
+        padding: 0 1.5rem;
+    }
+
+    .conta-card {
+        border-radius: 0px;
+        flex-direction: column;
+    }
+
+    .conta-divisor {
+        width: auto;
+        height: 1px;
+        margin: 0 1.5rem;
+    }
+
+    .campos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-modalidades {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .conta-wrapper {
+        margin: 30px auto;
+    }
+
+    .conta-header h1 {
+        font-size: var(--titulo-sessao-mobile); /* 20px */
+    }
+
+    .modalidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .secao-modalidades {
+        display: none;
+    }
+}

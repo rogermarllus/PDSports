@@ -8,7 +8,7 @@ p {
     margin: 0;
 }
 
-.container {
+.container-detalhes{
     display: grid;
     grid-template-columns: 1.5fr 3fr 2fr;
     grid-template-areas:
@@ -16,13 +16,6 @@ p {
         "descricao descricao descricao";
     gap: 2em;
     color: var(--cor-branca);
-}
-
-.info-produto,
-.detalhes-produto,
-.descricao-produto,
-.descricao-produto {
-    background-color: red;
 }
 
 .info-produto {
@@ -151,9 +144,15 @@ main {
     color: var(--cor-destaque);
     transition: .3s;
     font-weight: bold;
+    margin-right: 10px;
 }
 
 .btn-tamanho:hover {
+    background-color: var(--cor-destaque);
+    color: #1D0F28;
+}
+
+.btn-tamanho.active {
     background-color: var(--cor-destaque);
     color: #1D0F28;
 }
@@ -193,7 +192,7 @@ main {
 
 @media (max-width: 1200px) {
 
-    .container {
+    .container-detalhes {
         grid-template-columns: 1.5fr 1fr;
         grid-template-areas:
             "img detalhes"
@@ -203,7 +202,7 @@ main {
 
 @media (max-width: 768px) {
 
-    .container {
+    .container-detalhes {
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
             "img img"
@@ -213,8 +212,12 @@ main {
 }
 
 @media (max-width: 576px) {
+    main.container{
+        margin: 0;
+        padding: 0;
+    }
 
-    .container {
+    .container-detalhes {
         grid-template-columns: 1fr;
         grid-template-areas:
             "img"

@@ -45,7 +45,7 @@ function getImagePath(product) {
 function createProductCard(product) {
   return `
     <div class="col">
-      <article class="card">
+      <article class="card" onclick="window.location.href='/pages/productDetails.html?id=${product.id}'">
         <img src="${getImagePath(product)}" alt="${product.name}">
         <h3>${product.name}</h3>
         <div>

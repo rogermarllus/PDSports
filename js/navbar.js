@@ -5,8 +5,13 @@ function getFirstName(fullName) {
   return fullName.trim().split(" ")[0];
 }
 
+function getBasePath() {
+  return window.location.pathname.includes("/pages/") ? ".." : ".";
+}
+
 function setupNavbar() {
   const user = getCurrentUser();
+  const base = getBasePath();
 
   const link = document.getElementById("user-link");
   const icon = document.getElementById("user-icon");
@@ -15,7 +20,7 @@ function setupNavbar() {
   if (!link || !icon || !nameSpan) return;
 
   if (!user) {
-    link.href = "pages/login.html";
+    link.href = `${base}/pages/login.html`;
     icon.setAttribute("data-lucide", "user");
     nameSpan.classList.add("d-none");
   } else {
@@ -24,10 +29,10 @@ function setupNavbar() {
     nameSpan.classList.remove("d-none");
 
     if (user.isAdmin) {
-      link.href = "pages/dashboardAdmin.html";
+      link.href = `${base}/pages/dashboardAdmin.html`;
       icon.setAttribute("data-lucide", "bar-chart-3");
     } else {
-      link.href = "pages/userDetails.html";
+      link.href = `${base}/pages/userDetails.html`;
       icon.setAttribute("data-lucide", "user");
     }
   }

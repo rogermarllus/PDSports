@@ -130,6 +130,7 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
+    font-family: var(--fonte-montserrat);
 }
 
 /* Define estilo padrão para os links do menu */
@@ -143,6 +144,10 @@ body {
 .button-dropdown-nav {
     font-size: 18px;
     font-weight: 500;
+}
+
+.button-dropdown-nav::after {
+    display: none;
 }
 
 /* Define posição relativa para servir de referência ao dropdown */
@@ -212,19 +217,19 @@ body {
 
 /* Imagens de cada slide */
 .hero-1 {
-    background-image: url("../img/banner-1.png");
+    background-image: url("../img/banner/banner-1.png");
 }
 
 .hero-2 {
-    background-image: url("../img/banner-2.png");
+    background-image: url("../img/banner/banner-2.png");
 }
 
 .hero-3 {
-    background-image: url("../img/banner-3.png");
+    background-image: url("../img/banner/banner-3.png");
 }
 
 .hero-4 {
-    background-image: url("../img/banner-4.png");
+    background-image: url("../img/banner/banner-4.png");
 }
 
 #hero-carousel .carousel-indicators button {
@@ -328,23 +333,83 @@ footer {
     background-color: var(--cor-destaque);
 }
 
+/* CARDS */
+.card {
+    padding: 15px;
+    border-radius: 32px;
+    background-color: var(--fundo-secundario);
+    color: var(--cor-branca);
+    display: flex;
+    flex-direction: column;
+    gap: .8em;
+    transition: 0.2s;
+}
 
+.card img {
+    border-radius: 24px;
+}
 
+.card h3 {
+    font-size: var(--titulo-sessao-desktop);
+    font-family: var(--fonte-montserrat);
+    font-weight: 400;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
+.card>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.card div p {
+    font-family: var(--fonte-montserrat);
+    font-size: var(--titulo-sessao-desktop);
+    margin: 0;
+    font-weight: bold;
+}
 
+.card:hover {
+    cursor: pointer;
+    background-color: #141414;
+}
 
+.botao {
+    background-color: var(--cor-destaque);
+    padding: 10px 30px;
+    border-radius: 50px;
+    color: #1D0F28;
+    font-family: var(--fonte-montserrat);
+    border: none;
+    font-size: var(--texto-desktop);
+    font-weight: bold;
+    transition: .3s;
+}
 
+.botao:hover {
+    background-color: #CFED89;
+}
 
+.card button {
+    background-color: var(--cor-destaque);
+    border: none;
+    border-radius: 20px;
+    padding: .5em;
+    transition: .3s;
+    flex: 0 0 auto;
+}
 
+.card button:hover {
+    background-color: #CFED89;
+}
 
-
-
-
-
-
-
-/* ======================================================================================================= */
+.icon-card {
+    width: 2em;
+    height: 2em;
+}
 
 /* MEDIA QUERIES DA HERO (ELIAS)*/
 @media (max-width: 768px) {
@@ -356,5 +421,27 @@ footer {
 @media (min-width: 1030px) {
     .hero-slide {
         background-position: center;
+    }
+}
+
+@media (max-width: 470px) {
+    .cabecalho-lista-produtos {
+        flex-direction: column;
+        align-items: start;
+        gap: .5em;
+    }
+
+    .cabecalho-lista-produtos button {
+        width: 100%;
+    }
+
+    h2,
+    .card h3,
+    .card div p {
+        font-size: var(--titulo-sessao-mobile);
+    }
+
+    .botao {
+        font-size: var(--texto-mobile);
     }
 }
