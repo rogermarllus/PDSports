@@ -15,7 +15,7 @@ function fillUserData(user) {
         if (el) el.textContent = value || "—";
     };
 
-    set("user-name", user.name);
+    set("user-fullname", user.name);
     set("user-phone", user.phone);
     set("user-email", user.email);
     set("user-birth", formatDate(user.birthDate));
@@ -25,10 +25,7 @@ function setupLogout() {
     const btn = document.getElementById("btn-sair");
     if (!btn) return;
 
-    btn.addEventListener("click", () => {
-        logout();
-        window.location.href = "/pages/login.html";
-    });
+    btn.addEventListener("click", logout);
 }
 
 function init() {

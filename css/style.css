@@ -37,6 +37,8 @@ body {
     background-color: var(--fundo-primario);
 }
 
+/* ======================================================================================================= */
+
 /* EFEITO DE HOVER GERAL */
 
 .link-underline:hover::after {
@@ -167,6 +169,7 @@ body {
     padding-left: 10px;
 }
 
+/* ======================================================================================================= */
 
 /* HERO SECTION (ELIAS) */
 .title-banner {
@@ -247,6 +250,88 @@ body {
     background-color: var(--cor-destaque);
 }
 
+/* ======================================================================================================= */
+
+
+/* ESTILIZAÇÃO DO FOOTER (ELIAS) */
+
+footer {
+    color: white;
+    background-color: var(--fundo-terciario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* Cria um contexto para posicionar a linha divisória do footer zera o padding e define a largura do container */
+.container-main-footer {
+    position: relative;
+    width: 90%;
+    padding: 0;
+}
+
+
+/* Define a familia da fonte dos titulos do footer */
+.container-main-footer h2 {
+    font-family: var(--fonte-prata);
+}
+
+/* Estiliza os textos do footer */
+.container-main-footer p {
+    font-family: var(--fonte-montserrat);
+    font-style: italic;
+    font-size: 15PX;
+}
+
+/* Coloca o titulo e o texto do endereço um em baixo do outro*/
+.addres-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Seta a cor dos ícones de redes sociais como brancos */
+.list-socials-midias-footer ul li a{
+    color: white;    
+}
+
+/* Aumenta o tamanho dos ícones de redes sociais do footer*/
+.list-socials-midias-footer svg {
+    margin-top: 10px;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+/* Define o tamanho dos titulos do footer*/
+.title-footer h2 {
+    font-size: 20px;
+}
+
+/* Define o tamanho da logo no footer */
+.fig-img-footer img {
+    width: 204px;
+}
+
+.content-footer{
+    width: 100%;
+}
+
+
+/* Cria a linha divisória que está dentro do footer*/
+.container-main-footer::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 1px;
+    bottom: 20px;
+    background-color: var(--cor-destaque);
+}
 
 /* CARDS */
 .card {
@@ -302,10 +387,12 @@ body {
     font-size: var(--texto-desktop);
     font-weight: bold;
     transition: .3s;
+    text-decoration: none;
 }
 
 .botao:hover {
     background-color: #CFED89;
+    color: var(--fundo-primario);
 }
 
 .card button {
@@ -328,6 +415,12 @@ body {
 
 /* MEDIA QUERIES DA HERO (ELIAS)*/
 @media (max-width: 768px) {
+    .hero-slide {
+        background-position: center;
+    }
+}
+
+@media (min-width: 1030px) {
     .hero-slide {
         background-position: center;
     }

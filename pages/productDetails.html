@@ -98,83 +98,83 @@
     </header>
 
     <main class="container">
+        <div class="container-detalhes">
+            <!-- INFO LATERAL -->
+            <section class="info-produto">
+                <section class="avaliacoes">
+                    <p><strong>4.5</strong></p>
+                    <div>
+                        <i data-lucide="star" class="icone"></i>
+                        <a href="#" class="destaque">Ver Avaliações</a>
+                    </div>
+                </section>
 
-        <!-- INFO LATERAL -->
-        <section class="info-produto">
-            <section class="avaliacoes">
-                <p><strong>4.5</strong></p>
-                <div>
-                    <i data-lucide="star" class="icone"></i>
-                    <a href="#" class="destaque">Ver Avaliações</a>
-                </div>
+                <dl>
+                    <dt>Modalidade: </dt>
+                    <dd>-</dd>
+
+                    <dt>Disponibilidade: </dt>
+                    <dd>-</dd>
+                </dl>
+
+                <section class="info-compra">
+                    <div>
+                        <i data-lucide="badge-check" class="icone-destaque"></i>
+                        <p>Produto original</p>
+                    </div>
+                    <div>
+                        <i data-lucide="rotate-ccw" class="icone-destaque"></i>
+                        <p>Troca em até 30 dias</p>
+                    </div>
+                    <div>
+                        <i data-lucide="package" class="icone-destaque"></i>
+                        <p>Envio rápido e seguro</p>
+                    </div>
+                    <div>
+                        <i data-lucide="shield-check" class="icone-destaque"></i>
+                        <p>Garantia do fabricante</p>
+                    </div>
+                </section>
+
+                <p class="info-alerta">
+                    Atenção: verifique o tamanho ou especificações antes de finalizar a compra.
+                </p>
             </section>
 
-            <dl>
-                <dt>Modalidade: </dt>
-                <dd>-</dd>
+            <!-- IMAGEM -->
+            <img src="" alt="Produto" class="img-produto">
 
-                <dt>Disponibilidade: </dt>
-                <dd>-</dd>
-            </dl>
+            <!-- DETALHES -->
+            <section class="detalhes-produto">
+                <h1></h1>
 
-            <section class="info-compra">
+                <article>
+                    <p><strong>Cor:</strong> -</p>
+
+                    <p><strong>Tamanho:</strong></p>
+                    <div>
+                        <button class="btn-tamanho">36</button>
+                        <button class="btn-tamanho">37</button>
+                        <button class="btn-tamanho">38</button>
+                        <button class="btn-tamanho">39</button>
+                        <button class="btn-tamanho">40</button>
+                    </div>
+                </article>
+
                 <div>
-                    <i data-lucide="badge-check" class="icone-destaque"></i>
-                    <p>Produto original</p>
+                    <p><strong class="produto-preco">R$ 0,00</strong></p>
+                    <p>em até 6x sem juros</p>
                 </div>
-                <div>
-                    <i data-lucide="rotate-ccw" class="icone-destaque"></i>
-                    <p>Troca em até 30 dias</p>
-                </div>
-                <div>
-                    <i data-lucide="package" class="icone-destaque"></i>
-                    <p>Envio rápido e seguro</p>
-                </div>
-                <div>
-                    <i data-lucide="shield-check" class="icone-destaque"></i>
-                    <p>Garantia do fabricante</p>
-                </div>
+
+                <button class="botao">Adicionar ao Carrinho</button>
             </section>
 
-            <p class="info-alerta">
-                Atenção: verifique o tamanho ou especificações antes de finalizar a compra.
-            </p>
-        </section>
-
-        <!-- IMAGEM -->
-        <img src="" alt="Produto" class="img-produto">
-
-        <!-- DETALHES -->
-        <section class="detalhes-produto">
-            <h1></h1>
-
-            <article>
-                <p><strong>Cor:</strong> -</p>
-
-                <p><strong>Tamanho:</strong></p>
-                <div>
-                    <button class="btn-tamanho">36</button>
-                    <button class="btn-tamanho">37</button>
-                    <button class="btn-tamanho">38</button>
-                    <button class="btn-tamanho">39</button>
-                    <button class="btn-tamanho">40</button>
-                </div>
-            </article>
-
-            <div>
-                <p><strong class="produto-preco">R$ 0,00</strong></p>
-                <p>em até 6x sem juros</p>
-            </div>
-
-            <button class="botao">Adicionar ao Carrinho</button>
-        </section>
-
-        <!-- DESCRIÇÃO -->
-        <section class="descricao-produto">
-            <h2>Descrição:</h2>
-            <p></p>
-        </section>
-
+            <!-- DESCRIÇÃO -->
+            <section class="descricao-produto">
+                <h2>Descrição:</h2>
+                <p></p>
+            </section>
+        </div>
     </main>
 
     <footer></footer>
@@ -187,7 +187,9 @@
         lucide.createIcons();
     </script>
 
-    <script type="module" src="../js/productDetails.js"></script>
+    <script type="module" src="/js/search.js"></script>
+    <script type="module" src="/js/navbar.js"></script>
+    <script type="module" src="/js/productDetails.js"></script>
 </body>
 
 </html>

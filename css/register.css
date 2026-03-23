@@ -249,7 +249,7 @@ figure {
     }
 }
 
-#link-back button {
+#link-back {
     border: none;
     outline: none;
     width: 14.79vw;
@@ -266,7 +266,7 @@ figure {
 }
 
 @media(max-width: 600px) {
-    #link-back button {
+    #link-back {
         border: none;
         outline: none;
         width: 150px;
@@ -283,7 +283,7 @@ figure {
     }
 }
 
-#link-back button:hover {
+#link-back:hover {
     background-color: #465210;
     border: 2px solid #CFED89;
     color: #CFED89;

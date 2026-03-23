@@ -2,11 +2,18 @@ import { isAuthenticated, isAdmin } from "./auth.js";
 
 const route = document.body.dataset.route;
 
-if (route === "private" && !isAuthenticated()) {
+function redirectToLogin() {
   window.location.href = "/pages/login.html";
 }
 
-if (route === "admin" && (!isAuthenticated() || !isAdmin())) {
-  window.location.href = "/pages/login.html";
+if (route === "user") {
+  if (!isAuthenticated()) {
+    redirectToLogin();
+  }
 }
 
+if (route === "admin") {
+  if (!isAuthenticated() || !isAdmin()) {
+    redirectToLogin();
+  }
+}
