@@ -248,6 +248,39 @@ body {
 }
 
 
+/* ================================================================================*/
+
+/* SESSÃO DE BENEFICIOS (ELIAS) */
+
+.container-section-benefits{
+    background-color: var(--fundo-secundario);
+    height: 100px;
+}
+
+.section-benefits{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    font-family: var();
+    gap: 10px;
+
+}
+
+.section-benefits h2{
+    font-size: 24px;
+}
+.section-benefits h3{
+    font-weight: 100;
+    font-size: 24px;
+}
+
+.icon-benefits{
+    width: 60px;
+    height: 48px;
+}
+
 /* CARDS */
 .card {
     padding: 15px;
