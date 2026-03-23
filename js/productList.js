@@ -1,20 +1,19 @@
 import { getAllProducts, deleteProduct } from "./products.js";
 
-
 const ITEMS_PER_PAGE = 9;
-
 
 let allProducts = [];
 let currentPage = 1;
 let pendingDeleteId = null;
 
-
-const listContainer  = document.getElementById("products-list");
-const listTitle      = document.getElementById("products-list-title");
-const paginationEl   = document.getElementById("pagination");
-const modalOverlay   = document.getElementById("modal-delete");
+const listContainer = document.getElementById("products-list");
+const listTitle = document.getElementById("products-list-title");
+const paginationEl = document.getElementById("pagination");
+const modalDelete = document.getElementById("modal-delete");
 const btnModalCancel = document.getElementById("btn-modal-cancel");
-const btnModalConfirm= document.getElementById("btn-modal-confirm");
+const btnModalConfirm = document.getElementById("btn-modal-confirm");
+
+// ─── INIT ─────────────────────────────────────────
 
 async function init() {
     showLoading();
@@ -27,11 +26,18 @@ async function init() {
     }
 }
 
+window.addEventListener("product:saved", async () => {
+    allProducts = await getAllProducts();
+    render();
+});
+
+// ─── RENDER ───────────────────────────────────────
+
 function render() {
-    const total     = allProducts.length;
+    const total = allProducts.length;
     const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
-    const start     = (currentPage - 1) * ITEMS_PER_PAGE;
-    const slice     = allProducts.slice(start, start + ITEMS_PER_PAGE);
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const slice = allProducts.slice(start, start + ITEMS_PER_PAGE);
 
     listTitle.textContent = `Estoque (${total} Produto${total !== 1 ? "s" : ""})`;
 
@@ -45,25 +51,30 @@ function render() {
 }
 
 function renderRow(product) {
-    const disponivel = Number(product.amount) > 0;
+    const amount = Number(product.amount) || 0;
+    const disponivel = amount > 0;
+
     const badgeClass = disponivel ? "badge-disponivel" : "badge-indisponivel";
-    const badgeText  = disponivel ? "Disponível" : "Indisponível";
+    const badgeText = disponivel ? "Disponível" : "Indisponível";
 
     return `
     <div class="product-row" data-id="${product.id}">
-        <p class="product-name" title="${escapeHTML(product.name)}">${escapeHTML(product.name)}</p>
+        <p class="product-name" title="${escapeHTML(product.name)}">
+            ${escapeHTML(product.name)}
+        </p>
 
         <div class="product-row-actions">
-            <span class="badge-status ${badgeClass}">${badgeText}</span>
+            <span class="badge-status ${badgeClass}">
+                ${badgeText} (${amount})
+            </span>
 
             <div class="actions-group">
                 <button class="btn-action btn-edit"
-                        aria-label="Editar produto"
                         onclick="handleEdit('${product.id}')">
                     <i data-lucide="pencil"></i>
                 </button>
+
                 <button class="btn-action btn-delete"
-                        aria-label="Excluir produto"
                         onclick="handleDeleteRequest('${product.id}')">
                     <i data-lucide="trash-2"></i>
                 </button>
@@ -71,6 +82,8 @@ function renderRow(product) {
         </div>
     </div>`;
 }
+
+// ─── PAGINAÇÃO ─────────────────────────────────────
 
 function renderPagination(totalPages) {
     if (totalPages <= 1) {
@@ -94,14 +107,10 @@ function renderPagination(totalPages) {
 }
 
 function getPageRange(current, total) {
-    if (total <= 7) {
-        return Array.from({ length: total }, (_, i) => i + 1);
-    }
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
 
-    const pages = [];
     const WINDOW = 2;
-
-    pages.push(1);
+    const pages = [1];
 
     if (current - WINDOW > 2) pages.push("...");
 
@@ -110,11 +119,12 @@ function getPageRange(current, total) {
     }
 
     if (current + WINDOW < total - 1) pages.push("...");
-
     pages.push(total);
 
     return pages;
 }
+
+// ─── AÇÕES ─────────────────────────────────────────
 
 window.goToPage = function (page) {
     currentPage = page;
@@ -123,22 +133,32 @@ window.goToPage = function (page) {
 };
 
 window.handleEdit = function (id) {
-    window.location.href = `editProduct.html?id=${id}`;
+    if (typeof window.openEditModal === "function") {
+        window.openEditModal(id);
+    } else {
+        window.location.href = `productEdit.html?id=${id}`;
+    }
 };
 
 window.handleDeleteRequest = function (id) {
     pendingDeleteId = id;
+
     const product = allProducts.find(p => String(p.id) === String(id));
-    const nameEl  = modalOverlay.querySelector(".modal-product-name");
-    if (nameEl && product) nameEl.textContent = `"${product.name}"`;
-    modalOverlay.classList.add("active");
+    const nameEl = modalDelete.querySelector(".modal-product-name");
+
+    if (nameEl && product) {
+        nameEl.textContent = `"${product.name}"`;
+    }
+
+    modalDelete.classList.add("active");
 };
 
+// ─── MODAL DELETE ──────────────────────────────────
 
-btnModalCancel.addEventListener("click", closeModal);
+btnModalCancel.addEventListener("click", closeDeleteModal);
 
-modalOverlay.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) closeModal();
+modalDelete.addEventListener("click", (e) => {
+    if (e.target === modalDelete) closeDeleteModal();
 });
 
 btnModalConfirm.addEventListener("click", async () => {
@@ -149,47 +169,51 @@ btnModalConfirm.addEventListener("click", async () => {
 
     try {
         await deleteProduct(pendingDeleteId);
-        allProducts = allProducts.filter(p => String(p.id) !== String(pendingDeleteId));
+
+        allProducts = allProducts.filter(
+            p => String(p.id) !== String(pendingDeleteId)
+        );
 
         const totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
-        if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
+        if (currentPage > totalPages) {
+            currentPage = Math.max(1, totalPages);
+        }
 
         render();
     } catch (err) {
         console.error("Erro ao excluir produto:", err);
-        alert("Não foi possível excluir o produto. Tente novamente.");
+        alert("Não foi possível excluir o produto.");
     } finally {
-        closeModal();
+        closeDeleteModal();
         btnModalConfirm.disabled = false;
         btnModalConfirm.textContent = "Excluir";
     }
 });
 
-function closeModal() {
-    modalOverlay.classList.remove("active");
+function closeDeleteModal() {
+    modalDelete.classList.remove("active");
     pendingDeleteId = null;
 }
 
+// ─── FEEDBACK ──────────────────────────────────────
 
 function showLoading() {
-    listTitle.textContent = "Estoque";
     listContainer.innerHTML = `
         <div class="list-feedback">
             <div class="spinner"></div>
             <p>Carregando produtos…</p>
         </div>`;
-    paginationEl.innerHTML = "";
 }
 
 function showError() {
-    listTitle.textContent = "Estoque";
     listContainer.innerHTML = `
         <div class="list-feedback">
-            <p>Erro ao carregar produtos. Verifique a conexão e tente novamente.</p>
-            <button class="botao" style="margin-top: 16px;" onclick="init()">Tentar novamente</button>
+            <p>Erro ao carregar produtos.</p>
+            <button class="botao" onclick="init()">Tentar novamente</button>
         </div>`;
 }
 
+// ─── UTIL ──────────────────────────────────────────
 
 function escapeHTML(str) {
     return String(str)
@@ -198,5 +222,7 @@ function escapeHTML(str) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
 }
+
+// ─── START ─────────────────────────────────────────
 
 init();
