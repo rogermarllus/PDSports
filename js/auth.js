@@ -43,6 +43,7 @@ export async function login(email, password) {
 
 export function logout() {
     localStorage.removeItem(STORAGE_KEY);
+    window.location.href = "/pages/login.html";
 }
 
 export function saveUserSession(user) {
