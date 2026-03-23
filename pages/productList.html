@@ -21,38 +21,47 @@
 <body data-route="admin">
 
     <header>
+        <!-- MENU PRINCIPAL NAV -->
         <nav class="navbar navigation-bar" aria-label="Navegação principal">
             <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between">
+
                 <div class="logo">
-                    <a href="/index.html"><img src="/img/svg/logo.svg" alt="logotipo PD Sports"></a>
+                    <a href="/index.html"><img src="/img/svg/logo.svg" alt="logotipo"></a>
                 </div>
+
                 <form id="search-form" class="d-none d-md-flex flex-grow-1 mx-3 container-search">
                     <input id="search-input" class="form-control search-input" type="search"
                         placeholder="Busque por um produto">
-                    <button class="btn text-white ms-2" type="submit" aria-label="Pesquisar">
-                        <i data-lucide="search" class="icon-lg"></i>
+                    <button class="btn text-white ms-2" type="submit">
+                        <i data-lucide="Search" class="icon-lg"></i>
                     </button>
                 </form>
+
                 <div class="d-flex gap-3 fs-5">
                     <a href="cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
-                        <i data-lucide="shopping-bag" class="icon-lg"></i>
+                        <i data-lucide="handbag" class="icon-lg"></i>
                     </a>
-                    <a id="user-link" href="login.html"
-                        class="text-white p-2 rounded d-flex align-items-center gap-2" aria-label="Perfil">
+
+                    <a id="user-link" href="login.html" class="text-white p-2 rounded d-flex align-items-center gap-2"
+                        aria-label="Perfil">
                         <i id="user-icon" data-lucide="user" class="icon-lg"></i>
                         <span id="user-name" class="d-none"></span>
                     </a>
                 </div>
+
             </div>
         </nav>
 
+        <!-- MENU SECUNDÁRIO NAV -->
         <nav class="menu-bar py-2 menu-bar-second" aria-label="Categorias de produtos">
             <div class="container modality-menu">
+
                 <div class="dropdown me-3 container-dropdown-options">
                     <button class="btn fw-semibold dropdown-toggle button-dropdown-nav" type="button"
                         data-bs-toggle="dropdown">
                         <i class="bi bi-grid"></i> Todas as modalidades
                     </button>
+
                     <ul class="dropdown-menu dropdown-modality">
                         <li><a class="dropdown-item" href="modality.html?modality=Futebol">Futebol</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Basquete">Basquete</a></li>
@@ -64,19 +73,21 @@
                         <li><a class="dropdown-item" href="modality.html?modality=Ciclismo">Ciclismo</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Natação">Natação</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Tênis">Tênis</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Artes Marciais">Artes marciais</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Artes Marciais">Artes
+                                marciais</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Skate">Skate</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Surf">Surf</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Yoga">Yoga</a></li>
                         <li><a class="dropdown-item" href="modality.html?modality=Caminhada">Caminhada</a></li>
                     </ul>
                 </div>
-                <ul class="d-flex list-unstyled mb-0 list-second-options">
-                    <li><a href="modality.html?modality=Futebol"    class="menu-link link-underline">Futebol</a></li>
-                    <li><a href="modality.html?modality=Basquete"   class="menu-link link-underline">Basquete</a></li>
-                    <li><a href="modality.html?modality=Corrida"    class="menu-link link-underline">Corrida</a></li>
+                <ul class="d-flex  list-unstyled mb-0 list-second-options">
+                    <li><a href="modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a></li>
+                    <li><a href="modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a>
+                    </li>
+                    <li><a href="modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a></li>
                     <li><a href="modality.html?modality=Musculação" class="menu-link link-underline">Musculação</a></li>
-                    <li><a href="modality.html?modality=Natação"    class="menu-link link-underline">Natação</a></li>
+                    <li><a href="modality.html?modality=Natação" class="menu-link link-underline">Natação</a></li>
                 </ul>
             </div>
         </nav>
@@ -132,13 +143,13 @@
     </footer>
 
     <!-- MODAL EXCLUSÃO -->
-    <div id="modal-delete" class="modal-overlay" role="dialog" aria-modal="true"
-        aria-labelledby="modal-delete-title">
+    <div id="modal-delete" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-delete-title">
         <div class="modal-box">
             <h3 id="modal-delete-title">Excluir produto?</h3>
-            <p>Você tem certeza que deseja excluir <span class="modal-product-name"></span>? Essa ação não pode ser desfeita.</p>
+            <p>Você tem certeza que deseja excluir <span class="modal-product-name"></span>? Essa ação não pode ser
+                desfeita.</p>
             <div class="modal-actions">
-                <button id="btn-modal-cancel"  class="btn-modal-cancel">Cancelar</button>
+                <button id="btn-modal-cancel" class="btn-modal-cancel">Cancelar</button>
                 <button id="btn-modal-confirm" class="btn-modal-confirm">Excluir</button>
             </div>
         </div>
@@ -170,8 +181,9 @@
     <script type="module">
         import { initProductFormModal, openCreateModal, openEditModal, isMobile } from "/js/productForm.js";
 
-        window.openEditModal   = openEditModal;
+        window.openEditModal = openEditModal;
         window.openCreateModal = openCreateModal;
+        window.isMobile = isMobile;
 
         document.addEventListener("DOMContentLoaded", () => {
             initProductFormModal((id, payload) => {
@@ -189,4 +201,5 @@
     </script>
 
 </body>
+
 </html>
