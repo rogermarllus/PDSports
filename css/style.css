@@ -387,10 +387,12 @@ footer {
     font-size: var(--texto-desktop);
     font-weight: bold;
     transition: .3s;
+    text-decoration: none;
 }
 
 .botao:hover {
     background-color: #CFED89;
+    color: var(--fundo-primario);
 }
 
 .card button {
