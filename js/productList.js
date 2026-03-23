@@ -13,8 +13,6 @@ const modalDelete = document.getElementById("modal-delete");
 const btnModalCancel = document.getElementById("btn-modal-cancel");
 const btnModalConfirm = document.getElementById("btn-modal-confirm");
 
-// ─── INIT ─────────────────────────────────────────
-
 async function init() {
     showLoading();
     try {
@@ -30,8 +28,6 @@ window.addEventListener("product:saved", async () => {
     allProducts = await getAllProducts();
     render();
 });
-
-// ─── RENDER ───────────────────────────────────────
 
 function render() {
     const total = allProducts.length;
@@ -83,8 +79,6 @@ function renderRow(product) {
     </div>`;
 }
 
-// ─── PAGINAÇÃO ─────────────────────────────────────
-
 function renderPagination(totalPages) {
     if (totalPages <= 1) {
         paginationEl.innerHTML = "";
@@ -124,8 +118,6 @@ function getPageRange(current, total) {
     return pages;
 }
 
-// ─── AÇÕES ─────────────────────────────────────────
-
 window.goToPage = function (page) {
     currentPage = page;
     render();
@@ -133,7 +125,9 @@ window.goToPage = function (page) {
 };
 
 window.handleEdit = function (id) {
-    if (typeof window.openEditModal === "function") {
+    if (typeof window.isMobile === "function" && window.isMobile()) {
+        window.location.href = `productEdit.html?id=${id}`;
+    } else if (typeof window.openEditModal === "function") {
         window.openEditModal(id);
     } else {
         window.location.href = `productEdit.html?id=${id}`;
@@ -152,8 +146,6 @@ window.handleDeleteRequest = function (id) {
 
     modalDelete.classList.add("active");
 };
-
-// ─── MODAL DELETE ──────────────────────────────────
 
 btnModalCancel.addEventListener("click", closeDeleteModal);
 
@@ -195,8 +187,6 @@ function closeDeleteModal() {
     pendingDeleteId = null;
 }
 
-// ─── FEEDBACK ──────────────────────────────────────
-
 function showLoading() {
     listContainer.innerHTML = `
         <div class="list-feedback">
@@ -213,8 +203,6 @@ function showError() {
         </div>`;
 }
 
-// ─── UTIL ──────────────────────────────────────────
-
 function escapeHTML(str) {
     return String(str)
         .replace(/&/g, "&amp;")
@@ -222,7 +210,5 @@ function escapeHTML(str) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
 }
-
-// ─── START ─────────────────────────────────────────
 
 init();

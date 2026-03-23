@@ -33,8 +33,6 @@ function formatCurrency(value) {
     return Number(value).toFixed(2).replace(".", ",");
 }
 
-// ─── VALIDAÇÃO ─────────────────────────────────────────
-
 function validateForm(form) {
     let valid = true;
 
@@ -79,8 +77,6 @@ function validateForm(form) {
 
     return valid;
 }
-
-// ─── FORM HTML ─────────────────────────────────────────
 
 function buildFormFields(gridClass = "form-grid") {
     return `
@@ -145,8 +141,6 @@ function buildFormFields(gridClass = "form-grid") {
     </form>`;
 }
 
-// ─── FILL ─────────────────────────────────────────
-
 function fillForm(form, product) {
     form.name.value = product.name ?? "";
     form.price.value = product.price ? formatCurrency(product.price) : "";
@@ -163,8 +157,6 @@ function clearForm(form) {
     buildModalitySelect(form.modality);
 }
 
-// ─── DATA ─────────────────────────────────────────
-
 function collectFormData(form) {
     const raw = Object.fromEntries(new FormData(form));
 
@@ -179,8 +171,6 @@ function collectFormData(form) {
         image: DEFAULT_IMAGE
     };
 }
-
-// ─── SUBMIT ─────────────────────────────────────────
 
 async function submitForm(form, productId, onSuccess) {
     if (!validateForm(form)) return;
@@ -216,14 +206,8 @@ async function submitForm(form, productId, onSuccess) {
     }
 }
 
-// ─── MODAL (desktop — productList.html) ────────────────
-
 let modalProductId = null;
 
-/**
- * Inicializa o modal de formulário na productList.html.
- * @param {Function} onSaved  callback(id, payload) chamado após salvar com sucesso
- */
 export function initProductFormModal(onSaved) {
     const overlay   = document.getElementById("modal-product-form");
     const content   = overlay?.querySelector(".modal-form-content");
@@ -233,23 +217,18 @@ export function initProductFormModal(onSaved) {
 
     if (!overlay || !content) return;
 
-    // Injeta o formulário uma única vez
     content.innerHTML = buildFormFields("form-grid");
     buildModalitySelect(content.querySelector("[name='modality']"));
 
-    // Fechar ao clicar no overlay
     overlay.addEventListener("click", (e) => {
         if (e.target === overlay) closeModal();
     });
 
-    // Botão cancelar / voltar
     btnCancel?.addEventListener("click", closeModal);
 
-    // Botão salvar
     btnSave?.addEventListener("click", () => {
         const form = overlay.querySelector("#product-form");
         submitForm(form, modalProductId, (id, payload) => {
-            // Fecha o modal após breve delay para o usuário ver o feedback
             setTimeout(() => {
                 closeModal();
                 if (onSaved) onSaved(id, payload);
@@ -263,9 +242,6 @@ export function initProductFormModal(onSaved) {
     }
 }
 
-/**
- * Abre o modal em modo criação.
- */
 export function openCreateModal() {
     const overlay  = document.getElementById("modal-product-form");
     const titleEl  = overlay?.querySelector("#modal-form-title");
@@ -277,16 +253,12 @@ export function openCreateModal() {
     if (titleEl) titleEl.textContent = "Novo produto";
     clearForm(form);
 
-    // Limpa feedback anterior
     const feedbackEl = form.querySelector("#form-feedback");
     if (feedbackEl) { feedbackEl.textContent = ""; feedbackEl.className = "form-feedback"; }
 
     overlay.classList.add("active");
 }
 
-/**
- * Abre o modal em modo edição, carregando o produto pelo id.
- */
 export function openEditModal(id) {
     const overlay  = document.getElementById("modal-product-form");
     const titleEl  = overlay?.querySelector("#modal-form-title");
@@ -297,13 +269,11 @@ export function openEditModal(id) {
     modalProductId = id;
     if (titleEl) titleEl.textContent = "Edição de produto";
 
-    // Limpa feedback anterior
     const feedbackEl = form.querySelector("#form-feedback");
     if (feedbackEl) { feedbackEl.textContent = ""; feedbackEl.className = "form-feedback"; }
 
     overlay.classList.add("active");
 
-    // Carrega os dados do produto e preenche o form
     getProductById(id)
         .then(product => fillForm(form, product))
         .catch(err => {
@@ -315,24 +285,16 @@ export function openEditModal(id) {
         });
 }
 
-// ─── PÁGINA MOBILE (productCreate.html / productEdit.html) ─────────────────
-
-/**
- * Inicializa a página dedicada de criação ou edição (mobile).
- * @param {"create"|"edit"} mode
- */
 export function initFormPage(mode) {
     const container = document.getElementById("form-page-container");
     if (!container) return;
 
-    // Injeta o formulário com layout de coluna única
     container.innerHTML = buildFormFields("form-grid-page");
     buildModalitySelect(container.querySelector("[name='modality']"));
 
     let pageProductId = null;
 
     if (mode === "edit") {
-        // Lê o ?id= da URL
         const params = new URLSearchParams(window.location.search);
         pageProductId = params.get("id");
 
