@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   try {
     const { cep } = req.body;
 
+    // Validação
     if (!cep) {
       return res.status(400).json({ erro: "CEP obrigatório" });
     }
@@ -16,6 +17,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ erro: "CEP inválido" });
     }
 
+    // Chamada para API
     const response = await fetch(
       "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate",
       {
@@ -26,7 +28,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           from: {
-            postal_code: "34006065"
+            postal_code: "30140071"
           },
           to: {
             postal_code: cepLimpo
@@ -48,9 +50,32 @@ export default async function handler(req, res) {
       }
     );
 
-    const data = await response.json();
+    // Ler resposta como texto (mais seguro)
+    const text = await response.text();
 
-    // Se vier erro da API
+    console.log("STATUS:", response.status);
+    console.log("BODY:", text);
+
+    let data = null;
+
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      return res.status(500).json({
+        erro: "Resposta inválida da API",
+        detalhe: text
+      });
+    }
+
+    // Resposta vazia ou null
+    if (!data) {
+      return res.status(500).json({
+        erro: "Resposta vazia da API",
+        detalhe: text
+      });
+    }
+
+    // Erro da API
     if (data.errors) {
       return res.status(400).json({
         erro: "Erro na API do Melhor Envio",
@@ -58,7 +83,18 @@ export default async function handler(req, res) {
       });
     }
 
-    return res.status(200).json(data);
+    // Se não for array (formato inesperado)
+    if (!Array.isArray(data)) {
+      return res.status(400).json({
+        erro: "Formato inesperado da API",
+        detalhe: data
+      });
+    }
+
+    // Filtra fretes válidos
+    const fretesValidos = data.filter(f => !f.error);
+
+    return res.status(200).json(fretesValidos);
 
   } catch (error) {
     return res.status(500).json({
