@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   try {
     const { cep } = req.body;
 
-    // Validação do CEP
     if (!cep) {
       return res.status(400).json({ erro: "CEP obrigatório" });
     }
@@ -17,7 +16,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ erro: "CEP inválido" });
     }
 
-    // Requisição para a API do Melhor Envio
     const response = await fetch(
       "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate",
       {
@@ -28,7 +26,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           from: {
-            postal_code: "30140071"
+            postal_code: "01001000"
           },
           to: {
             postal_code: cepLimpo
@@ -42,16 +40,16 @@ export default async function handler(req, res) {
               insurance: 100
             }
           ],
-          services: "1,2",
+          services: "1,2,18",
           options: {
             receipt: false,
-            own_hand: false
+            own_hand: false,
+            collect: false
           }
         })
       }
     );
 
-    // Lê a resposta como texto para evitar falhas de parsing
     const text = await response.text();
 
     console.log("STATUS:", response.status);
@@ -59,17 +57,15 @@ export default async function handler(req, res) {
 
     let data = null;
 
-    // Tenta converter para JSON
     try {
       data = JSON.parse(text);
-    } catch (e) {
+    } catch {
       return res.status(500).json({
         erro: "Resposta inválida da API",
         detalhe: text
       });
     }
 
-    // Caso a API retorne null
     if (!data) {
       return res.status(200).json([
         {
@@ -80,7 +76,6 @@ export default async function handler(req, res) {
       ]);
     }
 
-    // Caso a API retorne erro estruturado
     if (data.errors) {
       return res.status(400).json({
         erro: "Erro na API do Melhor Envio",
@@ -88,7 +83,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // Garante que a resposta seja um array
     if (!Array.isArray(data)) {
       return res.status(400).json({
         erro: "Formato inesperado da API",
@@ -96,7 +90,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // Filtra apenas opções válidas
     const fretesValidos = data.filter(f => !f.error);
 
     return res.status(200).json(fretesValidos);
