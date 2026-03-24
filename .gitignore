@@ -1,0 +1,17 @@
+# Postman
+postman/
+Postman/
+*.postman_collection.json
+*.postman_environment.json
+
+# Pastas comuns onde configs podem aparecer
+*.postman/
+postman_collections/
+postman_environments/
+
+# Arquivos locais/exportações
+*.json.backup
+
+# Opcional: arquivos de ambiente/sensíveis
+.env
+.env.*
