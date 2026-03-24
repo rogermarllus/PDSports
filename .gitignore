@@ -12,6 +12,6 @@ postman_environments/
 # Arquivos locais/exportações
 *.json.backup
 
-# Opcional: arquivos de ambiente/sensíveis
+# Arquivos de ambiente/sensíveis
 .env
 .env.*
