@@ -6,8 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style-type: none;
-    text-decoration: none;
 }
 
 :root {
@@ -50,6 +48,10 @@ figcaption {
     display: none;
 }
 
+a{
+    text-decoration: none;
+}
+
 #card-register {
     width: 58vw;
     max-width: 849px;
@@ -88,6 +90,7 @@ figure {
     font-size: clamp(32px, 2.7vw, 40px);
     color: var(--cor-branca);
     text-align: center;
+    font-weight: 400;
 }
 
 
@@ -135,7 +138,6 @@ figure {
     border-radius: 8px;
     font-family: var(--fonte-montserrat);
     color: var(--cor-branca);
-    transition: .3s ease;
 }
 
 #input-name::placeholder,
@@ -155,13 +157,17 @@ figure {
 #input-email:focus-within,
 #input-date-of-birth:focus-within,
 #input-confirm-password:focus-within {
-    transition: .3s ease;
     box-shadow: 0px 0px 1px 2px var(--cor-branca);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0;
-    display: none;
+    position: absolute;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    cursor: pointer;
 }
 
 #container-input-date {
@@ -175,6 +181,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     right: 19px;
     color: var(--cor-branca);
+    pointer-events: none;
 }
 
 #container-checkbox-input {
@@ -199,6 +206,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 #input-checkbox[type="checkbox"]:checked {
     background-color: #CFED89;
+}
+
+#termo-uso{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5em;
 }
 
 #input-checkbox[type="checkbox"]:checked::after {
@@ -294,10 +308,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 16px;
     color: var(--cor-destaque);
     transition: .3s ease;
+    text-decoration: none;
 }
 
 #link-login:hover {
     color: #CFED89;
+}
+
+/* MODAL */
+.modal-content{
+    height: 40em;
+    width: 50em;
+    background-color: var(--fundo-secundario);
+    color: var(--cor-branca);
+}
+
+.modal-body{
+    overflow-y: auto;
+}
+
+.destaque, .termos-secao h4{
+    color: var(--cor-destaque);
+}
+
+.termos-secao ul{
+    list-style: disc;
+}
+
+.modal-body hr{
+    border: 1px solid var(--cor-destaque);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar{
+    background-color: var(--fundo-secundario);
+    color: var(--cor-destaque);
+    border-left: 1px solid #1C1C1C;
+    width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--cor-destaque);
+    border-radius: 5px;
 }
 
 @media(max-width: 600px) {
