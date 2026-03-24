@@ -252,12 +252,14 @@ body {
 
 /* SESSÃO DE BENEFICIOS (ELIAS) */
 
-.container-section-benefits{
+.container-section-benefits {
     background-color: var(--fundo-secundario);
     height: 100px;
+    display: flex;
+    flex-wrap: nowrap !important;
 }
 
-.section-benefits{
+.section-benefits {
     color: white;
     display: flex;
     justify-content: center;
@@ -265,21 +267,170 @@ body {
     text-align: start;
     font-family: var();
     gap: 10px;
+    flex: 1;
 
 }
 
-.section-benefits h2{
-    font-size: 24px;
+.section-benefits h2 {
+    font-size: clamp(12px, 1.5vw, 20px);
+    margin: 0;
 }
-.section-benefits h3{
+
+.section-benefits h3 {
+    font-size: clamp(10px, 1.2vw, 16px);
     font-weight: 100;
-    font-size: 24px;
+    margin: 0;
 }
 
-.icon-benefits{
-    width: 60px;
-    height: 48px;
+.icon-benefits {
+    width: clamp(40px, 4vw, 60px);
+    height: clamp(28px, 4vw, 48px);
 }
+
+/* ==================================================================================== */
+/* Sessão dos cards de melhores ofertas do dia (ELIAS)*/
+
+/* Adiciona e posiciona a imagem de fundo dos cards de ofertas */
+.card-1-offers {
+    background-image: url('../img/backgrounds/Card\ melhores\ ofertas\ \(1\).png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-2-offers {
+    background-image: url('../img/backgrounds/card-offers-2.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-3-offers {
+    background-image: url('../img/backgrounds/card-offers-3.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-4-offers {
+    background-image: url('../img/backgrounds/card-offers-4.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.title-section-offers {
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-size: clamp(18px, 1.5vw, 24px);
+    font-weight: 700;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+.container-card-best-offers-child {
+    height: 350px;
+}
+
+.container-card-best-offers h5 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.value-card-best-offers {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.btn-card-best-offers {
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+    width: clamp(160px, 25vw, 255px);
+    height: clamp(40px, 6vw, 60px);
+}
+
+.btn-card-best-offers:hover {
+    background-color: #c6ff00;
+    font-weight: 500;
+    color: #000;
+}
+
+.txt-card-best-offers {
+    padding: 30px 0;
+}
+
+#carouselOfertas {
+    position: relative;
+}
+
+/* RESET do comportamento padrão */
+#carouselOfertas .carousel-control-prev,
+#carouselOfertas .carousel-control-next {
+    width: auto;
+}
+
+/* POSICIONAMENTO */
+#carouselOfertas .carousel-control-prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+#carouselOfertas .carousel-control-next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+#carouselOfertas .carousel-control-prev,
+#carouselOfertas .carousel-control-next {
+    top: 50%;
+    position: absolute;
+    z-index: 10;
+}
+
+/* Define a cor de fundo, e padding dos botões de controle do carrossel de cards de melhores ofertas*/
+#carouselOfertas .carousel-control-prev-icon,
+#carouselOfertas .carousel-control-next-icon {
+    background-color: var(--cor-destaque);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: brightness(0); /* deixa preto */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none;
+}
+
+.custom-arrow{
+    background-color: var(--cor-destaque);
+    padding: 5px;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* CARDS */
 .card {
@@ -364,9 +515,17 @@ body {
     .hero-slide {
         background-position: center;
     }
+
 }
 
 @media (max-width: 470px) {
+
+    /* Vai zerar o espaço entre os textos e os ícones da sessão de beneficios */
+    .section-benefits {
+        gap: 0px;
+
+    }
+
     .cabecalho-lista-produtos {
         flex-direction: column;
         align-items: start;
@@ -386,4 +545,17 @@ body {
     .botao {
         font-size: var(--texto-mobile);
     }
+
+    /* COLOCA OS BOTOES DE PREV E NEXT PARA DENTRO DOS CARDS DE MELHORES OFERTAS
+    NA TELA MOBILE */
+    #carouselOfertas .carousel-control-prev {
+        left: 0;
+        transform: translate(20%, -50%);
+    }
+
+    #carouselOfertas .carousel-control-next {
+        right: 0;
+        transform: translate(-20%, -50%);
+    }
+
 }
