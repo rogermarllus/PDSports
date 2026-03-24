@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,600;1,5..1200,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* FONTES */
+    --fonte-prata: "Prata", serif;
+    --fonte-playfair: "Playfair", serif;
+    --fonte-montserrat: "Montserrat", sans-serif;
+
+    /* TAMANHOS DAS FONTES DESKTOP */
+    --titulo-grande-desktop: 64px;
+    --titulo-sessao-desktop: 24px;
+    --texto-desktop: 16px;
+
+    /* TAMANHOS DAS FONTES MOBILE */
+    --titulo-grande-mobile: 36px;
+    --titulo-sessao-mobile: 20px;
+}
