@@ -24,56 +24,41 @@ export default async function handler(req, res) {
           "Authorization": `Bearer ${process.env.MELHOR_ENVIO_TOKEN}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify([
-          {
-            from: {
-              postal_code: "34006065"
-            },
-            to: {
-              postal_code: cepLimpo
-            },
-            products: [
-              {
-                id: "1",
-                width: 20,
-                height: 5,
-                length: 30,
-                weight: 0.5,
-                insurance_value: 100,
-                quantity: 1
-              }
-            ],
-            options: {
-              receipt: false,
-              own_hand: false
+        body: JSON.stringify({
+          from: {
+            postal_code: "34006065"
+          },
+          to: {
+            postal_code: cepLimpo
+          },
+          packages: [
+            {
+              width: 20,
+              height: 5,
+              length: 30,
+              weight: 0.5,
+              insurance: 100
             }
+          ],
+          options: {
+            receipt: false,
+            own_hand: false
           }
-        ])
+        })
       }
     );
 
-    const text = await response.text();
+    const data = await response.json();
 
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      return res.status(500).json({
-        erro: "Resposta inválida da API",
-        detalhe: text
-      });
-    }
-
-    if (!Array.isArray(data)) {
+    // Se vier erro da API
+    if (data.errors) {
       return res.status(400).json({
-        erro: "Resposta inesperada da API",
+        erro: "Erro na API do Melhor Envio",
         detalhe: data
       });
     }
 
-    const fretesValidos = data.filter(f => !f.error);
-
-    return res.status(200).json(fretesValidos);
+    return res.status(200).json(data);
 
   } catch (error) {
     return res.status(500).json({
