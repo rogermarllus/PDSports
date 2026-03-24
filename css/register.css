@@ -6,7 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
 }
 
 :root {
@@ -47,6 +46,10 @@ body {
 
 figcaption {
     display: none;
+}
+
+a{
+    text-decoration: none;
 }
 
 #card-register {
@@ -305,6 +308,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 16px;
     color: var(--cor-destaque);
     transition: .3s ease;
+    text-decoration: none;
 }
 
 #link-login:hover {
