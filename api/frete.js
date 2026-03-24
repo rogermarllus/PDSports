@@ -38,10 +38,21 @@ export default async function handler(req, res) {
       }
     );
 
-    const data = await response.json();
+    const text = await response.text();
+    console.log("RESPOSTA:", text);
 
-    // filtra apenas fretes válidos
-    const fretesValidos = data.filter(f => !f.error);
+    const data = JSON.parse(text);
+
+    let fretesValidos = [];
+
+    if (Array.isArray(data)) {
+      fretesValidos = data.filter(f => !f.error);
+    } else {
+      return res.status(400).json({
+        erro: "Resposta inesperada da API",
+        detalhe: data
+      });
+    }
 
     return res.status(200).json(fretesValidos);
 
