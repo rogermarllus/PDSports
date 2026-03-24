@@ -10,6 +10,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ erro: "CEP obrigatório" });
     }
 
+    const cepLimpo = cep.replace(/\D/g, "");
+
+    if (cepLimpo.length !== 8) {
+      return res.status(400).json({ erro: "CEP inválido" });
+    }
+
     const response = await fetch(
       "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate",
       {
@@ -20,8 +26,12 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify([
           {
-            from: { postal_code: "34000-000" },
-            to: { postal_code: cep },
+            from: {
+              postal_code: "34006065"
+            },
+            to: {
+              postal_code: cepLimpo
+            },
             products: [
               {
                 id: "1",
@@ -32,27 +42,36 @@ export default async function handler(req, res) {
                 insurance_value: 100,
                 quantity: 1
               }
-            ]
+            ],
+            options: {
+              receipt: false,
+              own_hand: false
+            }
           }
         ])
       }
     );
 
     const text = await response.text();
-    console.log("RESPOSTA:", text);
 
-    const data = JSON.parse(text);
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      return res.status(500).json({
+        erro: "Resposta inválida da API",
+        detalhe: text
+      });
+    }
 
-    let fretesValidos = [];
-
-    if (Array.isArray(data)) {
-      fretesValidos = data.filter(f => !f.error);
-    } else {
+    if (!Array.isArray(data)) {
       return res.status(400).json({
         erro: "Resposta inesperada da API",
         detalhe: data
       });
     }
+
+    const fretesValidos = data.filter(f => !f.error);
 
     return res.status(200).json(fretesValidos);
 
