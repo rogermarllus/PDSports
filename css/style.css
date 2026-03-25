@@ -178,12 +178,13 @@ body {
     font-style: italic;
 }
 
-
+/* Define fonte e tamanho dos subtitulos da hero section */
 .lead {
     font-family: var(--fonte-montserrat);
     font-size: clamp(0.9rem, 1.5vw, 1.25rem);
 }
 
+/* Estiliza os botões de ver detalhes do carrossel*/
 .btn-custom-outline {
     border: 2px solid var(--cor-destaque);
     color: var(--cor-destaque);
@@ -195,11 +196,13 @@ body {
     height: clamp(40px, 6vw, 60px);
 }
 
+/* Cria efeito de hover para os botões de ver detalhes da hero section*/
 .btn-custom-outline:hover {
     background-color: #c6ff00;
     color: #000;
 }
 
+/* Estiliza o container geral que contém o titulo, subtitulo e botao de ver detalhes da sessçao hero section*/
 .hero-slide {
     min-height: clamp(320px, 60vh, 530px);
     background-size: cover;
@@ -347,6 +350,190 @@ footer {
     text-align: center;
 }
 
+/* ================================================================================*/
+
+/* SESSÃO DE BENEFICIOS (ELIAS) */
+
+/* Seta a altura, cor de fundo, torna flexivel e impede os elementos de quebrar a linha no mobile na sessão de beneficios */
+.container-section-benefits {
+    background-color: var(--fundo-secundario);
+    height: 100px;
+    display: flex;
+    flex-wrap: nowrap !important;
+}
+
+/* Estiliza o container interno (onde vçao todos os elementos da sessçao de beneficios)  */
+.section-benefits {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    font-family: var();
+    gap: 10px;
+    flex: 1;
+
+}
+
+/* Seta o tamanho da fonte dos titulos da sessão de beneficios (usei clamp para ajudar na responsividade).  */
+.section-benefits h2 {
+    font-size: clamp(12px, 1.5vw, 20px);
+    margin: 0;
+}
+
+/* Seta o tamanho da fonte dos subtitulos da sessão de beneficios (usei clamp para ajudar na responsividade).  */
+.section-benefits h3 {
+    font-size: clamp(10px, 1.2vw, 16px);
+    font-weight: 100;
+    margin: 0;
+}
+
+/* Seta o tamanho dos icones da sessão de beneficios (usei clamp para ajudar na responsividade).  */
+.icon-benefits {
+    width: clamp(40px, 4vw, 60px);
+    height: clamp(28px, 4vw, 48px);
+}
+
+
+/* ==================================================================================== */
+/* Sessão dos cards de melhores ofertas do dia (ELIAS)*/
+
+/* Adiciona e posiciona a imagem de fundo dos cards de ofertas */
+.card-1-offers {
+    background-image: url('../img/backgrounds/Card\ melhores\ ofertas\ \(1\).png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-2-offers {
+    background-image: url('../img/backgrounds/card-offers-2.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-3-offers {
+    background-image: url('../img/backgrounds/card-offers-3.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-4-offers {
+    background-image: url('../img/backgrounds/card-offers-4.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+/* Define cor, fonte e posicionamento dos titulos dos cards da sessão de melhores ofertas */
+.title-section-offers {
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-size: clamp(18px, 1.5vw, 24px);
+    font-weight: 700;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+/* Define cor, a altura dos cards da sessão de melhores ofertas*/
+.container-card-best-offers-child {
+    height: 350px;
+}
+
+/* Define cor, tamanho da fonte dos titulos dos cards da sessão de melhores ofertas*/
+.container-card-best-offers h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* Define cor, tamanho da fonte dos preços dos cards da sessão de melhores ofertas*/
+.value-card-best-offers {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Estiliza o botão ver detalhes dos cards da sessão de melhores ofertas*/
+.btn-card-best-offers {
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+    width: clamp(160px, 25vw, 200px);
+    height: clamp(40px, 6vw, 40px);
+}
+
+/* Define efeito de hover do botão ver detalhes dos cards da sessão de melhores oferta*/
+.btn-card-best-offers:hover {
+    background-color: #c6ff00;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Cria um espaçamento interno nos textos de dentro do card da sessçao de melhores ofertas*/
+.txt-card-best-offers {
+    padding: 30px 0;
+}
+
+/* Cria um contexto para posicionar os botões de prev e next dos cards da sessão de melhores oferta */
+#carouselOfertas {
+    position: relative;
+}
+
+
+/* DEFINE O POSICIONAMENTO DOS BOTÕES NEXT E PREV DOS CARD DA SESSÃO DE MELHORES OFERTAS */
+#carouselOfertas .carousel-control-prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+#carouselOfertas .carousel-control-next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+#carouselOfertas .carousel-control-prev,
+#carouselOfertas .carousel-control-next {
+    top: 50%;
+    position: absolute;
+    z-index: 10;
+}
+
+/* Define a cor de fundo, e padding dos botões de controle do carrossel de cards de melhores ofertas*/
+#carouselOfertas .carousel-control-prev-icon,
+#carouselOfertas .carousel-control-next-icon {
+    background-color: var(--cor-destaque);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 1;
+}
+
+/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
+.custom-arrow {
+    background-color: var(--cor-destaque);
+    padding: 5px;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* CARDS */
 .card {
     padding: 15px;
@@ -432,6 +619,7 @@ footer {
     .hero-slide {
         background-position: center;
     }
+
 }
 
 @media (min-width: 1030px) {
@@ -441,6 +629,13 @@ footer {
 }
 
 @media (max-width: 470px) {
+
+    /* Vai zerar o espaço entre os textos e os ícones da sessão de beneficios */
+    .section-benefits {
+        gap: 0px;
+
+    }
+
     .cabecalho-lista-produtos {
         flex-direction: column;
         align-items: start;
@@ -460,4 +655,154 @@ footer {
     .botao {
         font-size: var(--texto-mobile);
     }
+
+    /* COLOCA OS BOTOES DE PREV E NEXT PARA DENTRO DOS CARDS DE MELHORES OFERTAS
+    NA TELA MOBILE */
+    #carouselOfertas .carousel-control-prev {
+        left: 0;
+        transform: translate(20%, -50%);
+    }
+
+    #carouselOfertas .carousel-control-next {
+        right: 0;
+        transform: translate(-20%, -50%);
+    }
+
+}
+
+
+/* ================================================================================================================== */
+
+/* CARROUSSEL DE MODALIDADES (ELIAS) */
+
+#carouselTrack {
+    scroll-behavior: smooth;
+}
+
+/* CARD BASE */
+.card-item-modalitys {
+    flex: 0 0 auto;
+}
+
+.title-modality {
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-size: clamp(18px, 1.5vw, 24px);
+    font-weight: 700;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+.card-custom {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.img-card-modalitys {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* TÍTULO POR CIMA */
+.title-card-modalitys {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--fonte-prata);
+    font-weight: 100;
+    color: white;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 600;
+    text-align: center;
+}
+
+.container-list-cards-modalitys {
+    position: relative;
+}
+
+/* ESTILIZA OS BOTÃO DE PREV DO CARROSSEL DE MODALIDADES DA PÁGINA INDEX */
+#prevBtn {
+    z-index: 1;
+    background-color: var(--cor-destaque);
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    transform: translateX(-20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+}
+
+/* ESTILIZA OS BOTÃO DE NEXT DO CARROSSEL DE MODALIDADES DA PÁGINA INDEX */
+#nextBtn {
+    z-index: 1;
+    background-color: var(--cor-destaque);
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    transform: translateX(20px);
+    border: none;
+}
+
+#carouselTrack{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-item-modalitys {
+    flex: 0 0 auto;
+    min-width: 0;
+}
+
+/* MEDIA QUERIES DO CARROUSSEL DE CARDS DE MODALIDADES */
+
+/* DESKTOP: 4 CARDS */
+@media (min-width: 992px) {
+    .card-item-modalitys {
+        width: calc(25% - 12px);
+    }
+}
+
+/* MOBILE: 2 CARDS */
+@media (max-width: 991px) {
+    .card-item-modalitys {
+        width: calc(50% - 12px);
+    }
+
+}
+
+/* ESTILO VISUAL */
+.card-custom {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card-custom img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.card-custom span {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
