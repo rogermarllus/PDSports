@@ -19,14 +19,12 @@ export default async function handler(req, res) {
     const payload = {
       from: { postal_code: "01001000" },
       to: { postal_code: cepLimpo },
-      packages: [
-        {
-          width: 20,
-          height: 5,
-          length: 30,
-          weight: 0.5
-        }
-      ],
+      package: {
+        width: 20,
+        height: 5,
+        length: 30,
+        weight: 0.5
+      },
       options: {
         receipt: false,
         own_hand: false,
@@ -43,16 +41,14 @@ export default async function handler(req, res) {
           "Accept": "application/json",
           "Content-Type": "application/json",
           "Authorization": `Bearer ${process.env.MELHOR_ENVIO_TOKEN}`,
-          "User-Agent": "PD Sports (roger.mo.leal@gmail.com)"
+          "User-Agent": "PDSports (seuemail@gmail.com)"
         },
         body: JSON.stringify(payload)
       }
     );
 
     const text = await response.text();
-
     console.log("STATUS:", response.status);
-    console.log("HEADERS:", Object.fromEntries(response.headers.entries()));
     console.log("BODY:", text);
 
     if (!text || text.trim() === "") {
