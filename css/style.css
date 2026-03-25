@@ -336,6 +336,20 @@ footer {
     background-color: var(--cor-destaque);
 }
 
+/* Icones do rodape */
+.icon-rodape{
+    font-size: 30px;
+}
+
+.icon-rodape:hover{
+    transition: .3s;
+    color: var(--cor-destaque);
+}
+
+.copy{
+    text-align: center;
+}
+
 /* ================================================================================*/
 
 /* SESSÃO DE BENEFICIOS (ELIAS) */
