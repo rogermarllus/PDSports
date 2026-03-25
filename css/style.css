@@ -37,13 +37,13 @@ body {
     background-color: var(--fundo-primario);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* ======================================================================================================= */
 
 /* EFEITO DE HOVER GERAL */
-
-.link-underline:hover::after {
-    width: 100%;
-}
 
 .link-underline {
     position: relative;
@@ -62,40 +62,25 @@ body {
     transition: width 0.3s ease;
 }
 
-/* ESTILO DA BARRA DE NAVEGAÇÃO (ELIAS) */
+.link-underline:hover::after {
+    width: 100%;
+}
+
+/* ESTILO DA BARRA DE NAVEGAÇÃO */
 .logo img {
     width: 200px;
     padding-left: 15px;
 }
 
-/* Alinha o dropdown de modalidades*/
-.container-dropdown-options {
-    border-right: 2px solid #000;
-    padding-right: 15px;
-    margin-right: 15px;
-}
-
-/* Define a altura e cor de fundo da barra de navegação*/
 .navigation-bar {
     background-color: var(--fundo-terciario);
     height: 95px;
 }
 
-/* Define tamanho padrão para ícones grandes */
 .icon-lg {
     width: 29px;
     height: 29px;
-}
-
-/* Altera a cor do ícone ao passar o mouse */
-.icon-lg:hover {
-    color: var(--cor-destaque);
-}
-
-/* Centraliza o campo de busca do meio da nav */
-.container-search {
-    display: flex;
-    justify-content: center;
+    transition: color 0.3s;
 }
 
 .icon-lg:hover,
@@ -103,73 +88,167 @@ body {
     color: var(--cor-destaque);
 }
 
-#user-link {
-    text-decoration: none;
+.container-search {
+    display: flex;
+    justify-content: center;
 }
 
-/* Estiliza o campo de busca com bordas arredondadas, limitando a largura do inpuit e espaçamento interno */
 .search-input {
     border-radius: 25px;
     padding-left: 30px;
     max-width: 800px;
 }
 
-/* Define a cor de fundo da segunda barra de menu */
+/* ===================== MENU SECUNDÁRIO ===================== */
+
 .menu-bar-second {
     background-color: var(--cor-destaque);
 }
 
-/* Remove o efeito de sombra ao focar em botões */
-.btn:focus {
-    box-shadow: none;
-}
-
-/* Organiza os itens do menu em linha, com espaçamento e alinhamento central */
 .modality-menu {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 18px;
-    font-family: var(--fonte-montserrat);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 5px 15px;
 }
 
-/* Define estilo padrão para os links do menu */
-.modality-menu a {
-    color: #1D0F28;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-/* Define tamanho e peso da fonte do botão dropdown */
-.button-dropdown-nav {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.button-dropdown-nav::after {
+.modality-menu::-webkit-scrollbar {
     display: none;
 }
 
-/* Define posição relativa para servir de referência ao dropdown */
 .container-dropdown-options {
-    position: relative;
+    flex-shrink: 0;
+    margin-right: 15px;
 }
 
-/* Centraliza o menu dropdown horizontalmente em relação ao botão */
-.dropdown-modality {
-    left: 18% !important;
-    transform: translateX(-50%);
-}
-
-/* Alinha as opçoes de modalidades com espaços iguais entre si */
-.list-second-options {
-    width: 100%;
+.button-dropdown-nav {
+    border: none !important;
+    border-right: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 15px 0 0 !important;
+    color: #1D0F28 !important;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: var(--fonte-montserrat);
     display: flex;
-    justify-content: space-between;
-    padding-left: 10px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 0 !important;
 }
 
-/* ======================================================================================================= */
+.button-dropdown-nav::after {
+    display: none !important;
+}
+
+.dropdown-modality {
+    background-color: var(--cor-branca) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    padding: 10px 0 !important;
+    z-index: 9999 !important;
+}
+
+.dropdown-modality .dropdown-item {
+    color: var(--fundo-primario) !important;
+    font-family: var(--fonte-montserrat);
+    font-weight: normal;
+    padding: 8px 20px !important;
+    transition: background 0.2s;
+}
+
+.dropdown-modality .dropdown-item:hover {
+    background-color: #f1f1f1 !important;
+    cursor: pointer;
+}
+
+.list-second-options {
+    display: flex;
+    flex-wrap: nowrap !important;
+    gap: 30px;
+    padding-left: 10px;
+    list-style: none;
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .list-second-options {
+        gap: 150px;
+    }
+}
+
+.list-second-options a {
+    color: #1D0F28;
+    font-weight: 500;
+    font-family: var(--fonte-montserrat);
+    white-space: nowrap;
+}
+
+/* NAVBAR MOBILE — barra de pesquisa destacada */
+
+.nav-mobile-top {
+    height: 70px;
+}
+
+.nav-mobile-search {
+    background-color: var(--fundo-terciario);
+}
+
+.container-search-mobile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--cor-branca);
+    padding: 10px 16px;
+    gap: 8px;
+}
+
+.search-input-mobile {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--fundo-primario);
+    font-family: var(--fonte-montserrat);
+    font-size: 16px;
+}
+
+.divider-search-mobile {
+    display: inline-block;
+    width: 1px;
+    height: 22px;
+    background-color: var(--fundo-primario);
+    margin-right: 8px;
+}
+
+.btn-search-mobile {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    color: var(--fundo-primario);
+    cursor: pointer;
+}
+
+.user-name-mobile {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: var(--cor-branca);
+}
+
+@media (max-width: 767px) {
+    .logo img {
+        width: 155px;
+        padding-left: 0;
+    }
+}
 
 /* HERO SECTION (ELIAS) */
 .title-banner {
@@ -296,8 +375,8 @@ footer {
 
 
 /* Seta a cor dos ícones de redes sociais como brancos */
-.list-socials-midias-footer ul li a{
-    color: white;    
+.list-socials-midias-footer ul li a {
+    color: white;
 }
 
 /* Aumenta o tamanho dos ícones de redes sociais do footer*/
@@ -317,7 +396,7 @@ footer {
     width: 204px;
 }
 
-.content-footer{
+.content-footer {
     width: 100%;
 }
 
@@ -337,16 +416,16 @@ footer {
 }
 
 /* Icones do rodape */
-.icon-rodape{
+.icon-rodape {
     font-size: 30px;
 }
 
-.icon-rodape:hover{
+.icon-rodape:hover {
     transition: .3s;
     color: var(--cor-destaque);
 }
 
-.copy{
+.copy {
     text-align: center;
 }
 
@@ -756,7 +835,7 @@ footer {
     border: none;
 }
 
-#carouselTrack{
+#carouselTrack {
     display: flex;
     align-items: center;
     justify-content: center;
