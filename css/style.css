@@ -296,8 +296,8 @@ footer {
 
 
 /* Seta a cor dos ícones de redes sociais como brancos */
-.list-socials-midias-footer ul li a{
-    color: white;    
+.list-socials-midias-footer ul li a {
+    color: white;
 }
 
 /* Aumenta o tamanho dos ícones de redes sociais do footer*/
@@ -317,7 +317,7 @@ footer {
     width: 204px;
 }
 
-.content-footer{
+.content-footer {
     width: 100%;
 }
 
@@ -600,76 +600,52 @@ footer {
     height: 2em;
 }
 
-/* MEDIA QUERIES DA HERO (ELIAS)*/
-@media (max-width: 768px) {
-    .hero-slide {
-        background-position: center;
-    }
-
-}
-
-@media (min-width: 1030px) {
-    .hero-slide {
-        background-position: center;
-    }
-}
-
-@media (max-width: 470px) {
-
-    /* Vai zerar o espaço entre os textos e os ícones da sessão de beneficios */
-    .section-benefits {
-        gap: 0px;
-
-    }
-
-    .cabecalho-lista-produtos {
-        flex-direction: column;
-        align-items: start;
-        gap: .5em;
-    }
-
-    .cabecalho-lista-produtos button {
-        width: 100%;
-    }
-
-    h2,
-    .card h3,
-    .card div p {
-        font-size: var(--titulo-sessao-mobile);
-    }
-
-    .botao {
-        font-size: var(--texto-mobile);
-    }
-
-    /* COLOCA OS BOTOES DE PREV E NEXT PARA DENTRO DOS CARDS DE MELHORES OFERTAS
-    NA TELA MOBILE */
-    #carouselOfertas .carousel-control-prev {
-        left: 0;
-        transform: translate(20%, -50%);
-    }
-
-    #carouselOfertas .carousel-control-next {
-        right: 0;
-        transform: translate(-20%, -50%);
-    }
-
-}
-
 
 /* ================================================================================================================== */
 
 /* CARROUSSEL DE MODALIDADES (ELIAS) */
 
+/* Define o container do card com posição relativa para permitir posicionamento absoluto de elementos internos, além de bordas arredondadas e corte do conteúdo excedente */
+.card-custom {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Ajusta a imagem do card para ocupar toda a largura, define altura fixa, mantém proporção com object-fit e aplica um escurecimento */
+.card-custom img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+/* Posiciona o texto dentro do card sobre a imagem, fixando na parte inferior esquerda com estilo destacado */
+.card-custom span {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Remove espaçamento interno padrão do container do carrossel */
+#carouselTrack {
+    padding: 0;
+}
+
+/* Aplica rolagem suave ao container do carrossel */
 #carouselTrack {
     scroll-behavior: smooth;
 }
 
-/* CARD BASE */
+/* Impede que os cards encolham ou cresçam automaticamente dentro de um container flex */
 .card-item-modalitys {
     flex: 0 0 auto;
 }
 
+/* Estiliza o título da seção de modalidades com cor, fonte, tamanho responsivo e espaçamentos */
 .title-modality {
     color: var(--cor-destaque);
     font-family: var(--fonte-montserrat);
@@ -679,12 +655,14 @@ footer {
     margin-bottom: 30px;
 }
 
+/* Define novamente o container do card com posição relativa, bordas arredondadas e corte do conteúdo excedente */
 .card-custom {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
 }
 
+/* Ajusta a imagem do card de modalidades para ocupar toda a largura, altura fixa e manter proporção sem distorção */
 .img-card-modalitys {
     width: 100%;
     height: 180px;
@@ -692,7 +670,7 @@ footer {
     display: block;
 }
 
-/* TÍTULO POR CIMA */
+/* Posiciona o título sobre o card de forma absoluta, centralizando horizontalmente e ajustando verticalmente ao meio */
 .title-card-modalitys {
     position: absolute;
     top: 43%;
@@ -742,53 +720,106 @@ footer {
     border: none;
 }
 
-#carouselTrack{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .card-item-modalitys {
     flex: 0 0 auto;
     min-width: 0;
 }
 
+
+
 /* MEDIA QUERIES DO CARROUSSEL DE CARDS DE MODALIDADES */
 
-/* DESKTOP: 4 CARDS */
+/* Em telas grandes (desktop), define que cada card ocupe aproximadamente 25% da largura com um pequeno espaçamento */
 @media (min-width: 992px) {
     .card-item-modalitys {
         width: calc(25% - 12px);
     }
 }
 
-/* MOBILE: 2 CARDS */
+
+/* Ajustes para telas menores que 992px (tablet e mobile) */
 @media (max-width: 991px) {
+
+    /* Remove o espaçamento entre os itens do carrossel no mobile */
+    #carouselTrack {
+        gap: 0;
+        /* remove o espaço só no mobile */
+    }
+
+    /* Faz com que cada card ocupe 100% da largura disponível */
     .card-item-modalitys {
-        width: calc(50% - 12px);
+        width: 100%;
+    }
+
+    /* Move o botão anterior levemente para dentro */
+    #prevBtn {
+        transform: translateX(20px);
+    }
+
+    /* Move o botão próximo levemente para dentro */
+    #nextBtn {
+        transform: translateX(-20px);
+    }
+}
+
+
+/* MEDIA QUERIES DA HERO (ELIAS)*/
+
+/* Em telas menores que 768px, centraliza a imagem de fundo da hero */
+@media (max-width: 768px) {
+    .hero-slide {
+        background-position: center;
     }
 
 }
 
-/* ESTILO VISUAL */
-.card-custom {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
+/* Em telas maiores que 1030px, também mantém a imagem centralizada */
+@media (min-width: 1030px) {
+    .hero-slide {
+        background-position: center;
+    }
 }
 
-.card-custom img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    filter: brightness(0.7);
-}
 
-.card-custom span {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
+
+@media (max-width: 470px) {
+
+
+    .section-benefits {
+        gap: 0px;
+
+    }
+
+    .cabecalho-lista-produtos {
+        flex-direction: column;
+        align-items: start;
+        gap: .5em;
+    }
+
+    .cabecalho-lista-produtos button {
+        width: 100%;
+    }
+
+
+    h2,
+    .card h3,
+    .card div p {
+        font-size: var(--titulo-sessao-mobile);
+    }
+
+
+    .botao {
+        font-size: var(--texto-mobile);
+    }
+
+    #carouselOfertas .carousel-control-prev {
+        left: 0;
+        transform: translate(20%, -50%);
+    }
+
+    #carouselOfertas .carousel-control-next {
+        right: 0;
+        transform: translate(-20%, -50%);
+    }
+
 }
