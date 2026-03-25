@@ -213,13 +213,14 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
   <script type="module">
-  import { logout } from "/js/auth.js";
+    import { logout } from "/js/auth.js";
 
-  document.getElementById("btn-sair").addEventListener("click", () => {
-    logout();
-    window.location.href = "/pages/login.html";
-  });
-</script>
+    document.getElementById("btn-sair").addEventListener("click", () => {
+      logout();
+      window.location.href = "/pages/login.html";
+    });
+  </script>
+  <script type="module" src="/js/guard.js"></script>
 </body>
 
 </html>
