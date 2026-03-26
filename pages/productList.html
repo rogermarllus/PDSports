@@ -14,7 +14,8 @@
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/productList.css">
-
+    <link rel="stylesheet" href="/css/productForm.css">
+    
     <!-- Scripts de ícones -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -37,10 +38,10 @@
                 </form>
 
                 <div class="d-flex gap-3 fs-5">
-                    <a href="cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
+                    <a href="/pages/cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
                         <i data-lucide="handbag" class="icon-lg"></i>
                     </a>
-                    <a id="user-link" href="login.html" class="text-white p-2 rounded d-flex align-items-center gap-2"
+                    <a id="user-link" href="/pages/login.html" class="text-white p-2 rounded d-flex align-items-center gap-2"
                         aria-label="Perfil">
                         <i id="user-icon" data-lucide="user" class="icon-lg"></i>
                         <span id="user-name" class="d-none"></span>
@@ -57,10 +58,10 @@
                 </div>
 
                 <div class="d-flex gap-3 fs-5">
-                    <a href="cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
+                    <a href="/pages/cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
                         <i data-lucide="handbag" class="icon-lg"></i>
                     </a>
-                    <a id="user-link-mobile" href="login.html"
+                    <a id="user-link-mobile" href="/pages/login.html"
                         class="text-white p-2 rounded d-flex align-items-center gap-2" aria-label="Perfil">
                         <i id="user-icon-mobile" data-lucide="user" class="icon-lg"></i>
                         <span id="user-name-mobile" class="d-none user-name-mobile"></span>
@@ -93,31 +94,31 @@
                     </button>
 
                     <ul class="dropdown-menu dropdown-modality" aria-labelledby="dropdownModalidades">
-                        <li><a class="dropdown-item" href="modality.html?modality=Futebol">Futebol</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Basquete">Basquete</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Futsal">Futsal</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Vôlei">Vôlei</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Corrida">Corrida</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Musculação">Musculação</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Crossfit">Crossfit</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Ciclismo">Ciclismo</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Natação">Natação</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Tênis">Tênis</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Artes Marciais">Artes marciais</a>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Futebol">Futebol</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Basquete">Basquete</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Futsal">Futsal</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Vôlei">Vôlei</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Corrida">Corrida</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Musculação">Musculação</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Crossfit">Crossfit</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Ciclismo">Ciclismo</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Natação">Natação</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Tênis">Tênis</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Artes Marciais">Artes marciais</a>
                         </li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Skate">Skate</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Surf">Surf</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Yoga">Yoga</a></li>
-                        <li><a class="dropdown-item" href="modality.html?modality=Caminhada">Caminhada</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Skate">Skate</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Surf">Surf</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Yoga">Yoga</a></li>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Caminhada">Caminhada</a></li>
                     </ul>
                 </div>
 
                 <ul class="list-unstyled mb-0 list-second-options">
-                    <li><a href="modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a></li>
-                    <li><a href="modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a></li>
-                    <li><a href="modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a></li>
-                    <li><a href="modality.html?modality=Musculação" class="menu-link link-underline">Musculação</a></li>
-                    <li><a href="modality.html?modality=Natação" class="menu-link link-underline">Natação</a></li>
+                    <li><a href="/pages/modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a></li>
+                    <li><a href="/pages/modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a></li>
+                    <li><a href="/pages/modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a></li>
+                    <li><a href="/pages/modality.html?modality=Musculação" class="menu-link link-underline">Musculação</a></li>
+                    <li><a href="/pages/modality.html?modality=Natação" class="menu-link link-underline">Natação</a></li>
                 </ul>
             </div>
         </nav>
@@ -134,7 +135,7 @@
             <div id="products-list" role="list" aria-live="polite" aria-atomic="true"></div>
 
             <div class="lista-footer">
-                <a href="dashboard.html" class="botao-outline">
+                <a href="/pages/dashboardAdmin.html" class="botao-outline">
                     <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
                     Voltar ao Dashboard
                 </a>
