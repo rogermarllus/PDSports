@@ -183,8 +183,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #input-checkbox[type="checkbox"]:checked::after {
     content: "";
     position: absolute;
-    left: 3.5px;
-    top: 0px;
+    left: 4.7px;
+    top: 1px;
     width: 5px;
     height: 10px;
     border: solid #1D0F28;
