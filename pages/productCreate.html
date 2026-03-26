@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PD Sports | Criação de Produto</title>
+    <link rel="icon" type="image/svg+xml" href="/img/svg/favicon.svg">
+
+    <!-- Bibliotecas -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS do Projeto -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/productForm.css">
+
+    <!-- Scripts de ícones -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body data-route="admin">
+    <header>
+        <!-- ===================== DESKTOP NAV ===================== -->
+        <nav class="navbar navigation-bar d-none d-md-flex" aria-label="Navegação principal">
+            <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="/index.html"><img src="/img/svg/logo.svg" alt="logotipo"></a>
+                </div>
+
+                <form id="search-form" class="d-flex flex-grow-1 mx-3 container-search">
+                    <input id="search-input" class="form-control search-input" type="search"
+                        placeholder="Busque por um produto">
+                    <button class="btn text-white ms-2" type="submit">
+                        <i data-lucide="Search" class="icon-lg"></i>
+                    </button>
+                </form>
+
+                <div class="d-flex gap-3 fs-5">
+                    <a href="cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
+                        <i data-lucide="handbag" class="icon-lg"></i>
+                    </a>
+                    <a id="user-link" href="login.html" class="text-white p-2 rounded d-flex align-items-center gap-2"
+                        aria-label="Perfil">
+                        <i id="user-icon" data-lucide="user" class="icon-lg"></i>
+                        <span id="user-name" class="d-none"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ===================== MOBILE NAV ===================== -->
+        <nav class="navbar navigation-bar d-flex d-md-none nav-mobile-top" aria-label="Navegação principal mobile">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="/index.html"><img src="/img/svg/logo.svg" alt="logotipo"></a>
+                </div>
+
+                <div class="d-flex gap-3 fs-5">
+                    <a href="cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
+                        <i data-lucide="handbag" class="icon-lg"></i>
+                    </a>
+                    <a id="user-link-mobile" href="login.html"
+                        class="text-white p-2 rounded d-flex align-items-center gap-2" aria-label="Perfil">
+                        <i id="user-icon-mobile" data-lucide="user" class="icon-lg"></i>
+                        <span id="user-name-mobile" class="d-none user-name-mobile"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="d-flex d-md-none nav-mobile-search">
+            <form id="search-form-mobile" class="container-search-mobile">
+                <input id="search-input-mobile" class="search-input-mobile" type="search"
+                    placeholder="Busque por um produto">
+                <button class="btn-search-mobile" type="submit" aria-label="Buscar">
+                    <span class="divider-search-mobile"></span>
+                    <i data-lucide="Search" class="icon-lg"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- ===================== MENU SECUNDÁRIO (BARRA AMARELA) ===================== -->
+        <nav class="menu-bar py-2 menu-bar-second" aria-label="Categorias de produtos">
+            <div class="container modality-menu">
+
+                <div class="dropdown container-dropdown-options">
+                    <!-- O segredo para o mobile está no 'data-bs-popper-config' -->
+                    <button class="btn button-dropdown-nav dropdown-toggle" type="button" id="dropdownModalidades"
+                        data-bs-toggle="dropdown" data-bs-boundary="viewport"
+                        data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false">
+                        <i class="bi bi-grid"></i> Todas as modalidades
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-modality" aria-labelledby="dropdownModalidades">
+                        <li><a class="dropdown-item" href="modality.html?modality=Futebol">Futebol</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Basquete">Basquete</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Futsal">Futsal</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Vôlei">Vôlei</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Corrida">Corrida</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Musculação">Musculação</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Crossfit">Crossfit</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Ciclismo">Ciclismo</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Natação">Natação</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Tênis">Tênis</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Artes Marciais">Artes marciais</a>
+                        </li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Skate">Skate</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Surf">Surf</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Yoga">Yoga</a></li>
+                        <li><a class="dropdown-item" href="modality.html?modality=Caminhada">Caminhada</a></li>
+                    </ul>
+                </div>
+
+                <ul class="list-unstyled mb-0 list-second-options">
+                    <li><a href="modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a></li>
+                    <li><a href="modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a></li>
+                    <li><a href="modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a></li>
+                    <li><a href="modality.html?modality=Musculação" class="menu-link link-underline">Musculação</a></li>
+                    <li><a href="modality.html?modality=Natação" class="menu-link link-underline">Natação</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="page-form-wrapper">
+
+            <!-- Botão Voltar -->
+            <div class="page-form-back">
+                <button class="botao-outline" onclick="window.history.back()">
+                    <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+                    Voltar
+                </button>
+            </div>
+
+            <!-- Título -->
+            <h2 class="page-form-title" id="page-form-title">Novo produto</h2>
+
+            <!-- Campos do formulário (injetados por productForm.js) -->
+            <div id="form-page-container"></div>
+
+            <!-- Botão Salvar -->
+            <div class="page-form-actions">
+                <button id="btn-page-save" class="botao page-form-save btn-save">
+                    Salvar
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container-fluid container-main-footer d-flex justify-content-center">
+            <div class="row text-start text-md-start justify-content-lg-between content-footer">
+                <section class="col-12 col-md-6 col-lg-auto mb-4">
+                    <figure class="fig-img-footer">
+                        <img src="/img/svg/logo.svg" alt="Logotipo">
+                        <p>Lar dos verdadeiros atletas.</p>
+                    </figure>
+                </section>
+                <section class="col-12 col-md-6 col-lg-auto mb-4">
+                    <address class="addres-footer title-footer">
+                        <h2>Endereço</h2>
+                        <p>Alameda Oscar Niemeyer, 891 Vila da Serra, <br> Nova Lima - MG, 34006-065</p>
+                    </address>
+                </section>
+                <section class="col-12 col-md-12 col-lg-auto mb-4">
+                    <address class="addres-footer title-footer list-socials-midias-footer">
+                        <h2>Contato e Redes Sociais</h2>
+                        <ul class="list-unstyled d-inline-flex gap-3 ">
+                            <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram icon-rodape"></i></a></li>
+                            <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook icon-rodape"></i></a></li>
+                            <li><a href="#" aria-label="Youtube"><i class="bi bi-youtube icon-rodape"></i></i></a></li>
+                            <li><a href="#" aria-label="Whatsapp"><i class="bi bi-whatsapp icon-rodape"></i></i></a>
+                            </li>
+                        </ul>
+                    </address>
+                </section>
+            </div>
+        </div>
+        <div class="copy">
+            <span>© 2026 PD Sports. Todos os Direitos Reservados</span>
+        </div>
+    </footer>
+
+    <!-- JS do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts Adicionais -->
+    <script>
+        lucide.createIcons();
+
+        const mobileForm = document.getElementById("search-form-mobile");
+        const mobileInput = document.getElementById("search-input-mobile");
+        if (mobileForm && mobileInput) {
+            mobileForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const term = mobileInput.value.trim();
+                if (!term) return;
+                const formatted = term.replace(/\s+/g, "+");
+                window.location.href = `/pages/searchResult.html?query=${formatted}`;
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+    <script type="module">
+        import { initFormPage } from "/js/productForm.js";
+        document.addEventListener("DOMContentLoaded", () => initFormPage("create"));
+    </script>
+
+    <!-- Módulos do Projeto -->
+    <script type="module" src="/js/search.js"></script>
+    <script type="module" src="/js/navbar.js"></script>
+    <script type="module" src="/js/guard.js"></script>
+</body>
+
+</html>

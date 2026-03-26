@@ -1,4 +1,10 @@
 /* IMAGEM DE FUNDO */
+html, body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 body {
     background-image: url(../img/backgrounds/backgroud-running.png);
     background-repeat: no-repeat;
@@ -6,6 +12,7 @@ body {
     background-attachment: fixed;
     color: var(--cor-branca);
     font-family: var(--fonte-montserrat);
+    
 }
 
 .icon {
@@ -15,6 +22,7 @@ body {
 /* CONTEUDO */
 main {
     margin: 100px 0;
+    flex: 1;
 }
 
 .cabecalho-lista-produtos {
@@ -24,7 +32,7 @@ main {
     margin-bottom: 1.5em;
 }
 
-h2 {
+.cabecalho-lista-produtos h2, .produtos-populares h2 {
     color: var(--cor-destaque);
     font-size: var(--titulo-sessao-desktop);
     font-weight: bold;
