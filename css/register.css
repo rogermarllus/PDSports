@@ -1,38 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,600;1,5..1200,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    /* FONTES */
-    --fonte-prata: "Prata", serif;
-    --fonte-playfair: "Playfair", serif;
-    --fonte-montserrat: "Montserrat", sans-serif;
-
-    /* TAMANHOS DAS FONTES DESKTOP */
-    --titulo-grande-desktop: 64px;
-    --titulo-sessao-desktop: 24px;
-    --texto-desktop: 16px;
-
-    /* TAMANHOS DAS FONTES MOBILE */
-    --titulo-grande-mobile: 36px;
-    --titulo-sessao-mobile: 20px;
-    --texto-mobile: 16px;
-
-    /* CORES */
-    --cor-destaque: #C9F40E;
-    --fundo-primario: #121212;
-    --fundo-secundario: #2E2E2E;
-    --fundo-terciario: #1C1C1C;
-    --cor-branca: #FFFFFF;
-    --fundo-inputs: #8D8D8D;
-}
-
 body {
     background-image: url(/img/backgrounds/background-auth.png);
     background-color: var(--fundo-primario);
@@ -365,7 +330,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #card-register {
         width: 98.6vw;
         max-width: 370px;
@@ -386,7 +351,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #img-logo-pd-sports {
         width: 260px;
         max-width: 260px;
@@ -396,7 +361,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #title-register {
         font-family: var(--fonte-montserrat);
         font-weight: 100;
@@ -406,7 +371,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #section-input {
         display: none;
     }
@@ -423,7 +388,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #container-input-name-and-email-mobile {
         width: 100%;
         display: flex;
@@ -434,7 +399,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #container-input {
         width: 100%;
         display: flex;
@@ -491,7 +456,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #container-grid-2-2-mobile {
         width: 100%;
         display: grid;
@@ -502,7 +467,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #txt-checkbox-input {
         width: 41%;
         font-family: var(--fonte-montserrat);
@@ -515,7 +480,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #container-footer-register {
         display: flex;
         flex-direction: column-reverse;
@@ -525,7 +490,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #container-buttons-login {
         display: flex;
         justify-content: center;
@@ -534,7 +499,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #link-back {
         border: none;
         outline: none;
@@ -555,7 +520,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 576px) {
     #btn-login {
         border: none;
         outline: none;
