@@ -294,6 +294,7 @@ a:hover {
 .btn-custom-outline:hover {
     background-color: #c6ff00;
     color: #000;
+    font-weight: 500;
 }
 
 /* Estiliza o container geral que contém o titulo, subtitulo e botao de ver detalhes da sessçao hero section*/
@@ -796,6 +797,13 @@ footer {
     font-size: clamp(1.2rem, 4vw, 1.5rem);
     font-weight: 600;
     text-align: center;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.title-card-modalitys:hover {
+   font-size: clamp(1.2rem, 4vw, 1.7rem);
+   
 }
 
 .container-list-cards-modalitys {
