@@ -1,3 +1,25 @@
+// Máscara input CEP
+
+const inputCEP = document.getElementById("input-calc-freight-product");
+
+inputCEP.addEventListener("input", (e) => {
+    let value = e.target.value;
+
+    let number = value.replace(/\D/g, '');
+
+    let result = "";
+
+    if (number.length > 0) {
+        result += number.substring(0, 5);
+
+        if (number.length > 5) {
+            result += '-' + number.substring(5, 10);
+        }
+    }
+
+    e.target.value = result;
+})
+
 const STORAGE_KEY = "cart";
 
 const cart = {
