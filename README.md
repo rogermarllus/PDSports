@@ -144,10 +144,7 @@ Para acessar a **área administrativa**, é necessário utilizar **exatamente** 
 
 ### Acesso ao Dashboard do Usuário
 
-Para acessar o **perfil do usuário**, é necessário utilizar **exatamente** as seguintes credenciais:
-
-* **Email:** `fulano@gmail.com`
-* **Senha:** `12345678`
+Para acessar o **perfil do usuário**, é necessário já possuir as credenciais dentro da plataforma.
 
 ## Links
 
