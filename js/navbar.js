@@ -9,13 +9,10 @@ function getBasePath() {
   return window.location.pathname.includes("/pages/") ? ".." : ".";
 }
 
-function setupNavbar() {
-  const user = getCurrentUser();
-  const base = getBasePath();
-
-  const link = document.getElementById("user-link");
-  const icon = document.getElementById("user-icon");
-  const nameSpan = document.getElementById("user-name");
+function applyNavbar(user, base, ids) {
+  const link     = document.getElementById(ids.link);
+  const icon     = document.getElementById(ids.icon);
+  const nameSpan = document.getElementById(ids.name);
 
   if (!link || !icon || !nameSpan) return;
 
@@ -36,6 +33,25 @@ function setupNavbar() {
       icon.setAttribute("data-lucide", "user");
     }
   }
+}
+
+function setupNavbar() {
+  const user = getCurrentUser();
+  const base = getBasePath();
+
+  // Desktop
+  applyNavbar(user, base, {
+    link: "user-link",
+    icon: "user-icon",
+    name: "user-name"
+  });
+
+  // Mobile
+  applyNavbar(user, base, {
+    link: "user-link-mobile",
+    icon: "user-icon-mobile",
+    name: "user-name-mobile"
+  });
 
   if (window.lucide) {
     lucide.createIcons();

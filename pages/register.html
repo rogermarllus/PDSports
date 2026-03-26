@@ -4,11 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/register.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="icon" type="image/svg+xml" href="/img/svg/favicon.svg">
     <title>PD Sports | Cadastrar-se</title>
+    <link rel="icon" type="image/svg+xml" href="/img/svg/favicon.svg">
+
+    <!-- Bibliotecas -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS do Projeto -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/register.css">
+
+    <!-- Scripts de ícones -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -103,26 +111,185 @@
                 </div>
             </section>
 
-            <label for="input-checkbox" id="txt-checkbox-input">
+            <div id="termo-uso">
                 <input type="checkbox" id="input-checkbox">
-                Termos de uso
-            </label>
+                <label id="txt-checkbox-input" data-bs-toggle="modal" data-bs-target="#modalTermos" role="button"
+                    aria-label="Abrir Termos de Uso" tabindex="0">Termos de uso</label>
+            </div>
 
             <div id="container-footer-register">
-                <p id="txt-quest-authenticated">possui uma conta? <a href="login.html" id="link-login">Entrar</a></p>
+                <p id="txt-quest-authenticated">Possui uma conta? <a href="login.html" id="link-login">Entrar</a></p>
 
                 <div id="container-buttons-login">
                     <a href="/index.html" id="link-back">Voltar</a>
-                    <button type="submit" id="btn-login">Entrar</button>
+                    <button type="submit" id="btn-login">Cadastrar</button>
                 </div>
             </div>
         </div>
     </form>
 
+
+    <div class="modal fade" id="modalTermos" tabindex="-1" aria-labelledby="modalTermosLabel" aria-modal="true"
+        role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTermosLabel">
+                        Termos de Uso - <span class="destaque">PD Sports</span>
+                    </h3>
+                </div>
+
+                <article class="modal-body">
+                    <p>
+                        Bem-vindo à <strong>PD Sports</strong>, uma plataforma de comércio eletrônico especializada na
+                        venda de produtos esportivos de diversas modalidades. Ao acessar e utilizar este site, você
+                        concorda com os presentes Termos de Uso. Recomendamos a leitura atenta de todas as condições
+                        aqui estabelecidas.
+                    </p>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>1. Aceitação dos Termos</h4>
+                        <p>
+                            Ao acessar, navegar ou realizar qualquer compra na plataforma da PD Sports, o usuário
+                            declara ter lido, compreendido e concordado integralmente com estes Termos de Uso, bem como
+                            com as demais políticas aplicáveis, incluindo a Política de Privacidade.
+                        </p>
+                        <p>
+                            Caso não concorde com qualquer disposição, o usuário deve interromper imediatamente o uso do
+                            site.
+                        </p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>2. Cadastro do Usuário</h4>
+                        <p>
+                            Para realizar compras, o usuário poderá precisar se cadastrar, fornecendo informações
+                            verdadeiras, completas e atualizadas.
+                        </p>
+                        <p>
+                            O usuário é responsável por:
+                        </p>
+                        <ul>
+                            <li>Manter a confidencialidade de seus dados de login</li>
+                            <li>Atualizar suas informações sempre que necessário</li>
+                            <li>Notificar imediatamente qualquer uso não autorizado de sua conta</li>
+                        </ul>
+                        <p>A PD Sports não se responsabiliza por danos decorrentes do uso indevido da conta por
+                            terceiros</p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>3. Preços e Pagamentos</h4>
+                        <p>
+                            Os preços apresentados no site estão em moeda local e podem variar conforme promoções ou
+                            condições comerciais.
+                        </p>
+                        <p>
+                            Formas de pagamento aceitas incluem:
+                        </p>
+                        <ul>
+                            <li>Cartões de crédito e débito</li>
+                            <li>Pix</li>
+                            <li>Outros meios disponibilizados na plataforma</li>
+                        </ul>
+                        <p>A confirmação do pedido está sujeita à aprovação da operadora de pagamento.</p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>4. Trocas, Devoluções e Reembolsos</h4>
+                        <p>
+                            O usuário poderá solicitar troca ou devolução conforme a legislação vigente, respeitando:
+                        </p>
+                        <ul>
+                            <li>Prazo legal de arrependimento (7 dias após o recebimento)</li>
+                            <li>Produto em perfeito estado, sem uso e com embalagem original</li>
+                        </ul>
+                        <p>O reembolso será realizado conforme a forma de pagamento utilizada na compra.</p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>5. Propriedade Intelectual</h4>
+                        <p>
+                            Todo o conteúdo do site é de propriedade da PD Sports, sendo
+                            proibida sua reprodução ou utilização sem autorização prévia.
+                        </p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>6. Uso da Plataforma</h4>
+                        <p>
+                            O usuário compromete-se a utilizar a plataforma de forma ética e legal, sendo proibido:
+                        </p>
+                        <ul>
+                            <li>Praticar atividades fraudulentas</li>
+                            <li>Inserir informações falsas</li>
+                            <li>Violar direitos de terceiros</li>
+                            <li>Tentar acessar áreas restritas do sistema</li>
+                        </ul>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>7. Limitação de Responsabilidade</h4>
+                        <p>
+                            A PD Sports não se responsabiliza por:
+                        </p>
+                        <ul>
+                            <li>Danos causados por uso indevido dos produtos</li>
+                            <li>Interrupções temporárias do site</li>
+                            <li>Problemas técnicos fora de seu controle</li>
+                        </ul>
+                        <p>
+                            O uso da plataforma é de responsabilidade exclusiva do usuário.
+                        </p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>8. Privacidade e Proteção de Dados</h4>
+                        <p>
+                            A coleta e uso de dados pessoais seguem a legislação vigente, incluindo a Lei Geral de
+                            Proteção de Dados (LGPD).
+                        </p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>9. Legislação Aplicável</h4>
+                        <p>
+                            Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil.
+                        </p>
+                        <p>
+                            Fica eleito o foro da comarca do domicílio do consumidor para dirimir quaisquer dúvidas ou
+                            controvérsias.
+                        </p>
+                    </section>
+                    <hr>
+                    <section class="termos-secao">
+                        <h4>10. Contato</h4>
+                        <p>
+                            Em caso de dúvidas, sugestões ou solicitações, entre em contato pelos canais oficiais da PD
+                            Sports disponibilizados no site.
+                        </p>
+                    </section>
+
+                    <p>Ao utilizar a plataforma da PD Sports, você declara estar ciente e de acordo com todos os termos
+                        aqui descritos.</p>
+                </article>
+
+                <div class="modal-footer">
+                    <button type="button" class="botao" data-bs-dismiss="modal">
+                        Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/api.js"></script>
     <script src="/js/auth.js"></script>
     <script src="/js/form.js"></script>
-    <script>lucide.createIcons();</script>
+    <script src="/js/lucide-icons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
