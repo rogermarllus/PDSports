@@ -11,14 +11,6 @@ O projeto foi desenvolvido em equipe por **Elias Costa**, **Igor Santos**, **Rog
 
 ## Funcionalidades
 
-### Catálogo de Produtos
-
-- Mais de 15 modalidades esportivas
-- Mínimo de 9 produtos por categoria
-- Sistema de categorização
-- Produtos em destaque
----
-
 ### Área do Usuário
 
 - Listagem dinâmica de produtos
@@ -27,11 +19,12 @@ O projeto foi desenvolvido em equipe por **Elias Costa**, **Igor Santos**, **Rog
 - Ordenação por preço
 - Página de detalhes do produto
 
-### Carrinho de Compras
+#### Carrinho de Compras
 
 - Alteração de quantidade de itens
 - Remoção de produtos
 - Cálculo automático do total
+- Simulação de frete
 ---
 
 ### Área Administrativa
@@ -41,8 +34,7 @@ O projeto foi desenvolvido em equipe por **Elias Costa**, **Igor Santos**, **Rog
 - Exclusão de produtos
 - Listagem administrativa
 - Validação de dados
-- Feedback visual de ações
----
+
 
 ## Tecnologias Utilizadas
 O projeto foi desenvolvido respeitando as tecnologias obrigatórias:
@@ -55,22 +47,110 @@ O projeto foi desenvolvido respeitando as tecnologias obrigatórias:
 - Git e GitHub - versionamento
 - Vercel - deploy da aplicação
 
+## Integrações e API
+
+O sistema utiliza:
+
+- **MockAPI** para simulação de banco de dados e persistência
+- **Melhor Envio**: utilizada para cálculo de frete em tempo real
+
+Isso permite simular um ambiente real de e-commerce sem a necessidade de um backend completo.
+
 ## Arquitetura
 
 ### Estrutura de pastas
-````
-
-📁PDSports   
- |-📁 css -> estilos
- |-📁 js -> lógica
- |-📁 api -> API para calcular frete
- |-📁 img
- |  |-📁 backgrouds -> imagens de fundo
- |  |-📁 banner -> imagens de carrossel
- |  |-📁 products -> imagens de produtos
- |  |-📁 svg -> imagens de extensão SVG
- |-📁 pages -> páginas do projeto
- |-📄
-   
 
 ```
+
+📁PDSports   
+ |-📁 css               -> estilos
+ |-📁 js                -> lógica
+ |-📁 api               -> API para cálculo frete
+ |-📁 img
+ |  |-📁 backgrounds    -> imagens de fundo
+ |  |-📁 banner         -> imagens de carrossel
+ |  |-📁 products       -> imagens de produtos
+ |  |-📁 svg            -> imagens de extensão SVG
+ |-📁 pages             -> páginas do projeto
+ |
+ |-📄 .gitignore        -> arquivos ignorados
+ |-📄 index.html        -> página inicial
+ |-📄 README.md         -> arquivo de leia-me
+
+```
+
+### Boas práticas aplicadas
+
+- Código modular e organizado  
+- Reutilização de funções  
+- Tratamento de erros  
+- Uso de `async/await`  
+- Separação de responsabilidades  
+- Estrutura de pastas organizada  
+
+## Endpoints
+
+### API Externa - Melhor Envio
+
+- **Método:** POST  
+- **Endpoint:** `https://www.melhorenvio.com.br/api/v2/me/shipment/calculate`  
+- **Descrição:** Calcula opções de frete com base no CEP enviado.  
+
+### API - MockAPI
+
+**Listar produtos**
+- **Método:** GET 
+- **Endpoint:** ``/products``
+- **Descrição:** Retorna todos os produtos cadastrados
+ 
+**Buscar produto por ID**
+- **Método:** GET 
+- **Endpoint:** ``/products/{id}``
+- **Descrição:** Retorna um produto específico
+ 
+**Criar produto**
+- **Método:** POST
+- **Endpoint:** ``/products``
+- **Descrição:** Cadastra um novo produto
+ 
+**Atualizar produto**
+- **Método:** PUT 
+- **Endpoint:** ``/products/{id}``
+- **Descrição:** Atualiza um produto existente
+ 
+**Deletar produto**
+- **Método:** DELETE
+- **Endpoint:** ``/products/{id}``
+- **Descrição:** Remove um produto do sistema
+ 
+**Listar usuários**
+- **Método:** GET
+- **Endpoint:** ``/users``
+- **Descrição:** Retorna todos os usuários cadastrados
+ 
+**Criar usuário**
+- **Método:** POST
+- **Endpoint:** ``/users``
+- **Descrição:** Cadastra um novo usuário
+ 
+## Autenticação
+
+### Acesso ao Dashboard Administrativo
+
+Para acessar a **área administrativa**, é necessário utilizar **exatamente** as seguintes credenciais:
+
+* **Email:** `admin@gmail.com`
+* **Senha:** `12345678`
+
+### Acesso ao Dashboard do Usuário
+
+Para acessar o **perfil do usuário**, é necessário utilizar **exatamente** as seguintes credenciais:
+
+* **Email:** `fulano@gmail.com`
+* **Senha:** `12345678`
+
+## Links
+
+Repositório: [PD Sports - GitHub](https://github.com/rogermarllus/PDSports)  
+Deploy: [PD Sports - Vercel](https://pdsports.vercel.app/)  
+Figma: [PD Sports - Figma](https://www.figma.com/design/ZGcN88rYiQ7A2QbxOHvkTu/PD-Sports-%7C-Q1---V%C3%AAnus--Tarde-?node-id=3-3&p=f&t=aKGC0E7vDuHMZAUH-0)
