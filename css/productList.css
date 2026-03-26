@@ -1,4 +1,11 @@
+html, body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 main {
+    flex: 1;
     margin: 60px 0 80px;
 }
 

@@ -16,53 +16,79 @@ export default async function handler(req, res) {
       return res.status(400).json({ erro: "CEP inválido" });
     }
 
+    const payload = {
+      from: { postal_code: "01001000" },
+      to: { postal_code: cepLimpo },
+      package: {
+        width: 20,
+        height: 5,
+        length: 30,
+        weight: 0.5
+      },
+      options: {
+        receipt: false,
+        own_hand: false,
+        collect: false,
+        insurance_value: 100
+      }
+    };
+
     const response = await fetch(
       "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate",
       {
         method: "POST",
         headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
           "Authorization": `Bearer ${process.env.MELHOR_ENVIO_TOKEN}`,
-          "Content-Type": "application/json"
+          "User-Agent": "PDSports (seuemail@gmail.com)"
         },
-        body: JSON.stringify({
-          from: {
-            postal_code: "34006065"
-          },
-          to: {
-            postal_code: cepLimpo
-          },
-          packages: [
-            {
-              width: 20,
-              height: 5,
-              length: 30,
-              weight: 0.5,
-              insurance: 100
-            }
-          ],
-          options: {
-            receipt: false,
-            own_hand: false
-          }
-        })
+        body: JSON.stringify(payload)
       }
     );
 
-    const data = await response.json();
+    const text = await response.text();
+    console.log("STATUS:", response.status);
+    console.log("BODY:", text);
 
-    // Se vier erro da API
-    if (data.errors) {
+    if (!text || text.trim() === "") {
+      return res.status(502).json({
+        erro: "API retornou resposta vazia",
+        status_http: response.status
+      });
+    }
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      return res.status(500).json({
+        erro: "Resposta inválida da API (não é JSON)",
+        detalhe: text
+      });
+    }
+
+    if (data.errors || data.message) {
       return res.status(400).json({
-        erro: "Erro na API do Melhor Envio",
+        erro: "Erro retornado pela API do Melhor Envio",
         detalhe: data
       });
     }
 
-    return res.status(200).json(data);
+    if (!Array.isArray(data)) {
+      return res.status(400).json({
+        erro: "Formato inesperado da API",
+        detalhe: data
+      });
+    }
+
+    const fretesValidos = data.filter(f => !f.error && f.price);
+
+    return res.status(200).json(fretesValidos);
 
   } catch (error) {
     return res.status(500).json({
-      erro: "Erro ao calcular frete",
+      erro: "Erro interno ao calcular frete",
       detalhe: error.message
     });
   }
