@@ -87,7 +87,7 @@ main {
     font-family: var(--fonte-montserrat);
     font-weight: 600;
     color: var(--cor-branca);
-    font-size: clamp(10px, 1.9vw, 20px);
+    font-size: clamp(10px, 1.9vw, 18px);
     margin: 0 !important;
 }
 
