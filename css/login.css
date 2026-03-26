@@ -40,8 +40,6 @@ figcaption {
 #img-logo-pd-sports {
     width: 27.91vw;
     max-width: 402px;
-    height: 7.5vh;
-    max-height: 77px;
     object-fit: contain;
 }
 
@@ -98,6 +96,7 @@ figcaption {
     font-size: 16px;
     color: var(--cor-destaque);
     padding-top: 20px;
+    margin: 0;
 }
 
 #container-buttons-login {
@@ -160,6 +159,7 @@ figcaption {
     font-family: var(--fonte-montserrat);
     font-size: 14px;
     color: var(--cor-branca);
+    margin: 0;
 }
 
 #link-signup {
@@ -188,9 +188,9 @@ figcaption {
         height: 100%;
         padding: 32px;
         margin: 0 auto;
-
         background: rgba(30, 30, 30, .5);
         opacity: 1;
+        gap: 12px;
 
         display: flex;
         flex-direction: column;
@@ -205,8 +205,6 @@ figcaption {
     #img-logo-pd-sports {
         width: 222px;
         max-width: 222px;
-        height: 43px;
-        max-height: 43px;
         object-fit: contain;
     }
 }
@@ -224,6 +222,15 @@ figcaption {
         border-radius: 8px;
         color: var(--cor-branca);
         transition: .3s ease;
+    }
+}
+
+@media(max-width: 600px) {
+    #recovery-password {
+        font-family: var(--fonte-montserrat);
+        font-size: 16px;
+        color: var(--cor-destaque);
+        padding-top: 10px;
     }
 }
 
