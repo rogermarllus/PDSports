@@ -37,13 +37,17 @@ body {
     background-color: var(--fundo-primario);
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
 /* ======================================================================================================= */
 
 /* EFEITO DE HOVER GERAL */
-
-.link-underline:hover::after {
-    width: 100%;
-}
 
 .link-underline {
     position: relative;
@@ -62,40 +66,25 @@ body {
     transition: width 0.3s ease;
 }
 
-/* ESTILO DA BARRA DE NAVEGAÇÃO (ELIAS) */
+.link-underline:hover::after {
+    width: 100%;
+}
+
+/* ESTILO DA BARRA DE NAVEGAÇÃO */
 .logo img {
     width: 200px;
     padding-left: 15px;
 }
 
-/* Alinha o dropdown de modalidades*/
-.container-dropdown-options {
-    border-right: 2px solid #000;
-    padding-right: 15px;
-    margin-right: 15px;
-}
-
-/* Define a altura e cor de fundo da barra de navegação*/
 .navigation-bar {
     background-color: var(--fundo-terciario);
     height: 95px;
 }
 
-/* Define tamanho padrão para ícones grandes */
 .icon-lg {
     width: 29px;
     height: 29px;
-}
-
-/* Altera a cor do ícone ao passar o mouse */
-.icon-lg:hover {
-    color: var(--cor-destaque);
-}
-
-/* Centraliza o campo de busca do meio da nav */
-.container-search {
-    display: flex;
-    justify-content: center;
+    transition: color 0.3s;
 }
 
 .icon-lg:hover,
@@ -103,70 +92,175 @@ body {
     color: var(--cor-destaque);
 }
 
-#user-link {
-    text-decoration: none;
+.container-search {
+    display: flex;
+    justify-content: center;
 }
 
-/* Estiliza o campo de busca com bordas arredondadas, limitando a largura do inpuit e espaçamento interno */
 .search-input {
     border-radius: 25px;
     padding-left: 30px;
     max-width: 800px;
 }
 
-/* Define a cor de fundo da segunda barra de menu */
+/* ===================== MENU SECUNDÁRIO (BARRA AMARELA) ===================== */
+
 .menu-bar-second {
     background-color: var(--cor-destaque);
 }
 
-/* Remove o efeito de sombra ao focar em botões */
-.btn:focus {
-    box-shadow: none;
-}
-
-/* Organiza os itens do menu em linha, com espaçamento e alinhamento central */
+/* Container flexível que permite scroll */
 .modality-menu {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 18px;
-    font-family: var(--fonte-montserrat);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* Scroll lateral ativado */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 5px 15px;
 }
 
-/* Define estilo padrão para os links do menu */
-.modality-menu a {
-    color: #1D0F28;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-/* Define tamanho e peso da fonte do botão dropdown */
-.button-dropdown-nav {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.button-dropdown-nav::after {
+.modality-menu::-webkit-scrollbar {
     display: none;
 }
 
-/* Define posição relativa para servir de referência ao dropdown */
+/* Estilo do Dropdown dentro da barra amarela */
 .container-dropdown-options {
-    position: relative;
+    flex-shrink: 0;
+    margin-right: 15px;
 }
 
-/* Centraliza o menu dropdown horizontalmente em relação ao botão */
-.dropdown-modality {
-    left: 18% !important;
-    transform: translateX(-50%);
-}
-
-/* Alinha as opçoes de modalidades com espaços iguais entre si */
-.list-second-options {
-    width: 100%;
+.button-dropdown-nav {
+    border: none !important;
+    border-right: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+    /* Borda divisória */
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 15px 0 0 !important;
+    color: #1D0F28 !important;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: var(--fonte-montserrat);
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    border-radius: 0 !important;
+}
+
+.button-dropdown-nav::after {
+    display: none !important;
+    /* Remove seta do bootstrap */
+}
+
+/* Dropdown flutuante (fixed para não ser cortado pelo overflow) */
+.dropdown-modality {
+    background-color: var(--cor-branca) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    padding: 10px 0 !important;
+    z-index: 9999 !important;
+}
+
+.dropdown-modality .dropdown-item {
+    color: var(--fundo-primario) !important;
+    font-family: var(--fonte-montserrat);
+    font-weight: 500;
+    padding: 8px 20px !important;
+    transition: background 0.2s;
+}
+
+.dropdown-modality .dropdown-item:hover {
+    background-color: #f1f1f1 !important;
+    cursor: pointer;
+}
+
+/* Lista de links ao lado do dropdown */
+.list-second-options {
+    display: flex;
+    flex-wrap: nowrap !important;
+    gap: 30px;
     padding-left: 10px;
+    list-style: none;
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .list-second-options {
+        gap: 150px;
+    }
+}
+
+.list-second-options a {
+    color: #1D0F28;
+    font-weight: 500;
+    font-family: var(--fonte-montserrat);
+    white-space: nowrap;
+}
+
+/* ======================================================================================================= */
+
+/* NAVBAR MOBILE — barra de pesquisa destacada */
+
+.nav-mobile-top {
+    height: 70px;
+}
+
+.nav-mobile-search {
+    background-color: var(--fundo-terciario);
+}
+
+.container-search-mobile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--cor-branca);
+    padding: 10px 16px;
+    gap: 8px;
+}
+
+.search-input-mobile {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--fundo-primario);
+    font-family: var(--fonte-montserrat);
+    font-size: 16px;
+}
+
+.divider-search-mobile {
+    display: inline-block;
+    width: 1px;
+    height: 22px;
+    background-color: var(--fundo-primario);
+    margin-right: 8px;
+}
+
+.btn-search-mobile {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    color: var(--fundo-primario);
+    cursor: pointer;
+}
+
+.user-name-mobile {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: var(--cor-branca);
+}
+
+@media (max-width: 767px) {
+    .logo img {
+        width: 155px;
+        padding-left: 0;
+    }
 }
 
 /* ======================================================================================================= */
@@ -178,12 +272,13 @@ body {
     font-style: italic;
 }
 
-
+/* Define fonte e tamanho dos subtitulos da hero section */
 .lead {
     font-family: var(--fonte-montserrat);
     font-size: clamp(0.9rem, 1.5vw, 1.25rem);
 }
 
+/* Estiliza os botões de ver detalhes do carrossel*/
 .btn-custom-outline {
     border: 2px solid var(--cor-destaque);
     color: var(--cor-destaque);
@@ -195,11 +290,13 @@ body {
     height: clamp(40px, 6vw, 60px);
 }
 
+/* Cria efeito de hover para os botões de ver detalhes da hero section*/
 .btn-custom-outline:hover {
     background-color: #c6ff00;
     color: #000;
 }
 
+/* Estiliza o container geral que contém o titulo, subtitulo e botao de ver detalhes da sessçao hero section*/
 .hero-slide {
     min-height: clamp(320px, 60vh, 530px);
     background-size: cover;
@@ -293,8 +390,8 @@ footer {
 
 
 /* Seta a cor dos ícones de redes sociais como brancos */
-.list-socials-midias-footer ul li a{
-    color: white;    
+.list-socials-midias-footer ul li a {
+    color: white;
 }
 
 /* Aumenta o tamanho dos ícones de redes sociais do footer*/
@@ -314,7 +411,7 @@ footer {
     width: 204px;
 }
 
-.content-footer{
+.content-footer {
     width: 100%;
 }
 
@@ -332,6 +429,190 @@ footer {
     bottom: 20px;
     background-color: var(--cor-destaque);
 }
+
+/* ================================================================================*/
+
+/* SESSÃO DE BENEFICIOS (ELIAS) */
+
+/* Seta a altura, cor de fundo, torna flexivel e impede os elementos de quebrar a linha no mobile na sessão de beneficios */
+.container-section-benefits {
+    background-color: var(--fundo-secundario);
+    height: 100px;
+    display: flex;
+    flex-wrap: nowrap !important;
+}
+
+/* Estiliza o container interno (onde vçao todos os elementos da sessçao de beneficios)  */
+.section-benefits {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    font-family: var();
+    gap: 10px;
+    flex: 1;
+
+}
+
+/* Seta o tamanho da fonte dos titulos da sessão de beneficios (usei clamp para ajudar na responsividade).  */
+.section-benefits h2 {
+    font-size: clamp(12px, 1.5vw, 20px);
+    margin: 0;
+}
+
+/* Seta o tamanho da fonte dos subtitulos da sessão de beneficios (usei clamp para ajudar na responsividade).  */
+.section-benefits h3 {
+    font-size: clamp(10px, 1.2vw, 16px);
+    font-weight: 100;
+    margin: 0;
+}
+
+/* Seta o tamanho dos icones da sessão de beneficios (usei clamp para ajudar na responsividade).  */
+.icon-benefits {
+    width: clamp(40px, 4vw, 60px);
+    height: clamp(28px, 4vw, 48px);
+}
+
+
+/* ==================================================================================== */
+/* Sessão dos cards de melhores ofertas do dia (ELIAS)*/
+
+/* Adiciona e posiciona a imagem de fundo dos cards de ofertas */
+.card-1-offers {
+    background-image: url('../img/backgrounds/Card\ melhores\ ofertas\ \(1\).png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-2-offers {
+    background-image: url('../img/backgrounds/card-offers-2.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-3-offers {
+    background-image: url('../img/backgrounds/card-offers-3.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+.card-4-offers {
+    background-image: url('../img/backgrounds/card-offers-4.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 32px;
+    height: 100%;
+}
+
+/* Define cor, fonte e posicionamento dos titulos dos cards da sessão de melhores ofertas */
+.title-section-offers {
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-size: clamp(18px, 1.5vw, 24px);
+    font-weight: 700;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+/* Define cor, a altura dos cards da sessão de melhores ofertas*/
+.container-card-best-offers-child {
+    height: 350px;
+}
+
+/* Define cor, tamanho da fonte dos titulos dos cards da sessão de melhores ofertas*/
+.container-card-best-offers h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* Define cor, tamanho da fonte dos preços dos cards da sessão de melhores ofertas*/
+.value-card-best-offers {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Estiliza o botão ver detalhes dos cards da sessão de melhores ofertas*/
+.btn-card-best-offers {
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+    width: clamp(160px, 25vw, 200px);
+    height: clamp(40px, 6vw, 40px);
+}
+
+/* Define efeito de hover do botão ver detalhes dos cards da sessão de melhores oferta*/
+.btn-card-best-offers:hover {
+    background-color: #c6ff00;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Cria um espaçamento interno nos textos de dentro do card da sessçao de melhores ofertas*/
+.txt-card-best-offers {
+    padding: 30px 0;
+}
+
+/* Cria um contexto para posicionar os botões de prev e next dos cards da sessão de melhores oferta */
+#carouselOfertas {
+    position: relative;
+}
+
+
+/* DEFINE O POSICIONAMENTO DOS BOTÕES NEXT E PREV DOS CARD DA SESSÃO DE MELHORES OFERTAS */
+#carouselOfertas .carousel-control-prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+#carouselOfertas .carousel-control-next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+#carouselOfertas .carousel-control-prev,
+#carouselOfertas .carousel-control-next {
+    top: 50%;
+    position: absolute;
+    z-index: 10;
+}
+
+/* Define a cor de fundo, e padding dos botões de controle do carrossel de cards de melhores ofertas*/
+#carouselOfertas .carousel-control-prev-icon,
+#carouselOfertas .carousel-control-next-icon {
+    background-color: var(--cor-destaque);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 1;
+}
+
+/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
+.custom-arrow {
+    background-color: var(--cor-destaque);
+    padding: 5px;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* CARDS */
 .card {
@@ -413,20 +694,196 @@ footer {
     height: 2em;
 }
 
+
+/* ================================================================================================================== */
+
+/* CARROUSSEL DE MODALIDADES (ELIAS) */
+
+/* Define o container do card com posição relativa para permitir posicionamento absoluto de elementos internos, além de bordas arredondadas e corte do conteúdo excedente */
+.card-custom {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Ajusta a imagem do card para ocupar toda a largura, define altura fixa, mantém proporção com object-fit e aplica um escurecimento */
+.card-custom img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+/* Posiciona o texto dentro do card sobre a imagem, fixando na parte inferior esquerda com estilo destacado */
+.card-custom span {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Remove espaçamento interno padrão do container do carrossel */
+#carouselTrack {
+    padding: 0;
+}
+
+/* Aplica rolagem suave ao container do carrossel */
+#carouselTrack {
+    scroll-behavior: smooth;
+}
+
+/* Impede que os cards encolham ou cresçam automaticamente dentro de um container flex */
+.card-item-modalitys {
+    flex: 0 0 auto;
+}
+
+/* Estiliza o título da seção de modalidades com cor, fonte, tamanho responsivo e espaçamentos */
+.title-modality {
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-size: clamp(18px, 1.5vw, 24px);
+    font-weight: 700;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+/* Define novamente o container do card com posição relativa, bordas arredondadas e corte do conteúdo excedente */
+.card-custom {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Ajusta a imagem do card de modalidades para ocupar toda a largura, altura fixa e manter proporção sem distorção */
+.img-card-modalitys {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Posiciona o título sobre o card de forma absoluta, centralizando horizontalmente e ajustando verticalmente ao meio */
+.title-card-modalitys {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--fonte-prata);
+    font-weight: 100;
+    color: white;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 600;
+    text-align: center;
+}
+
+.container-list-cards-modalitys {
+    position: relative;
+}
+
+/* ESTILIZA OS BOTÃO DE PREV DO CARROSSEL DE MODALIDADES DA PÁGINA INDEX */
+#prevBtn {
+    z-index: 1;
+    background-color: var(--cor-destaque);
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    transform: translateX(-20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+}
+
+/* ESTILIZA OS BOTÃO DE NEXT DO CARROSSEL DE MODALIDADES DA PÁGINA INDEX */
+#nextBtn {
+    z-index: 1;
+    background-color: var(--cor-destaque);
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    transform: translateX(20px);
+    border: none;
+}
+
+.card-item-modalitys {
+    flex: 0 0 auto;
+    min-width: 0;
+}
+
+
+
+/* MEDIA QUERIES DO CARROUSSEL DE CARDS DE MODALIDADES */
+
+/* Em telas grandes (desktop), define que cada card ocupe aproximadamente 25% da largura com um pequeno espaçamento */
+@media (min-width: 992px) {
+    .card-item-modalitys {
+        width: calc(25% - 12px);
+    }
+}
+
+
+/* Ajustes para telas menores que 992px (tablet e mobile) */
+@media (max-width: 991px) {
+
+    /* Remove o espaçamento entre os itens do carrossel no mobile */
+    #carouselTrack {
+        gap: 0;
+        /* remove o espaço só no mobile */
+    }
+
+    /* Faz com que cada card ocupe 100% da largura disponível */
+    .card-item-modalitys {
+        width: 100%;
+    }
+
+    /* Move o botão anterior levemente para dentro */
+    #prevBtn {
+        transform: translateX(20px);
+    }
+
+    /* Move o botão próximo levemente para dentro */
+    #nextBtn {
+        transform: translateX(-20px);
+    }
+}
+
+
 /* MEDIA QUERIES DA HERO (ELIAS)*/
+
+/* Em telas menores que 768px, centraliza a imagem de fundo da hero */
 @media (max-width: 768px) {
     .hero-slide {
         background-position: center;
     }
+
 }
 
+/* Em telas maiores que 1030px, também mantém a imagem centralizada */
 @media (min-width: 1030px) {
     .hero-slide {
         background-position: center;
     }
 }
 
+
+
 @media (max-width: 470px) {
+
+
+    .section-benefits {
+        gap: 0px;
+
+    }
+
     .cabecalho-lista-produtos {
         flex-direction: column;
         align-items: start;
@@ -437,13 +894,26 @@ footer {
         width: 100%;
     }
 
+
     h2,
     .card h3,
     .card div p {
         font-size: var(--titulo-sessao-mobile);
     }
 
+
     .botao {
         font-size: var(--texto-mobile);
     }
+
+    #carouselOfertas .carousel-control-prev {
+        left: 0;
+        transform: translate(20%, -50%);
+    }
+
+    #carouselOfertas .carousel-control-next {
+        right: 0;
+        transform: translate(-20%, -50%);
+    }
+
 }
