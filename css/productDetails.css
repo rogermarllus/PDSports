@@ -144,7 +144,6 @@ main {
     color: var(--cor-destaque);
     transition: .3s;
     font-weight: bold;
-    margin-right: 10px;
 }
 
 .btn-tamanho:hover {
