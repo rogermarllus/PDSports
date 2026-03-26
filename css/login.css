@@ -26,7 +26,7 @@ figcaption {
     margin-left: clamp(132px, 16.11vw, 232px);
     background: rgba(30, 30, 30, .5);
     opacity: 1;
-    gap: 18px;
+    gap: 24px;
 
     display: flex;
     flex-direction: column;
@@ -314,7 +314,7 @@ figcaption {
     #input-password {
         border: none;
         outline: none;
-        width: 38vw;
+        width: 36vw;
         max-width: 350px;
         height: 50px;
         padding-left: 23px;
@@ -342,7 +342,7 @@ figcaption {
     #link-back {
         border: none;
         outline: none;
-        width: 17.5vw;
+        width: 12vw;
         max-width: 213px;
         height: 50px;
         border-radius: 30px;
@@ -362,7 +362,7 @@ figcaption {
     #btn-login {
         border: none;
         outline: none;
-        width: 17.5vw;
+        width: 12vw;
         max-width: 213px;
         height: 50px;
         border-radius: 30px;
