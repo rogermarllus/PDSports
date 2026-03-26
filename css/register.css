@@ -239,6 +239,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 #link-back:hover {
@@ -270,6 +271,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #link-login {
+    text-decoration: none;
     font-size: 16px;
     color: var(--cor-destaque);
     transition: .3s ease;
@@ -335,7 +337,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         width: 98.6vw;
         max-width: 370px;
         height: 100%;
-        max-height: 600px;
+        max-height: 576px;
         padding: clamp(25px, 2.5vw, 50px);
         gap: 12px;
         margin: 0;
@@ -469,7 +471,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 @media(max-width: 576px) {
     #txt-checkbox-input {
-        width: 41%;
         font-family: var(--fonte-montserrat);
         font-size: clamp(12px, 1.1vw, 20px);
         color: var(--cor-destaque);
@@ -527,6 +528,91 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         width: 40vw;
         max-width: 150px;
         height: 43px;
+        border-radius: 30px;
+        background-color: var(--cor-destaque);
+        font-family: var(--fonte-montserrat);
+        font-size: 18px;
+        color: #1D0F28;
+        cursor: pointer;
+        transition: .3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    body {
+        background-image: url(/img/backgrounds/background-auth.png);
+        background-color: var(--fundo-primario);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center right;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #card-register {
+        width: 60vw;
+        max-width: 849px;
+        height: 100%;
+        max-height: 817px;
+        padding: clamp(25px, 2.5vw, 50px);
+        margin-left: clamp(32px, 4.3vw, 62px);
+        background: rgba(30, 30, 30, .5);
+        opacity: 1;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #txt-checkbox-input {
+        padding-top: 22px;
+        font-family: var(--fonte-montserrat);
+        font-size: clamp(12px, 1.1vw, 20px);
+        color: var(--cor-destaque);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+    }
+
+    #container-buttons-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #link-back {
+        border: none;
+        outline: none;
+        width: 12vw;
+        max-width: 213px;
+        height: 50px;
+        border-radius: 30px;
+        background-color: transparent;
+        border: 2px solid var(--cor-destaque);
+        font-family: var(--fonte-montserrat);
+        font-size: 18px;
+        color: var(--cor-destaque);
+        transition: .3s ease;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    #btn-login {
+        border: none;
+        outline: none;
+        width: 12vw;
+        max-width: 213px;
+        height: 50px;
         border-radius: 30px;
         background-color: var(--cor-destaque);
         font-family: var(--fonte-montserrat);
