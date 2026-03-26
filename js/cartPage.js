@@ -1,7 +1,3 @@
-// ============================================================
-//  cartPage.js  —  lógica dinâmica da página cart.html
-// ============================================================
-
 import {
     loadItems,
     removeFromCart,
@@ -13,8 +9,6 @@ import {
     calcularFrete
 } from "./cart.js";
 
-// ── elementos fixos ──────────────────────────────────────────
-
 const listEl = document.getElementById("container-products-cart");
 const quantityBadge = document.getElementById("quantity-product-buy-cart");
 const subtotalEl = document.getElementById("title-price-total-buy-cart");
@@ -23,10 +17,7 @@ const shippingListEl = document.getElementById("container-service-orders");
 const btnCalc = document.getElementById("btn-calc-freight-product");
 const inputCEP = document.getElementById("input-calc-freight-product");
 
-// frete selecionado
-let selectedShipping = null;   // { name, price }
-
-// ── Helper: Tradução de Modalidade ───────────────────────────
+let selectedShipping = null;
 
 function translateModality(modality) {
     if (!modality) return "geral";
@@ -60,20 +51,16 @@ function translateModality(modality) {
 
 function getImagePath(product) {
     const modalityEN = translateModality(product.modality);
-
     return `/img/products/${modalityEN}/${product.imageName}.avif`;
 }
 
-// ── render principal ─────────────────────────────────────────
-
 function render() {
     const items = loadItems();
-
     renderItems(items);
     updateSummary(items);
 }
 
-// ── lista de produtos ────────────────────────────────────────
+// ─lista de produtos 
 
 function renderItems(items) {
     if (!listEl) return;
@@ -128,8 +115,8 @@ function buildItemHTML(item) {
     <div class="product-cart" data-id="${item.id}">
         <div id="container-img-info-product">
             <figure>
-                <img src="${imgSrc}" 
-                     alt="${escapeHTML(item.name)}" 
+                <img src="${imgSrc}"
+                     alt="${escapeHTML(item.name)}"
                      id="img-product-cart"
                      onerror="this.src='/img/products/product-placeholder.png'">
                 <figcaption>produto do carrinho</figcaption>
@@ -143,30 +130,29 @@ function buildItemHTML(item) {
                     <p id="txt-quantity">Quantidade:</p>
                     <div id="increment-decrement-product">
                         <i data-lucide="circle-minus"
-                        id="icon-circle-minus"
-                        class="js-decrement"
-                        data-id="${item.id}"
-                        style="cursor:pointer;"></i>
+                           id="icon-circle-minus"
+                           class="js-decrement"
+                           data-id="${item.id}"
+                           style="cursor:pointer;"></i>
                         <p id="quantity-product">${item.quantity}</p>
                         <i data-lucide="circle-plus"
-                        id="icon-circle-plus"
-                        class="js-increment"
-                        data-id="${item.id}"
-                        style="cursor:pointer;"></i>
+                           id="icon-circle-plus"
+                           class="js-increment"
+                           data-id="${item.id}"
+                           style="cursor:pointer;"></i>
                     </div>
                 </div>
             </div>
         </div>
 
         <i data-lucide="trash-2"
-        id="icon-trash-2"
-        class="js-remove"
-        data-id="${item.id}"
-        style="cursor:pointer;"></i>
+           id="icon-trash-2"
+           class="js-remove"
+           data-id="${item.id}"
+           style="cursor:pointer;"></i>
     </div>`;
 }
 
-// ── resumo / totais ──────────────────────────────────────────
 
 function updateSummary(items) {
     const subtotal = calculateSubtotal(items);
@@ -179,8 +165,7 @@ function updateSummary(items) {
     if (totalEl) totalEl.textContent = formatBRL(total);
 }
 
-// ── frete ────────────────────────────────────────────────────
-
+// frete
 function renderShipping(options) {
     if (!shippingListEl) return;
 
@@ -215,17 +200,13 @@ function renderShipping(options) {
             shippingListEl.querySelectorAll(".js-shipping-option")
                 .forEach(o => o.classList.remove("selected"));
             el.classList.add("selected");
-
-            selectedShipping = {
-                name: el.dataset.name,
-                price: Number(el.dataset.price)
-            };
+            selectedShipping = { name: el.dataset.name, price: Number(el.dataset.price) };
             updateSummary(loadItems());
         });
     });
 }
 
-// ── CEP mask + botão calcular ────────────────────────────────
+// CEP
 
 if (inputCEP) {
     inputCEP.addEventListener("input", e => {
@@ -268,8 +249,6 @@ if (btnCalc) {
     });
 }
 
-// ── utilitário ───────────────────────────────────────────────
-
 function escapeHTML(str) {
     return String(str)
         .replace(/&/g, "&amp;")
@@ -278,6 +257,209 @@ function escapeHTML(str) {
         .replace(/"/g, "&quot;");
 }
 
-// ── boot ─────────────────────────────────────────────────────
-
 render();
+
+(function initPaymentModal() {
+
+    const btnFinish = document.getElementById("btn-finish-buy");
+    if (!btnFinish) return;
+
+    let chosenMethod = "pix";
+
+    const METHOD_TITLES = {
+        pix: "Pagamento via PIX",
+        credit: "Cartão de Crédito",
+        boleto: "Boleto Bancário"
+    };
+
+    function retriggerAnimation(el) {
+        if (!el) return;
+        el.style.animation = "none";
+        void el.offsetWidth;
+        el.style.animation = "";
+    }
+
+    function goToStep(n) {
+        document.querySelectorAll(".modal-step")
+            .forEach(s => s.classList.remove("active"));
+        document.getElementById(`modal-step-${n}`)?.classList.add("active");
+
+        if (n === 3) {
+            setTimeout(() => {
+                retriggerAnimation(document.querySelector(".checkmark-circle"));
+                retriggerAnimation(document.querySelector(".checkmark-check"));
+            }, 30);
+        }
+    }
+
+    function showMethodContent(method) {
+        const titleEl = document.getElementById("modal-step2-title");
+        if (titleEl) titleEl.textContent = METHOD_TITLES[method] ?? "";
+
+        document.querySelectorAll(".modal-method-panel")
+            .forEach(p => p.classList.remove("active"));
+        document.getElementById(`modal-method-${method}`)?.classList.add("active");
+    }
+
+    function openModal() {
+        const items = loadItems();
+        if (items.length === 0) {
+            alert("Seu carrinho está vazio.");
+            return;
+        }
+
+        buildStep1(items);
+
+        chosenMethod = "pix";
+        document.querySelectorAll(".modal-pay-method-btn").forEach(b => {
+            const active = b.dataset.method === "pix";
+            b.classList.toggle("selected", active);
+            b.setAttribute("aria-pressed", String(active));
+        });
+
+        goToStep(1);
+        const overlay = document.getElementById("modal-payment-overlay");
+        overlay?.classList.add("active");
+        overlay?.removeAttribute("aria-hidden");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        const overlay = document.getElementById("modal-payment-overlay");
+        overlay?.classList.remove("active");
+        overlay?.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    function buildStep1(items) {
+        const itemsEl = document.getElementById("modal-order-items");
+        if (itemsEl) {
+            itemsEl.innerHTML = items.map(it => `
+                <div class="modal-order-item">
+                    <p class="modal-order-item-name">${escapeHTML(it.name)}</p>
+                    <p class="modal-order-item-qty">× ${it.quantity}</p>
+                    <p class="modal-order-item-price">${formatBRL(it.price * it.quantity)}</p>
+                </div>
+            `).join("");
+        }
+
+        const valEl = document.getElementById("modal-summary-values");
+        if (valEl) {
+            const subtotal = calculateSubtotal(items);
+            const shipping = selectedShipping ? selectedShipping.price : 0;
+            const label = selectedShipping ? selectedShipping.name : "Não calculado";
+            const total = subtotal + shipping;
+
+            valEl.innerHTML = `
+                <div class="modal-summary-row">
+                    <p class="modal-summary-label">Subtotal</p>
+                    <p class="modal-summary-value">${formatBRL(subtotal)}</p>
+                </div>
+                <div class="modal-summary-row">
+                    <p class="modal-summary-label">Frete (${escapeHTML(label)})</p>
+                    <p class="modal-summary-value">${shipping > 0 ? formatBRL(shipping) : "—"}</p>
+                </div>
+                <div class="modal-summary-row total">
+                    <p class="modal-summary-label">Total</p>
+                    <p class="modal-summary-value">${formatBRL(total)}</p>
+                </div>
+            `;
+        }
+    }
+
+    function confirmPayment() {
+        if (chosenMethod === "credit") {
+            const num = (document.getElementById("card-num")?.value ?? "").replace(/\s/g, "");
+            const holder = (document.getElementById("card-holder")?.value ?? "").trim();
+            const exp = (document.getElementById("card-exp")?.value ?? "");
+            const cvv = (document.getElementById("card-cvv")?.value ?? "");
+
+            if (num.length < 16 || !holder || exp.length < 5 || cvv.length < 3) {
+                alert("Preencha todos os dados do cartão corretamente.");
+                return;
+            }
+        }
+
+        const orderNum = "PD-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+        const orderEl = document.getElementById("modal-order-number");
+        if (orderEl) orderEl.textContent = `Pedido nº ${orderNum}`;
+
+        goToStep(3);
+    }
+
+    function bindModalEvents() {
+        const overlay = document.getElementById("modal-payment-overlay");
+        if (!overlay) return;
+
+        overlay.addEventListener("click", e => {
+            if (
+                e.target === overlay ||
+                e.target.closest("#modal-close-1") ||
+                e.target.closest("#modal-close-2")
+            ) closeModal();
+        });
+
+        overlay.querySelectorAll(".modal-pay-method-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                overlay.querySelectorAll(".modal-pay-method-btn").forEach(b => {
+                    b.classList.remove("selected");
+                    b.setAttribute("aria-pressed", "false");
+                });
+                btn.classList.add("selected");
+                btn.setAttribute("aria-pressed", "true");
+                chosenMethod = btn.dataset.method;
+            });
+        });
+
+        // step 1 → 2
+        document.getElementById("btn-step1-next")?.addEventListener("click", () => {
+            showMethodContent(chosenMethod);
+            goToStep(2);
+        });
+
+        // step 2 → 1
+        document.getElementById("btn-step2-back")?.addEventListener("click", () => goToStep(1));
+
+        // confirmar pagamento
+        document.getElementById("btn-step2-confirm")?.addEventListener("click", confirmPayment);
+
+        // step 3 → voltar às compras
+        document.getElementById("btn-step3-done")?.addEventListener("click", () => {
+            localStorage.removeItem("cart");
+            closeModal();
+            window.location.href = "/index.html";
+        });
+
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") closeModal();
+        });
+
+        // máscaras do formulário de cartão
+        document.getElementById("card-num")?.addEventListener("input", e => {
+            let v = e.target.value.replace(/\D/g, "").slice(0, 16);
+            e.target.value = v.replace(/(.{4})/g, "$1 ").trim();
+        });
+        document.getElementById("card-exp")?.addEventListener("input", e => {
+            let v = e.target.value.replace(/\D/g, "").slice(0, 4);
+            e.target.value = v.length > 2 ? `${v.slice(0, 2)}/${v.slice(2)}` : v;
+        });
+
+        document.getElementById("btn-copy-pix")?.addEventListener("click", function () {
+            const text = document.getElementById("pix-key-val")?.textContent ?? "";
+            navigator.clipboard.writeText(text).catch(() => { });
+            this.textContent = "Copiado!";
+            setTimeout(() => { this.textContent = "Copiar"; }, 2000);
+        });
+        document.getElementById("btn-copy-boleto")?.addEventListener("click", function () {
+            const text = document.getElementById("boleto-line-val")?.textContent ?? "";
+            navigator.clipboard.writeText(text).catch(() => { });
+            this.textContent = "Copiado!";
+            setTimeout(() => { this.textContent = "Copiar"; }, 2000);
+        });
+    }
+
+    // Inicializar 
+    bindModalEvents();
+    btnFinish.addEventListener("click", openModal);
+
+})();

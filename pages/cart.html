@@ -128,20 +128,16 @@
     </header>
 
     <main>
-        <!-- ══ COLUNA ESQUERDA: lista de produtos ══ -->
         <section id="section-products-cart">
             <h2 class="title-cart">Meu Carrinho</h2>
 
-            <!-- preenchido dinamicamente por cartPage.js -->
             <div id="container-products-cart"></div>
         </section>
 
-        <!-- ══ COLUNA DIREITA: resumo + frete ══ -->
         <section id="section-buy-cart">
             <h2 class="title-cart">Resumo da compra</h2>
 
             <div id="container-buy-cart">
-                <!-- cabeçalho com subtotal -->
                 <div id="header-buy-cart">
                     <div id="container-title-quantity-product">
                         <h3 id="title-quantity-product">Produtos</h3>
@@ -150,7 +146,6 @@
                     <h2 id="title-price-total-buy-cart">R$ 0,00</h2>
                 </div>
 
-                <!-- entrega -->
                 <div id="main-delivery-product">
                     <h3 id="title-delivery-product">Entrega</h3>
 
@@ -159,11 +154,9 @@
                         <button id="btn-calc-freight-product">Calcular</button>
                     </div>
 
-                    <!-- opções de frete — preenchidas dinamicamente -->
                     <div id="container-service-orders"></div>
                 </div>
 
-                <!-- total final -->
                 <div id="footer-delivery-product">
                     <h2 id="footer-title-total-value">Total:</h2>
                     <h2 id="footer-total-value">R$ 0,00</h2>
@@ -173,6 +166,422 @@
             </div>
         </section>
     </main>
+
+    <!-- MODAL DE PAGAMENTO -->
+    <div id="modal-payment-overlay" aria-hidden="true">
+        <div id="modal-payment-box" role="dialog" aria-modal="true" aria-labelledby="modal-pay-title-1">
+
+            <div class="modal-step active" id="modal-step-1">
+                <div class="modal-pay-header">
+                    <h2 class="modal-pay-title" id="modal-pay-title-1">Confirmar Pedido</h2>
+                    <button class="modal-pay-close" id="modal-close-1" aria-label="Fechar modal">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="modal-order-items" class="modal-order-items"></div>
+                <hr class="modal-divider">
+                <div id="modal-summary-values"></div>
+
+                <p class="modal-pay-method-title">Forma de Pagamento</p>
+
+                <div class="modal-pay-methods" role="group" aria-label="Métodos de pagamento">
+                    <button class="modal-pay-method-btn selected" data-method="pix" aria-pressed="true">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v2h-2zM16 16h2v2h-2zM14 18h2v2h-2zM18 18h2v2h-2z" />
+                        </svg>
+                        <span class="modal-pay-method-label">PIX</span>
+                    </button>
+                    <button class="modal-pay-method-btn" data-method="credit" aria-pressed="false">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="5" width="20" height="14" rx="2.5" />
+                            <line x1="2" y1="10" x2="22" y2="10" />
+                            <line x1="6" y1="15" x2="10" y2="15" />
+                        </svg>
+                        <span class="modal-pay-method-label">Cartão</span>
+                    </button>
+                    <button class="modal-pay-method-btn" data-method="boleto" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                            <rect x="3" y="4" width="2" height="16" />
+                            <rect x="7" y="4" width="1" height="16" />
+                            <rect x="10" y="4" width="3" height="16" />
+                            <rect x="15" y="4" width="1" height="16" />
+                            <rect x="18" y="4" width="3" height="16" />
+                        </svg>
+                        <span class="modal-pay-method-label">Boleto</span>
+                    </button>
+                </div>
+
+                <button class="btn-modal-pay-confirm" id="btn-step1-next">Continuar</button>
+            </div>
+
+            <div class="modal-step" id="modal-step-2">
+                <div class="modal-pay-header">
+                    <h2 class="modal-pay-title" id="modal-step2-title">Pagamento via PIX</h2>
+                    <button class="modal-pay-close" id="modal-close-2" aria-label="Fechar modal">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+
+                <button class="modal-pay-back" id="btn-step2-back" aria-label="Voltar ao passo anterior">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                    Voltar
+                </button>
+
+                <!-- ── Painel PIX ── -->
+                <div id="modal-method-pix" class="modal-method-panel active">
+                    <div class="modal-pix-qr">
+                        <div class="modal-pix-qr-img">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                                <rect width="100" height="100" fill="white" />
+                                <g fill="#1D0F28">
+                                    <rect x="0.00%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="23.81%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="0.00%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="4.76%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="9.52%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="14.29%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="19.05%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="23.81%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="23.81%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="28.57%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="33.33%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="33.33%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="33.33%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="61.90%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="38.10%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="42.86%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="23.81%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="33.33%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="47.62%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="23.81%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="61.90%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="52.38%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="33.33%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="57.14%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="61.90%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="61.90%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="61.90%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="61.90%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="23.81%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="66.67%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="61.90%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="71.43%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="33.33%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="76.19%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="80.95%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="52.38%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="61.90%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="80.95%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="85.71%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="66.67%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="85.71%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="90.48%" width="4.7619%" height="4.7619%" />
+                                    <rect x="0.00%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="4.76%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="9.52%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="14.29%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="19.05%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="23.81%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="28.57%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="38.10%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="42.86%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="47.62%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="57.14%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="71.43%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="76.19%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="90.48%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                    <rect x="95.24%" y="95.24%" width="4.7619%" height="4.7619%" />
+                                </g>
+                            </svg>
+                        </div>
+                        <p class="modal-pix-instruction">
+                            Escaneie o QR Code ou copie a chave PIX abaixo para concluir o pagamento.
+                        </p>
+                        <div class="modal-pix-key-box">
+                            <p class="modal-pix-key" id="pix-key-val">pdsports@pagamentos.com.br</p>
+                            <button class="modal-copy-btn" id="btn-copy-pix" type="button">Copiar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Painel Cartão ── -->
+                <div id="modal-method-credit" class="modal-method-panel">
+                    <div class="modal-card-form">
+                        <input class="modal-card-input" id="card-num" type="text" inputmode="numeric"
+                            placeholder="Número do Cartão" maxlength="19" autocomplete="cc-number">
+                        <input class="modal-card-input" id="card-holder" type="text" placeholder="Nome no Cartão"
+                            autocomplete="cc-name">
+                        <div class="modal-card-row">
+                            <input class="modal-card-input" id="card-exp" type="text" inputmode="numeric"
+                                placeholder="MM/AA" maxlength="5" autocomplete="cc-exp">
+                            <input class="modal-card-input" id="card-cvv" type="text" inputmode="numeric"
+                                placeholder="CVV" maxlength="3" autocomplete="cc-csc">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Painel Boleto ── -->
+                <div id="modal-method-boleto" class="modal-method-panel">
+                    <div class="modal-boleto-wrap">
+                        <div class="modal-boleto-barcode">
+                            <div style="width:12px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:12px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:12px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:12px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:12px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:12px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                            <div style="width:4px;height:100%;background:white;flex-shrink:0;"></div>
+                            <div style="width:8px;height:100%;background:#1D0F28;flex-shrink:0;"></div>
+                        </div>
+                        <p class="modal-boleto-instruction">
+                            Vencimento em 3 dias úteis. A compensação pode levar até 3 dias após o pagamento.
+                        </p>
+                        <div class="modal-pix-key-box">
+                            <p class="modal-pix-key" id="boleto-line-val">34191.09008 00004.585609 71234.560007 3
+                                10110000095700</p>
+                            <button class="modal-copy-btn" id="btn-copy-boleto" type="button">Copiar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-modal-pay-confirm" id="btn-step2-confirm">Confirmar Pagamento</button>
+            </div>
+
+            <div class="modal-step" id="modal-step-3">
+                <div class="modal-success-wrap">
+                    <svg class="modal-success-anim-ring" viewBox="0 0 88 88" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle class="checkmark-circle-bg" cx="44" cy="44" r="44" />
+                        <circle class="checkmark-circle" cx="44" cy="44" r="38" />
+                        <polyline class="checkmark-check" points="27,45 39,57 61,31" />
+                    </svg>
+                    <h2 class="modal-success-title">Pedido Confirmado!</h2>
+                    <p class="modal-success-sub">Seu pedido foi recebido com sucesso e já está sendo processado.</p>
+                    <p class="modal-success-order-num" id="modal-order-number"></p>
+                    <button class="btn-modal-pay-confirm" id="btn-step3-done" style="margin-top:4px;">
+                        Voltar às compras
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer>
         <div class="container-fluid container-main-footer d-flex justify-content-center">
