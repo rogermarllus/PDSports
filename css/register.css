@@ -16,8 +16,7 @@ figcaption {
 #card-register {
     width: 58vw;
     max-width: 849px;
-    height: 90vh;
-    max-height: 817px;
+    height: 100%;
     padding: clamp(25px, 2.5vw, 50px);
     margin-left: clamp(32px, 4.3vw, 62px);
     background: rgba(30, 30, 30, .5);
@@ -26,6 +25,7 @@ figcaption {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 20px;
 
     border-radius: 32px;
     box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, .25);
@@ -283,7 +283,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         width: 98.6vw;
         max-width: 370px;
         height: 100%;
-        max-height: 576px;
         padding: clamp(25px, 2.5vw, 50px);
         gap: 12px;
         margin: 0;
@@ -442,7 +441,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
     }
 }
 
@@ -487,13 +486,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     body {
         background-image: url(/img/backgrounds/background-auth.png);
         background-color: var(--fundo-primario);
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center right;
+        background-position: top right;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -504,7 +503,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         width: 60vw;
         max-width: 849px;
         height: 100%;
-        max-height: 817px;
         padding: clamp(25px, 2.5vw, 50px);
         margin-left: clamp(32px, 4.3vw, 62px);
         background: rgba(30, 30, 30, .5);

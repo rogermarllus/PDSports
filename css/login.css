@@ -21,12 +21,12 @@ figcaption {
 #card-login {
     width: 37vw;
     max-width: 555px;
-    height: 85vh;
-    max-height: 720px;
+    height: 100%;
     padding: 32px;
     margin-left: clamp(132px, 16.11vw, 232px);
     background: rgba(30, 30, 30, .5);
     opacity: 1;
+    gap: 24px;
 
     display: flex;
     flex-direction: column;
@@ -183,7 +183,7 @@ figcaption {
 @media(max-width: 600px) {
     #card-login {
         width: 370px;
-        height: 466px;
+        height: 100%;
         padding: 32px;
         margin: 0 auto;
 
@@ -266,5 +266,112 @@ figcaption {
         color: #1D0F28;
         cursor: pointer;
         transition: .3s ease;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        background-image: url(/img/backgrounds/background-auth.png);
+        background-color: var(--fundo-primario);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top right;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #card-login {
+        width: 45vw;
+        max-width: 555px;
+        height: 100%;
+        padding: 32px;
+        margin-left: clamp(32px, 4.3vw, 62px);
+        background: rgba(30, 30, 30, .5);
+        opacity: 1;
+        gap: 14px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        border-radius: 32px;
+        box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, .25);
+    }
+
+    #input-email,
+    #input-password {
+        border: none;
+        outline: none;
+        width: 36vw;
+        max-width: 350px;
+        height: 50px;
+        padding-left: 23px;
+        background-color: var(--fundo-inputs);
+        border-radius: 8px;
+        font-family: var(--fonte-montserrat);
+        color: var(--cor-branca);
+        transition: .3s ease;
+    }
+
+    #recovery-password {
+        font-family: var(--fonte-montserrat);
+        font-size: 16px;
+        color: var(--cor-destaque);
+        padding-top: 10px;
+    }
+
+    #container-buttons-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #link-back {
+        border: none;
+        outline: none;
+        width: 12vw;
+        max-width: 213px;
+        height: 50px;
+        border-radius: 30px;
+        background-color: transparent;
+        border: 2px solid var(--cor-destaque);
+        font-family: var(--fonte-montserrat);
+        font-size: 18px;
+        color: var(--cor-destaque);
+        transition: .3s ease;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    #btn-login {
+        border: none;
+        outline: none;
+        width: 12vw;
+        max-width: 213px;
+        height: 50px;
+        border-radius: 30px;
+        background-color: var(--cor-destaque);
+        font-family: var(--fonte-montserrat);
+        font-size: 18px;
+        color: #1D0F28;
+        cursor: pointer;
+        transition: .3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #txt-quest-authenticated {
+        font-family: var(--fonte-montserrat);
+        font-size: 14px;
+        color: var(--cor-branca);
+        text-align: center;
     }
 }
