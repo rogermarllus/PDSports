@@ -13,6 +13,7 @@
 
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/modality.css">
     <link rel="stylesheet" href="/css/searchResult.css">
 
     <!-- Scripts de ícones -->
@@ -169,7 +170,28 @@
         </div>
     </footer>
 
-    <script type="module" src="../js/search.js"></script>
+    <!-- JS do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts Adicionais -->
+    <script>
+        lucide.createIcons();
+
+        const mobileForm = document.getElementById("search-form-mobile");
+        const mobileInput = document.getElementById("search-input-mobile");
+        if (mobileForm && mobileInput) {
+            mobileForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const term = mobileInput.value.trim();
+                if (!term) return;
+                const formatted = term.replace(/\s+/g, "+");
+                window.location.href = `/pages/searchResult.html?query=${formatted}`;
+            });
+        }
+    </script>
+
+    <!-- Módulos do Projeto -->
+    <script type="module" src="/js/search.js"></script>
     <script type="module" src="/js/navbar.js"></script>
 </body>
 
