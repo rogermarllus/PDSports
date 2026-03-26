@@ -430,6 +430,20 @@ footer {
     background-color: var(--cor-destaque);
 }
 
+/* Icones do rodape */
+.icon-rodape {
+    font-size: 30px;
+}
+
+.icon-rodape:hover {
+    transition: .3s;
+    color: var(--cor-destaque);
+}
+
+.copy {
+    text-align: center;
+}
+
 /* ================================================================================*/
 
 /* SESSÃO DE BENEFICIOS (ELIAS) */
@@ -699,6 +713,12 @@ footer {
 
 /* CARROUSSEL DE MODALIDADES (ELIAS) */
 
+
+/* Adiciona um espaço entre o carroussel de modalidades e o form da newsletter*/
+.section-modalitys {
+    margin-bottom: 80px;
+}
+
 /* Define o container do card com posição relativa para permitir posicionamento absoluto de elementos internos, além de bordas arredondadas e corte do conteúdo excedente */
 .card-custom {
     position: relative;
@@ -820,6 +840,63 @@ footer {
 }
 
 
+/* FORM DA NEWSLETTER (ELIAS) */
+
+/* Define um espaçamento inferior maior para separar a sessão de newsletter do conteúdo abaixo */
+.newsletter-section {
+    margin-bottom: 100px;
+}
+
+/* Estiliza o container da newsletter com cor de fundo, cantos arredondados, espaçamento interno e texto branco */
+.container-newsletter {
+    background-color: var(--fundo-secundario);
+    border-radius: 30px;
+    padding: 30px;
+    color: white;
+}
+
+/* Altera a cor de destaque para elementos <span> dentro do container da newsletter */
+.container-newsletter span {
+    color: var(--cor-destaque);
+}
+
+/* Define o estilo do botão da newsletter com cor de destaque e bordas arredondadas */
+.btn-news-letter {
+    background-color: var(--cor-destaque);
+    border-radius: 30px;
+}
+
+/* Ajusta o campo de formulário com bordas arredondadas e espaçamento interno para melhor usabilidade */
+.form-control {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+/* Define o tamanho do título com clamp para torná-lo responsivo entre diferentes tamanhos de tela */
+.container-newsletter h2 {
+    font-size: clamp(0.9rem, 1.2vw, 2rem);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 991px) {
+    .newsletter-box {
+        text-align: center;
+    }
+
+    .newsletter-form {
+        width: 100%;
+    }
+
+    .newsletter-form .form-control {
+        width: 100%;
+    }
+
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+
+
 
 /* MEDIA QUERIES DO CARROUSSEL DE CARDS DE MODALIDADES */
 
@@ -863,6 +940,21 @@ footer {
 @media (max-width: 768px) {
     .hero-slide {
         background-position: center;
+    }
+
+    /* Em telas menores que 768px vai colocar um pading lateral no container do formulário da newsletter */
+    .newsletter-section {
+        padding: 0 13px;
+    }
+
+    /* Em telas menores que 768px vai diminuir o espaçamento entre a sessão da newsletter e o footer */
+    .newsletter-section {
+        margin-bottom: 50px;
+    }
+
+    /* Em telas menores que 768px vai diminuir o espaçamento entre o carroussel de modalidades e o a sessão da newsletter */
+    .section-modalitys {
+        margin-bottom: 50px;
     }
 
 }
