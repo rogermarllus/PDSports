@@ -494,11 +494,11 @@ footer {
 /* Sessão dos cards de melhores ofertas do dia (ELIAS)*/
 
 /* Adiciona e posiciona a imagem de fundo dos cards de ofertas */
+
 .card-1-offers {
     background-image: url('../img/backgrounds/Card\ melhores\ ofertas\ \(1\).png');
     background-size: cover;
     background-position: center;
-    height: 250px;
     border-radius: 32px;
     height: 100%;
 }
@@ -507,7 +507,6 @@ footer {
     background-image: url('../img/backgrounds/card-offers-2.png');
     background-size: cover;
     background-position: center;
-    height: 250px;
     border-radius: 32px;
     height: 100%;
 }
@@ -516,7 +515,6 @@ footer {
     background-image: url('../img/backgrounds/card-offers-3.png');
     background-size: cover;
     background-position: center;
-    height: 250px;
     border-radius: 32px;
     height: 100%;
 }
@@ -525,12 +523,11 @@ footer {
     background-image: url('../img/backgrounds/card-offers-4.png');
     background-size: cover;
     background-position: center;
-    height: 250px;
     border-radius: 32px;
     height: 100%;
 }
 
-/* Define cor, fonte e posicionamento dos titulos dos cards da sessão de melhores ofertas */
+
 .title-section-offers {
     color: var(--cor-destaque);
     font-family: var(--fonte-montserrat);
@@ -540,22 +537,74 @@ footer {
     margin-bottom: 30px;
 }
 
-/* Define cor, a altura dos cards da sessão de melhores ofertas*/
+/* Define o posicionamento do carousel de ofertas no desktop */
+#carouselOfertasDesktop {
+    position: relative;
+}
+
+/* Define o posicionamento base do carousel de melhores ofertas */
+.carrousel-best-offers {
+    position: relative;
+}
+
+/* Define o posicionamento interno dos itens do carousel */
+.carousel-inner {
+    position: relative;
+}
+
+/* Estiliza os botões de navegação do carousel (setas) */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 1;
+    width: 5%; /* controla o quanto entra no card */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Posiciona o botão anterior (esquerda) do carousel */
+.carousel-control-prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* Posiciona o botão próximo (direita) do carousel */
+.carousel-control-next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+/* Estiliza o ícone personalizado das setas do carousel */
+.custom-arrow {
+    background-color: var(--cor-destaque);
+    padding: 5px;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Define a altura dos cards de ofertas */
 .container-card-best-offers-child {
     height: 350px;
 }
 
-/* Define cor, tamanho da fonte dos titulos dos cards da sessão de melhores ofertas*/
+/* Define o tamanho do título dentro dos cards de ofertas */
 .container-card-best-offers h2 {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
-/* Define cor, tamanho da fonte dos preços dos cards da sessão de melhores ofertas*/
+/* Define o tamanho do valor/preço dentro dos cards */
 .value-card-best-offers {
     font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
-/* Estiliza o botão ver detalhes dos cards da sessão de melhores ofertas*/
+/* Define o espaçamento interno do texto dos cards */
+.txt-card-best-offers {
+    padding: 30px 0;
+}
+
+/* Estiliza o botão dos cards de ofertas */
 .btn-card-best-offers {
     border: 2px solid var(--cor-destaque);
     color: var(--cor-destaque);
@@ -567,67 +616,12 @@ footer {
     height: clamp(40px, 6vw, 40px);
 }
 
-/* Define efeito de hover do botão ver detalhes dos cards da sessão de melhores oferta*/
+/* Define o efeito hover do botão dos cards de ofertas */
 .btn-card-best-offers:hover {
     background-color: #c6ff00;
     font-weight: 500;
     color: #000;
 }
-
-/* Cria um espaçamento interno nos textos de dentro do card da sessçao de melhores ofertas*/
-.txt-card-best-offers {
-    padding: 30px 0;
-}
-
-/* Cria um contexto para posicionar os botões de prev e next dos cards da sessão de melhores oferta */
-#carouselOfertas {
-    position: relative;
-}
-
-
-/* DEFINE O POSICIONAMENTO DOS BOTÕES NEXT E PREV DOS CARD DA SESSÃO DE MELHORES OFERTAS */
-#carouselOfertas .carousel-control-prev {
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-#carouselOfertas .carousel-control-next {
-    right: 0;
-    transform: translate(50%, -50%);
-}
-
-#carouselOfertas .carousel-control-prev,
-#carouselOfertas .carousel-control-next {
-    top: 50%;
-    position: absolute;
-    z-index: 10;
-}
-
-/* Define a cor de fundo, e padding dos botões de controle do carrossel de cards de melhores ofertas*/
-#carouselOfertas .carousel-control-prev-icon,
-#carouselOfertas .carousel-control-next-icon {
-    background-color: var(--cor-destaque);
-    border-radius: 50%;
-    padding: 20px;
-}
-
-/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
-.carousel-control-prev,
-.carousel-control-next {
-    opacity: 1;
-}
-
-/* Sobreescreve a cor de fundo dos botões de next e prev do carrossel de cards de melhores ofertas*/
-.custom-arrow {
-    background-color: var(--cor-destaque);
-    padding: 5px;
-    border-radius: 50%;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 
 /* CARDS */
 .card {
@@ -713,7 +707,6 @@ footer {
 /* ================================================================================================================== */
 
 /* CARROUSSEL DE MODALIDADES (ELIAS) */
-
 
 /* Adiciona um espaço entre o carroussel de modalidades e o form da newsletter*/
 .section-modalitys {
@@ -803,7 +796,6 @@ footer {
 
 .title-card-modalitys:hover {
    font-size: clamp(1.2rem, 4vw, 1.7rem);
-   
 }
 
 .container-list-cards-modalitys {
@@ -874,6 +866,11 @@ footer {
     border-radius: 30px;
 }
 
+.btn-news-letter:hover {
+    background-color: #b6dd06;
+    color: black;
+}
+
 /* Ajusta o campo de formulário com bordas arredondadas e espaçamento interno para melhor usabilidade */
 .form-control {
     border-radius: 20px;
@@ -885,26 +882,30 @@ footer {
     font-size: clamp(0.9rem, 1.2vw, 2rem);
 }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE NEWSLETTER*/
+/* Em telas menores que 991px, ajusta a seção de newsletter para melhor responsividade */
 @media (max-width: 991px) {
+
+    /* Centraliza o conteúdo da caixa de newsletter */
     .newsletter-box {
         text-align: center;
     }
 
+    /* Faz o formulário da newsletter ocupar toda a largura disponível */
     .newsletter-form {
         width: 100%;
     }
 
+    /* Faz o campo de input ocupar toda a largura no mobile */
     .newsletter-form .form-control {
         width: 100%;
     }
 
+    /* Faz o botão do formulário ocupar toda a largura disponível */
     .newsletter-form button {
         width: 100%;
     }
 }
-
-
 
 /* MEDIA QUERIES DO CARROUSSEL DE CARDS DE MODALIDADES */
 
@@ -939,6 +940,16 @@ footer {
     #nextBtn {
         transform: translateX(-20px);
     }
+
+    .carousel-control-prev {
+        left: 25px; /* controla exatamente */
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-next {
+        right: 25px;
+        transform: translateY(-50%);
+    }
 }
 
 
@@ -965,9 +976,20 @@ footer {
         margin-bottom: 50px;
     }
 
+    .carousel-control-prev {
+        left: 25px; /* controla exatamente */
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-next {
+        right: 25px;
+        transform: translateY(-50%);
+    }
+
 }
 
 /* Em telas maiores que 1030px, também mantém a imagem centralizada */
+/* Em telas maiores que 1030px, centraliza a posição da imagem de fundo do hero */
 @media (min-width: 1030px) {
     .hero-slide {
         background-position: center;
@@ -975,26 +997,30 @@ footer {
 }
 
 
-
+/* Em telas menores que 470px, ajusta o layout para melhor responsividade mobile */
 @media (max-width: 470px) {
 
 
+    /* Remove o espaçamento entre os itens da seção de benefícios */
     .section-benefits {
         gap: 0px;
 
     }
 
+    /* Altera o cabeçalho da lista de produtos para layout em coluna */
     .cabecalho-lista-produtos {
         flex-direction: column;
         align-items: start;
         gap: .5em;
     }
 
+    /* Faz os botões do cabeçalho ocuparem toda a largura disponível */
     .cabecalho-lista-produtos button {
         width: 100%;
     }
 
 
+    /* Reduz o tamanho dos títulos e textos dos cards para mobile */
     h2,
     .card h3,
     .card div p {
@@ -1002,18 +1028,22 @@ footer {
     }
 
 
+    /* Ajusta o tamanho da fonte dos botões para mobile */
     .botao {
         font-size: var(--texto-mobile);
     }
 
-    #carouselOfertas .carousel-control-prev {
-        left: 0;
-        transform: translate(20%, -50%);
+    /* Reposiciona o botão anterior do carousel para dentro da tela no mobile */
+    .carousel-control-prev {
+        left: 25px; 
+        transform: translateY(-50%);
     }
 
-    #carouselOfertas .carousel-control-next {
-        right: 0;
-        transform: translate(-20%, -50%);
+    /* Reposiciona o botão próximo do carousel para dentro da tela no mobile */
+    .carousel-control-next {
+        right: 25px;
+        transform: translateY(-50%);
     }
 
 }
+
