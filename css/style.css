@@ -268,14 +268,16 @@ a:hover {
 /* HERO SECTION (ELIAS) */
 .title-banner {
     font-family: var(--fonte-playfair);
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-style: italic;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
 /* Define fonte e tamanho dos subtitulos da hero section */
 .lead {
     font-family: var(--fonte-montserrat);
     font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
 /* Estiliza os botões de ver detalhes do carrossel*/
@@ -286,32 +288,93 @@ a:hover {
     align-items: center;
     justify-content: center;
     font-size: clamp(0.9rem, 1.2vw, 1.3rem);
-    width: clamp(160px, 25vw, 255px);
-    height: clamp(40px, 6vw, 60px);
+    width: clamp(140px, 25vw, 255px);
+    height: clamp(38px, 6vw, 60px);
 }
 
-/* Cria efeito de hover para os botões de ver detalhes da hero section*/
 .btn-custom-outline:hover {
     background-color: #c6ff00;
     color: #000;
     font-weight: 500;
 }
 
-/* Estiliza o container geral que contém o titulo, subtitulo e botao de ver detalhes da sessçao hero section*/
 .hero-slide {
-    min-height: clamp(320px, 60vh, 530px);
+    height: clamp(250px, 60vh, 530px);
     background-size: cover;
-    background-position: center right;
+    background-position: center;
     position: relative;
 }
 
-/* Garante que o conteúdo fique acima do overlay */
 .hero-slide .container {
     position: relative;
     z-index: 1;
-    min-height: 500px;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
+/* Imagens de fundo */
+.hero-1 {
+    background-image: url("../img/banner/banner-1.png");
+}
+
+.hero-2 {
+    background-image: url("../img/banner/banner-2.png");
+}
+
+.hero-3 {
+    background-image: url("../img/banner/banner-3.png");
+}
+
+.hero-4 {
+    background-image: url("../img/banner/banner-4.png");
+}
+
+/* Indicadores */
+#hero-carousel .carousel-indicators button {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.4;
+    border: none;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
+
+#hero-carousel .carousel-indicators button.active {
+    opacity: 1;
+    background-color: var(--cor-destaque);
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 992px) {
+    .hero-slide {
+        height: 55vh;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .hero-slide {
+        height: 50vh;
+        /* máximo metade da tela */
+    }
+
+    .hero-slide .container {
+        padding: 20px;
+    }
+
+    .lead {
+        font-size: 0.9rem;
+    }
+
+    .btn-custom-outline {
+        width: 140px;
+        height: 38px;
+        font-size: 0.85rem;
+    }
+}
 
 /* Imagens de cada slide */
 .hero-1 {
@@ -556,7 +619,8 @@ footer {
 .carousel-control-prev,
 .carousel-control-next {
     opacity: 1;
-    width: 5%; /* controla o quanto entra no card */
+    width: 5%;
+    /* controla o quanto entra no card */
     top: 50%;
     transform: translateY(-50%);
 }
@@ -640,11 +704,11 @@ footer {
     width: 100%;
 }
 
-.img-card{
+.img-card {
     position: relative;
 }
 
-.card div span{
+.card div span {
     position: absolute;
     background-color: var(--fundo-secundario);
     padding: .6em 1em;
@@ -720,7 +784,6 @@ footer {
     width: 2em;
     height: 2em;
 }
-
 
 /* ================================================================================================================== */
 
@@ -813,7 +876,7 @@ footer {
 }
 
 .title-card-modalitys:hover {
-   font-size: clamp(1.2rem, 4vw, 1.7rem);
+    font-size: clamp(1.2rem, 4vw, 1.7rem);
 }
 
 .container-list-cards-modalitys {
@@ -954,15 +1017,18 @@ footer {
     }
 
     .carousel-control-prev {
-        left: 25px; /* controla exatamente */
+        left: 25px;
+        /* controla exatamente */
         transform: translateY(-50%);
     }
 
+    /* Reposiciona o botão próximo do carousel para dentro da tela */
     .carousel-control-next {
         right: 25px;
         transform: translateY(-50%);
     }
 }
+
 
 
 /* MEDIA QUERIES DA HERO (ELIAS)*/
@@ -988,15 +1054,23 @@ footer {
         margin-bottom: 50px;
     }
 
+    /* Reposiciona o botão anterior do carousel para dentro da tela */
     .carousel-control-prev {
-        left: 25px; /* controla exatamente */
+        left: 25px;
         transform: translateY(-50%);
     }
 
+    /* Reposiciona o botão próximo do carousel para dentro da tela */
     .carousel-control-next {
         right: 25px;
         transform: translateY(-50%);
     }
+
+    /* Força a quebra de linha em elementos que utilizam essa classe */
+    .break-line {
+        display: block;
+    }
+
 
 }
 
@@ -1047,7 +1121,7 @@ footer {
 
     /* Reposiciona o botão anterior do carousel para dentro da tela no mobile */
     .carousel-control-prev {
-        left: 25px; 
+        left: 25px;
         transform: translateY(-50%);
     }
 
@@ -1059,3 +1133,16 @@ footer {
 
 }
 
+/* Em telas menores que 992px, ajusta levemente a posição horizontal da imagem de fundo do hero */
+@media (max-width: 992px) {
+    .hero-slide {
+        background-position: 50% center;
+    }
+}
+
+/* Em telas menores que 768px (mobile), desloca mais a imagem de fundo para melhor enquadramento */
+@media (max-width: 768px) {
+    .hero-slide {
+        background-position: 65% center;
+    }
+}
