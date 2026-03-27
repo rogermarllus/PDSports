@@ -33,7 +33,7 @@ export function addToCart(product) {
             modality: product.modality,
             price: Number(product.price),
             quantity: 1,
-            imageName: product.imageName || "product-placeholder.png"
+            imageName: product.imageName || "product-placeholder.avif"
         });
     }
 
