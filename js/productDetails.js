@@ -107,7 +107,7 @@ function renderProduct(product) {
         img.src = getImagePath(product);
         img.alt = product.name;
         // Fallback para erro de imagem
-        img.onerror = () => { img.src = "/img/products/product-placeholder.png"; };
+        img.onerror = () => { img.src = "/img/products/product-placeholder.avif"; };
     }
 
     // Renderização de Variações (Tamanhos)
