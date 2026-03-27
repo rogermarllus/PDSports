@@ -8,7 +8,7 @@ const MODALITIES = [
     "Artes Marciais", "Skate", "Surf", "Yoga", "Caminhada",
 ];
 
-const DEFAULT_IMAGE = "product-placeholder.png";
+const DEFAULT_IMAGE = "product-placeholder.avif";
 
 export function isMobile() {
     return window.innerWidth < MOBILE_BREAKPOINT;

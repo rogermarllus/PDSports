@@ -1,121 +1,123 @@
-// Máscara input CEP
-
-const inputCEP = document.getElementById("input-calc-freight-product");
-
-inputCEP.addEventListener("input", (e) => {
-    let value = e.target.value;
-
-    let number = value.replace(/\D/g, '');
-
-    let result = "";
-
-    if (number.length > 0) {
-        result += number.substring(0, 5);
-
-        if (number.length > 5) {
-            result += '-' + number.substring(5, 10);
-        }
-    }
-
-    e.target.value = result;
-})
+// ============================================================
+//  cart.js  —  módulo ES  (usado por cart.html e productDetails)
+// ============================================================
 
 const STORAGE_KEY = "cart";
 
-const cart = {
-    items: []
+// ── helpers de persistência ──────────────────────────────────
+
+export function loadItems() {
+    try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    } catch {
+        return [];
+    }
 }
 
-function saveCart() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart.items));
+function saveItems(items) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
 }
 
-function loadCart() {
-    const data = localStorage.getItem(STORAGE_KEY);
+// ── operações do carrinho ────────────────────────────────────
 
-    cart = data ? JSON.parse(data) : { item: [] };
-}
+export function addToCart(product) {
+    const items = loadItems();
+    const existing = items.find(i => i.id === product.id);
 
-function addToCart(product) {
-    const existItem = cart.items.find(item => item.id === product.id);
-
-    if (existItem) {
-        existItem.quantity++;
-        saveCart();
-        return existItem;
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        items.push({
+            id: product.id,
+            name: product.name,
+            modality: product.modality,
+            price: Number(product.price),
+            quantity: 1,
+            imageName: product.imageName || "product-placeholder.avif"
+        });
     }
 
-    const newItem = {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: product.quantity,
-        image: product.image || "product-placeholder.png"
-    };
-
-    cart.items.push(newItem);
-    return newItem;
+    saveItems(items);
 }
 
-function removeFromCart(productId) {
-    const removedItem = cart.items.find(item => item.id === productId);
-
-    if (!removedItem) return null;
-
-    cart.items = cart.items.filter(item => item.id !== productId);
-    saveCart();
-
-    return removedItem;
+export function removeFromCart(productId) {
+    const items = loadItems().filter(i => String(i.id) !== String(productId));
+    saveItems(items);
 }
 
-function incrementItem(productId) {
-    const item = cart.items.find(item => item.id === productId);
+export function incrementItem(productId) {
+    const items = loadItems();
+    const item = items.find(i => String(i.id) === String(productId));
+    if (item) { item.quantity += 1; saveItems(items); }
+}
 
-    if (!item) {
-        return null;
+export function decrementItem(productId) {
+    const items = loadItems();
+    const item = items.find(i => String(i.id) === String(productId));
+    if (!item) return;
+
+    if (item.quantity <= 1) {
+        saveItems(items.filter(i => String(i.id) !== String(productId)));
+    } else {
+        item.quantity -= 1;
+        saveItems(items);
+    }
+}
+
+export function calculateSubtotal(items) {
+    return items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+}
+
+export function totalQuantity(items) {
+    return items.reduce((sum, i) => sum + i.quantity, 0);
+}
+
+// ── formatação ───────────────────────────────────────────────
+
+export function formatBRL(value) {
+    return Number(value).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+// ── frete ────────────────────────────────────────────────────
+
+export async function calcularFrete(cep) {
+    const res = await fetch("/api/frete", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ cep })
+    });
+
+    let text;
+    try {
+        text = await res.text();
+    } catch {
+        throw new Error("Erro ao ler resposta do servidor");
     }
 
-    item.quantity++;
-    saveCart();
-    return item;
-}
-
-function decrementItem(productId) {
-    const item = cart.items.find(item => item.id === productId);
-
-    if (!item) {
-        return null;
+    if (!text || text.trim() === "") {
+        throw new Error("Resposta vazia do servidor");
     }
 
-    if (item.quantity === 1) {
-        removeFromCart(productId);
-        return null;
+    let data;
+    try {
+        data = JSON.parse(text);
+    } catch {
+        console.error("Resposta inválida:", text);
+        throw new Error("Resposta inválida do servidor");
     }
 
-    item.quantity--;
-    saveCart();
-    return item;
-}
-
-function updateQuantity(productId, newQuantity) {
-    const item = cart.items.find(item => item.id === productId);
-
-    if (!item) return null;
-
-    if (newQuantity <= 0) {
-        removeFromCart(productId);
+    if (!res.ok) {
+        throw new Error(data.erro || "Erro ao calcular frete");
     }
 
-    item.quantity = newQuantity;
-    saveCart();
+    if (!Array.isArray(data)) {
+        throw new Error("Formato inesperado da resposta");
+    }
 
-    return item;
+    return data;
 }
-
-function calculateTotal() {
-    return cart.items.reduce((total, item) => {
-        return total + item.price * item.quantity;
-    }, 0);
-}
-
-loadCart();
