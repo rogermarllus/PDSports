@@ -1,0 +1,181 @@
+input.fv-invalid,
+textarea.fv-invalid,
+select.fv-invalid {
+  border: 1.5px solid #DC2626 !important;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.18) !important;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Label vira vermelha via classe no container-input */
+.container-input.fv-invalid .subtitle-input,
+.container-input.fv-invalid label {
+  color: #DC2626;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.container-input.fv-invalid {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+input.fv-valid,
+textarea.fv-valid,
+select.fv-valid {
+  border: 1.5px solid #22C55E !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15) !important;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container-input.fv-valid .subtitle-input,
+.container-input.fv-valid label {
+  color: #22C55E;
+  transition: color 0.3s ease;
+}
+
+.container-input.fv-valid {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.error {
+  margin: 3px 0 0;
+  color: #DC2626;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-family: var(--fonte-montserrat, "Montserrat", sans-serif);
+  min-height: 18px;
+  transition: opacity 0.3s ease;
+  line-height: 1.3;
+}
+
+/* Mensagem de sucesso (newsletter) */
+.error.fv-success-msg {
+  color: #22C55E;
+  text-shadow: none;
+}
+
+.fv-icon-alert,
+.fv-icon-check {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+}
+
+.fv-icon-alert {
+  color: #DC2626;
+}
+
+.fv-icon-check {
+  color: #22C55E;
+}
+
+/* Inputs com classe .invalid (padrão antigo) */
+.input-name.invalid,
+.input-email.invalid,
+.input-phone.invalid,
+.input-date-of-birth.invalid,
+.input-password.invalid,
+.input-confirm-password.invalid,
+input.invalid {
+  border: 1.5px solid #DC2626 !important;
+}
+
+/* Inputs com classe .valid (padrão antigo) */
+.input-name.valid,
+.input-email.valid,
+.input-phone.valid,
+.input-date-of-birth.valid,
+.input-password.valid,
+.input-confirm-password.valid,
+input.valid {
+  border: 1.5px solid #22C55E !important;
+}
+
+/* Container-input legacy: nunca recebe borda, apenas muda a cor da label */
+.container-input.invalid,
+.container-input.valid {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Labels dentro de .container-input com classes legacy */
+.container-input.invalid .subtitle-input,
+.container-input.invalid label {
+  color: #DC2626;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.container-input.valid .subtitle-input,
+.container-input.valid label {
+  color: #22C55E;
+}
+
+/* Container de campo do formulário de produto */
+.product-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.product-field-group label {
+  font-family: var(--fonte-montserrat, "Montserrat", sans-serif);
+  font-size: 13px;
+  color: var(--cor-branca, #fff);
+  font-weight: 500;
+}
+
+/* O wrapper criado dinamicamente pelo JS precisa de display flex
+   para alinhar o input e a mensagem de erro */
+.newsletter-section .container-input {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.newsletter-section .error {
+  font-size: 11px;
+  margin-top: 4px;
+  text-shadow: none;
+  color: #f87171; /* versão mais clara para fundo escuro da newsletter */
+}
+
+.newsletter-section .error.fv-success-msg {
+  color: #86efac;
+}
+
+#form-password-reset .container-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#form-password-reset .error {
+  font-size: 12px;
+}
+
+.modal-form-content .container-input,
+.modal-form-content .product-field-group {
+  margin-bottom: 12px;
+}
+
+.modal-form-content .error {
+  font-size: 11px;
+}
+
+@media (max-width: 576px) {
+  .error {
+    font-size: 10px;
+  }
+
+  .fv-icon-alert,
+  .fv-icon-check {
+    width: 12px;
+    height: 12px;
+  }
+}
