@@ -118,7 +118,7 @@ function buildItemHTML(item) {
                 <img src="${imgSrc}"
                      alt="${escapeHTML(item.name)}"
                      id="img-product-cart"
-                     onerror="this.src='/img/products/product-placeholder.png'">
+                     onerror="this.src='/img/products/product-placeholder.avif'">
                 <figcaption>produto do carrinho</figcaption>
             </figure>
 
