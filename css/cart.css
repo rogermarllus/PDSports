@@ -519,6 +519,11 @@ main {
     }
 }
 
+@media screen and (max-width: 768px) {
+    #container-buy-cart {
+        border-radius: 0px;
+    }
+}
 
 /* MODAL DE PAGAMENTO */
 

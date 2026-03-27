@@ -39,8 +39,8 @@
                     <a href="/pages/cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
                         <i data-lucide="handbag" class="icon-lg"></i>
                     </a>
-                    <a id="user-link" href="/pages/login.html" class="text-white p-2 rounded d-flex align-items-center gap-2"
-                        aria-label="Perfil">
+                    <a id="user-link" href="/pages/login.html"
+                        class="text-white p-2 rounded d-flex align-items-center gap-2" aria-label="Perfil">
                         <i id="user-icon" data-lucide="user" class="icon-lg"></i>
                         <span id="user-name" class="d-none"></span>
                     </a>
@@ -102,7 +102,8 @@
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Ciclismo">Ciclismo</a></li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Natação">Natação</a></li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Tênis">Tênis</a></li>
-                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Artes Marciais">Artes marciais</a>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Artes Marciais">Artes
+                                marciais</a>
                         </li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Skate">Skate</a></li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Surf">Surf</a></li>
@@ -112,11 +113,16 @@
                 </div>
 
                 <ul class="list-unstyled mb-0 list-second-options">
-                    <li><a href="/pages/modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a></li>
-                    <li><a href="/pages/modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a></li>
-                    <li><a href="/pages/modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a></li>
-                    <li><a href="/pages/modality.html?modality=Musculação" class="menu-link link-underline">Musculação</a></li>
-                    <li><a href="/pages/modality.html?modality=Natação" class="menu-link link-underline">Natação</a></li>
+                    <li><a href="/pages/modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a>
+                    </li>
+                    <li><a href="/pages/modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a>
+                    </li>
+                    <li><a href="/pages/modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a>
+                    </li>
+                    <li><a href="/pages/modality.html?modality=Musculação"
+                            class="menu-link link-underline">Musculação</a></li>
+                    <li><a href="/pages/modality.html?modality=Natação" class="menu-link link-underline">Natação</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -154,7 +160,8 @@
                     <header class="text-white col-12 col-md-8 col-lg-6">
                         <h1 class="display-5 title-banner">PREDATOR ELITE</h1>
                         <p class="lead">Nível avançado, superfície de campo, feita para controle.</p>
-                        <a href="/pages/searchResult.html?query=Chuteira" class="btn btn-custom-outline rounded-pill px-4">
+                        <a href="/pages/searchResult.html?query=Chuteira"
+                            class="btn btn-custom-outline rounded-pill px-4">
                             Ver Mais
                         </a>
                     </header>
@@ -182,7 +189,8 @@
                     <header class="text-white col-12 col-md-8 col-lg-6">
                         <h1 class="display-5 title-banner">CAMISA <br> ORIGINALS <br> BRASIL COB</h1>
                         <p class="lead">Celebrando o esporte brasileiro.</p>
-                        <a href="/pages/searchResult.html?query=Camiseta" class="btn btn-custom-outline rounded-pill px-4">
+                        <a href="/pages/searchResult.html?query=Camiseta"
+                            class="btn btn-custom-outline rounded-pill px-4">
                             Ver Mais
                         </a>
                     </header>
@@ -232,112 +240,231 @@
         </section>
 
         <section class="container">
-            <h2 class="title-section-offers">MELHORES OFERTAS DO DIA</h2>
-            <div id="carouselOfertas" class="carousel slide carrousel-best-offers" data-bs-ride="carousel">
+            <header>
+                <h2 class="title-section-offers">MELHORES OFERTAS DO DIA</h2>
+            </header>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertas"
-                    data-bs-slide="prev">
-                    <span class="custom-arrow "><i data-lucide="ChevronLeft" class="icon-best-offers"></i></span>
-                </button>
+            <!-- ================= MOBILE ================= -->
+            <section class="d-md-none" aria-label="Ofertas mobile">
+                <div id="carouselOfertasMobile" class="carousel slide carrousel-best-offers" data-bs-ride="carousel">
 
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertas"
-                    data-bs-slide="next">
-                    <span class="custom-arrow "><i data-lucide="ChevronRight" class="icon-best-offers"></i></span>
-                </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertasMobile"
+                        data-bs-slide="prev" aria-label="Oferta anterior">
+                        <span class="custom-arrow"><i data-lucide="ChevronLeft" class="icon-best-offers"></i></span>
+                    </button>
 
-                <div class="carousel-inner">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertasMobile"
+                        data-bs-slide="next" aria-label="Próxima oferta">
+                        <span class="custom-arrow"><i data-lucide="ChevronRight" class="icon-best-offers"></i></span>
+                    </button>
 
-                    <div class="carousel-item active">
-                        <div class="px-0">
-                            <div class="row g-4 teste">
+                    <div class="carousel-inner">
 
-                                <article class="col-12 col-md-6 container-card-best-offers">
-                                    <div
-                                        class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
-                                        <div class="bg-secondary card-1-offers">
+                        <div class="carousel-item active">
+                            <article class="container-card-best-offers">
+                                <figure
+                                    class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                    <div class="bg-secondary card-1-offers"></div>
 
-                                        </div>
+                                    <figcaption
+                                        class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                        <header>
+                                            <h3>Tênis Addidas Terrex Feminino</h3>
+                                            <p class="fw-bold value-card-best-offers">R$ 479,90</p>
+                                        </header>
 
-                                        <div
-                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
-                                            <div>
-                                                <h2>Tênis Addidas Terrex Feminino</h2>
-                                                <h3 class="fw-bold value-card-best-offers">R$ 479,90</h3>
-                                            </div>
-                                            <a href="/pages/productDetails.html?id=176" class="btn btn-card-best-offers rounded-pill px-4">
-                                                Ver detalhes
-                                            </a>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="col-md-6 d-none d-md-block container-card-best-offers">
-                                    <div
-                                        class="text-white border-0 position-relative overflow-hidden p-0 container-card-best-offers-child">
-                                        <div class="bg-secondary card-2-offers"></div>
-
-                                        <div
-                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
-                                            <div>
-                                                <h2>Tênis Terrex Trailrunner</h2>
-                                                <h3 class="fw-bold value-card-best-offers">R$ 479,90</h3>
-                                            </div>
-                                            <a href="/pages/productDetails.html?id=177" class="btn btn-card-best-offers rounded-pill px-4">
-                                                Ver detalhes
-                                            </a>
-                                        </div>
-                                    </div>
-                                </article>
-
-                            </div>
+                                        <a href="/pages/productDetails.html?id=176"
+                                            class="btn btn-card-best-offers rounded-pill px-4">
+                                            Ver detalhes
+                                        </a>
+                                    </figcaption>
+                                </figure>
+                            </article>
                         </div>
-                    </div>
 
-                    <div class="carousel-item">
-                        <div class="px-0">
-                            <div class="row g-4">
+                        <div class="carousel-item">
+                            <article class="container-card-best-offers">
+                                <figure
+                                    class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                    <div class="bg-secondary card-2-offers"></div>
 
-                                <article class="col-12 col-md-6 container-card-best-offers">
-                                    <div
-                                        class="text-white border-0  position-relative overflow-hidden p-0 container-card-best-offers-child">
-                                        <div class="bg-secondary card-3-offers"></div>
+                                    <figcaption
+                                        class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                        <header>
+                                            <h3>Tênis Terrex Trailrunner</h3>
+                                            <p class="fw-bold value-card-best-offers">R$ 479,90</p>
+                                        </header>
 
-                                        <div
-                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
-                                            <div>
-                                                <h2>Boné Running Mesh</h2>
-                                                <h3 class="fw-bold value-card-best-offers">R$ 250,00</h3>
-                                            </div>
-                                            <a href="/pages/productDetails.html?id=73" class="btn btn-card-best-offers rounded-pill px-4">
-                                                Ver detalhes
-                                            </a>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="col-md-6 d-none d-md-block container-card-best-offers">
-                                    <div
-                                        class="text-white border-0 position-relative overflow-hidden p-0 container-card-best-offers-child">
-                                        <div class="bg-secondary card-4-offers"></div>
-
-                                        <div
-                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
-                                            <div>
-                                                <h2>Bandagem Outshock</h2>
-                                                <h3 class="fw-bold value-card-best-offers">R$ 120,00</h3>
-                                            </div>
-                                            <a href="/pages/productDetails.html?id=62" class="btn btn-card-best-offers rounded-pill px-4">
-                                                Ver detalhes
-                                            </a>
-                                        </div>
-                                    </div>
-                                </article>
-
-                            </div>
+                                        <a href="/pages/productDetails.html?id=177"
+                                            class="btn btn-card-best-offers rounded-pill px-4">
+                                            Ver detalhes
+                                        </a>
+                                    </figcaption>
+                                </figure>
+                            </article>
                         </div>
+
+                        <div class="carousel-item">
+                            <article class="container-card-best-offers">
+                                <figure
+                                    class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                    <div class="bg-secondary card-3-offers"></div>
+
+                                    <figcaption
+                                        class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                        <header>
+                                            <h3>Boné Running Mesh</h3>
+                                            <p class="fw-bold value-card-best-offers">R$ 250,00</p>
+                                        </header>
+
+                                        <a href="/pages/productDetails.html?id=73"
+                                            class="btn btn-card-best-offers rounded-pill px-4">
+                                            Ver detalhes
+                                        </a>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                        </div>
+
+                        <div class="carousel-item">
+                            <article class="container-card-best-offers">
+                                <figure
+                                    class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                    <div class="bg-secondary card-4-offers"></div>
+
+                                    <figcaption
+                                        class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                        <header>
+                                            <h3>Bandagem Outshock</h3>
+                                            <p class="fw-bold value-card-best-offers">R$ 120,00</p>
+                                        </header>
+
+                                        <a href="/pages/productDetails.html?id=62"
+                                            class="btn btn-card-best-offers rounded-pill px-4">
+                                            Ver detalhes
+                                        </a>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- ================= DESKTOP ================= -->
+            <section class="d-none d-md-block" aria-label="Ofertas desktop">
+                <div id="carouselOfertasDesktop" class="carousel slide carrousel-best-offers" data-bs-ride="carousel">
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertasDesktop"
+                        data-bs-slide="prev" aria-label="Oferta anterior">
+                        <span class="custom-arrow"><i data-lucide="ChevronLeft" class="icon-best-offers"></i></span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertasDesktop"
+                        data-bs-slide="next" aria-label="Próxima oferta">
+                        <span class="custom-arrow"><i data-lucide="ChevronRight" class="icon-best-offers"></i></span>
+                    </button>
+
+                    <div class="carousel-inner ">
+
+
+                        <div class="carousel-item active">
+
+                            <div class="row g-4">
+
+                                <article class="col-md-6 container-card-best-offers">
+                                    <figure
+                                        class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                        <div class="bg-secondary card-1-offers"></div>
+
+                                        <figcaption
+                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                            <header>
+                                                <h3>Tênis Addidas Terrex Feminino</h3>
+                                                <p class="fw-bold value-card-best-offers">R$ 479,90</p>
+                                            </header>
+
+                                            <a href="/pages/productDetails.html?id=176"
+                                                class="btn btn-card-best-offers rounded-pill px-4">
+                                                Ver detalhes
+                                            </a>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+
+                                <article class="col-md-6 container-card-best-offers">
+                                    <figure
+                                        class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                        <div class="bg-secondary card-2-offers"></div>
+
+                                        <figcaption
+                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                            <header>
+                                                <h3>Tênis Terrex Trailrunner</h3>
+                                                <p class="fw-bold value-card-best-offers">R$ 479,90</p>
+                                            </header>
+
+                                            <a href="/pages/productDetails.html?id=177"
+                                                class="btn btn-card-best-offers rounded-pill px-4">
+                                                Ver detalhes
+                                            </a>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row g-4">
+
+                                <article class="col-md-6 container-card-best-offers">
+                                    <figure
+                                        class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                        <div class="bg-secondary card-3-offers"></div>
+
+                                        <figcaption
+                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                            <header>
+                                                <h3>Boné Running Mesh</h3>
+                                                <p class="fw-bold value-card-best-offers">R$ 250,00</p>
+                                            </header>
+
+                                            <a href="/pages/productDetails.html?id=73"
+                                                class="btn btn-card-best-offers rounded-pill px-4">
+                                                Ver detalhes
+                                            </a>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+
+                                <article class="col-md-6 container-card-best-offers">
+                                    <figure
+                                        class="text-white position-relative overflow-hidden p-0 container-card-best-offers-child">
+                                        <div class="bg-secondary card-4-offers"></div>
+
+                                        <figcaption
+                                            class="txt-card-best-offers position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between align-items-center text-center">
+                                            <header>
+                                                <h3>Bandagem Outshock</h3>
+                                                <p class="fw-bold value-card-best-offers">R$ 120,00</p>
+                                            </header>
+
+                                            <a href="/pages/productDetails.html?id=62"
+                                                class="btn btn-card-best-offers rounded-pill px-4">
+                                                Ver detalhes
+                                            </a>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
         </section>
         <section class="container section-modalitys">
             <header>
@@ -346,7 +473,6 @@
 
             <div class="container-list-cards-modalitys">
 
-                <!-- BOTÃO PREV -->
                 <button id="prevBtn" aria-label="Anterior">
                     <i data-lucide="ChevronLeft"></i>
                 </button>
