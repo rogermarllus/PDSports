@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/productList.css">
     <link rel="stylesheet" href="/css/productForm.css">
-    
+    <link rel="stylesheet" href="/css/formValidation.css">
+
     <!-- Scripts de ícones -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -41,8 +42,8 @@
                     <a href="/pages/cart.html" class="text-white p-2 rounded" aria-label="Carrinho">
                         <i data-lucide="handbag" class="icon-lg"></i>
                     </a>
-                    <a id="user-link" href="/pages/login.html" class="text-white p-2 rounded d-flex align-items-center gap-2"
-                        aria-label="Perfil">
+                    <a id="user-link" href="/pages/login.html"
+                        class="text-white p-2 rounded d-flex align-items-center gap-2" aria-label="Perfil">
                         <i id="user-icon" data-lucide="user" class="icon-lg"></i>
                         <span id="user-name" class="d-none"></span>
                     </a>
@@ -104,7 +105,8 @@
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Ciclismo">Ciclismo</a></li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Natação">Natação</a></li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Tênis">Tênis</a></li>
-                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Artes Marciais">Artes marciais</a>
+                        <li><a class="dropdown-item" href="/pages/modality.html?modality=Artes Marciais">Artes
+                                marciais</a>
                         </li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Skate">Skate</a></li>
                         <li><a class="dropdown-item" href="/pages/modality.html?modality=Surf">Surf</a></li>
@@ -114,11 +116,16 @@
                 </div>
 
                 <ul class="list-unstyled mb-0 list-second-options">
-                    <li><a href="/pages/modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a></li>
-                    <li><a href="/pages/modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a></li>
-                    <li><a href="/pages/modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a></li>
-                    <li><a href="/pages/modality.html?modality=Musculação" class="menu-link link-underline">Musculação</a></li>
-                    <li><a href="/pages/modality.html?modality=Natação" class="menu-link link-underline">Natação</a></li>
+                    <li><a href="/pages/modality.html?modality=Futebol" class="menu-link link-underline">Futebol</a>
+                    </li>
+                    <li><a href="/pages/modality.html?modality=Basquete" class="menu-link link-underline">Basquete</a>
+                    </li>
+                    <li><a href="/pages/modality.html?modality=Corrida" class="menu-link link-underline">Corrida</a>
+                    </li>
+                    <li><a href="/pages/modality.html?modality=Musculação"
+                            class="menu-link link-underline">Musculação</a></li>
+                    <li><a href="/pages/modality.html?modality=Natação" class="menu-link link-underline">Natação</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -234,6 +241,7 @@
     </script>
     <script type="module">
         import { initProductFormModal, openCreateModal, openEditModal, isMobile } from "/js/productForm.js";
+        import { initProductForm } from "/js/formValidation.js";
 
         window.openEditModal = openEditModal;
         window.openCreateModal = openCreateModal;
@@ -249,6 +257,11 @@
                     window.location.href = "productCreate.html";
                 } else {
                     openCreateModal();
+                    setTimeout(() => {
+                        const modalScope = document.querySelector(".modal-form-content");
+                        const saveBtn = document.querySelector(".modal-form-box .btn-save");
+                        if (modalScope) initProductForm(modalScope, null, saveBtn);
+                    }, 100);
                 }
             });
         });
