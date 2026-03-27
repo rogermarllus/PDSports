@@ -45,8 +45,11 @@ function createProductCard(product) {
   return `
     <div class="col">
       <article class="card" onclick="window.location.href='/pages/productDetails.html?id=${product.id}'">
-        <img src="${getImagePath(product)}" alt="${product.name}">
-        <h3>${product.name}</h3>
+        <div class="img-card">
+          <img src="${getImagePath(product)}" alt="${product.name}" onerror="this.onerror=null;this.src='/img/products/product-placeholder.avif';">
+          <span>EM OFERTA</span>
+        </div>
+          <h3>${product.name}</h3>
         <div>
           <p>R$ ${Number(product.price).toFixed(2)}</p>
           <button aria-label="Adicionar ao carrinho">
