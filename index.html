@@ -13,12 +13,17 @@
 
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/formValidation.css">
 
     <!-- Scripts de ícones -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
+    <script type="module">
+        import { initNewsletterForm } from '/js/formValidation.js';
+        document.addEventListener('DOMContentLoaded', () => initNewsletterForm());
+    </script>
     <header>
         <!-- ===================== DESKTOP NAV ===================== -->
         <nav class="navbar navigation-bar d-none d-md-flex" aria-label="Navegação principal">
@@ -663,7 +668,7 @@
                     <div class="col-12 col-lg-6">
                         <form class="d-flex flex-column flex-sm-row gap-3">
                             <input type="email" class="form-control" placeholder="Digite seu email">
-                            <button type="submit" class="btn btn-news-letter">
+                            <button type="submit" class="botao btn-news-letter">
                                 Cadastrar
                             </button>
                         </form>

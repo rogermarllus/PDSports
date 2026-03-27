@@ -880,13 +880,7 @@ footer {
 
 /* Define o estilo do botão da newsletter com cor de destaque e bordas arredondadas */
 .btn-news-letter {
-    background-color: var(--cor-destaque);
-    border-radius: 30px;
-}
-
-.btn-news-letter:hover {
-    background-color: #b6dd06;
-    color: black;
+    max-height: 50px;
 }
 
 /* Ajusta o campo de formulário com bordas arredondadas e espaçamento interno para melhor usabilidade */
