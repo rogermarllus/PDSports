@@ -26,6 +26,50 @@ a {
     text-decoration: none;
 }
 
+.error {
+    margin: 0;
+    color: #DC2626;
+    text-shadow: 0px 0px 4px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: .3s ease;
+    font-size: 12px;
+}
+
+.icon-alert {
+    width: 18px;
+    height: 18px;
+}
+
+.container-input.invalid .subtitle-input {
+    color: #DC2626;
+    text-shadow: 0px 0px 4px #000000;
+}
+
+.input-name.invalid,
+.input-email.invalid,
+.input-phone.invalid,
+.input-date-of-birth.invalid,
+.input-password.invalid,
+.input-confirm-password.invalid {
+    border: 1px solid #DC2626;
+}
+
+.container-input.valid .subtitle-input {
+    color: #22C55E;
+}
+
+.input-name.valid,
+.input-email.valid,
+.input-phone.valid,
+.input-date-of-birth.valid,
+.input-password.valid,
+.input-confirm-password.valid {
+    border: 1px solid #22C55E;
+}
+
 #card-register {
     width: 58vw;
     max-width: 849px;
@@ -482,6 +526,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         transition: .3s ease;
     }
 
+    .input-password,
+    .input-confirm-password {
+        font-size: 8px;
+    }
+
+    .input-date-of-birth {
+        font-size: 12px;
+    }
+
     #icon-calendar-days {
         position: absolute;
         right: 12px;
@@ -584,6 +637,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media(max-width: 576px) {
+    .error {
+        margin: 0;
+        color: #DC2626;
+        text-shadow: 0px 0px 4px #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        transition: .3s ease;
+        font-size: 10px;
+    }
+
+    .icon-alert {
+        width: 18px;
+        height: 18px;
     }
 }
 

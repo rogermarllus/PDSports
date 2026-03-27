@@ -18,10 +18,68 @@ figcaption {
     display: none;
 }
 
+.error {
+    margin: 0;
+    color: #DC2626;
+    text-shadow: 0px 0px 4px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: .3s ease;
+    font-size: 12px;
+}
+
+.icon-alert {
+    width: 18px;
+    height: 18px;
+}
+
+.container-input.invalid .subtitle-input {
+    color: #DC2626;
+    text-shadow: 0px 0px 4px #000000;
+}
+
+.input-email.invalid,
+.input-password.invalid {
+    border: 1px solid #DC2626;
+}
+
+.container-input.valid .subtitle-input {
+    color: #22C55E;
+}
+
+.input-email.valid,
+.input-password.valid {
+    border: 1px solid #22C55E;
+}
+
+#container-input-password {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.fa-eye-slash {
+    position: absolute;
+    right: 19px;
+    color: var(--cor-branca);
+    cursor: pointer;
+}
+
+.fa-eye {
+    position: absolute;
+    right: 19px;
+    color: var(--cor-branca);
+    cursor: pointer;
+}
+
 #card-login {
     width: 37vw;
     max-width: 555px;
-    height: 100%;
+    height: 93vh;
+    max-height: 720px;
     padding: 32px;
     margin-left: clamp(132px, 16.11vw, 232px);
     background: rgba(30, 30, 30, .5);
@@ -40,6 +98,8 @@ figcaption {
 #img-logo-pd-sports {
     width: 27.91vw;
     max-width: 402px;
+    height: 7.5vh;
+    max-height: 77px;
     object-fit: contain;
 }
 
@@ -54,6 +114,7 @@ figcaption {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    gap: 0;
 }
 
 .subtitle-input {
@@ -95,7 +156,7 @@ figcaption {
     font-family: var(--fonte-montserrat);
     font-size: 16px;
     color: var(--cor-destaque);
-    padding-top: 20px;
+    padding-top: 5px;
     margin: 0;
 }
 
@@ -159,7 +220,6 @@ figcaption {
     font-family: var(--fonte-montserrat);
     font-size: 14px;
     color: var(--cor-branca);
-    margin: 0;
 }
 
 #link-signup {
@@ -188,9 +248,9 @@ figcaption {
         height: 100%;
         padding: 32px;
         margin: 0 auto;
+
         background: rgba(30, 30, 30, .5);
         opacity: 1;
-        gap: 12px;
 
         display: flex;
         flex-direction: column;
@@ -205,6 +265,8 @@ figcaption {
     #img-logo-pd-sports {
         width: 222px;
         max-width: 222px;
+        height: 43px;
+        max-height: 43px;
         object-fit: contain;
     }
 }
@@ -231,15 +293,6 @@ figcaption {
         border-radius: 8px;
         color: var(--cor-branca);
         transition: .3s ease;
-    }
-}
-
-@media(max-width: 600px) {
-    #recovery-password {
-        font-family: var(--fonte-montserrat);
-        font-size: 16px;
-        color: var(--cor-destaque);
-        padding-top: 10px;
     }
 }
 
