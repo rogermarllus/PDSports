@@ -1,15 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   formValidation.css — PD Sports
-   Estilos centralizados de validação de formulários.
-   Substitui os blocos de .error / .valid / .invalid que estavam
-   em login.css e register.css.
-═══════════════════════════════════════════════════════════════ */
-
-/* ─────────────────────────────────────────────
-   1. ESTADO DE ERRO — apenas o input, nunca o container
-───────────────────────────────────────────── */
-
-/* Borda vermelha SOMENTE nos elementos de input/textarea/select */
 input.fv-invalid,
 textarea.fv-invalid,
 select.fv-invalid {
@@ -26,15 +14,10 @@ select.fv-invalid {
   transition: color 0.3s ease;
 }
 
-/* Garante que o container-input em si NÃO receba borda */
 .container-input.fv-invalid {
   border: none !important;
   box-shadow: none !important;
 }
-
-/* ─────────────────────────────────────────────
-   2. ESTADO DE SUCESSO — apenas o input, nunca o container
-───────────────────────────────────────────── */
 
 input.fv-valid,
 textarea.fv-valid,
@@ -50,15 +33,10 @@ select.fv-valid {
   transition: color 0.3s ease;
 }
 
-/* Garante que o container-input em si NÃO receba borda */
 .container-input.fv-valid {
   border: none !important;
   box-shadow: none !important;
 }
-
-/* ─────────────────────────────────────────────
-   3. SPAN DE MENSAGEM DE ERRO (.error)
-───────────────────────────────────────────── */
 
 .error {
   margin: 3px 0 0;
@@ -80,10 +58,6 @@ select.fv-valid {
   text-shadow: none;
 }
 
-/* ─────────────────────────────────────────────
-   4. ÍCONES SVG INJETADOS NAS MENSAGENS
-───────────────────────────────────────────── */
-
 .fv-icon-alert,
 .fv-icon-check {
   flex-shrink: 0;
@@ -99,12 +73,6 @@ select.fv-valid {
 .fv-icon-check {
   color: #22C55E;
 }
-
-/* ─────────────────────────────────────────────
-   5. COMPATIBILIDADE COM CLASSES LEGACY
-   (mantém suporte a .valid / .invalid dos arquivos antigos
-    enquanto a migração não estiver 100% concluída)
-───────────────────────────────────────────── */
 
 /* Inputs com classe .invalid (padrão antigo) */
 .input-name.invalid,
@@ -147,10 +115,6 @@ input.valid {
   color: #22C55E;
 }
 
-/* ─────────────────────────────────────────────
-   6. FORMULÁRIO DE PRODUTO (productCreate / productEdit / modal)
-───────────────────────────────────────────── */
-
 /* Container de campo do formulário de produto */
 .product-field-group {
   display: flex;
@@ -165,10 +129,6 @@ input.valid {
   color: var(--cor-branca, #fff);
   font-weight: 500;
 }
-
-/* ─────────────────────────────────────────────
-   7. NEWSLETTER — wrapper de erro inline
-───────────────────────────────────────────── */
 
 /* O wrapper criado dinamicamente pelo JS precisa de display flex
    para alinhar o input e a mensagem de erro */
@@ -189,10 +149,6 @@ input.valid {
   color: #86efac;
 }
 
-/* ─────────────────────────────────────────────
-   8. FORMULÁRIO DE RECUPERAÇÃO DE SENHA
-───────────────────────────────────────────── */
-
 #form-password-reset .container-input {
   display: flex;
   flex-direction: column;
@@ -203,10 +159,6 @@ input.valid {
   font-size: 12px;
 }
 
-/* ─────────────────────────────────────────────
-   9. MODAL DE PRODUTO (productList.html)
-───────────────────────────────────────────── */
-
 .modal-form-content .container-input,
 .modal-form-content .product-field-group {
   margin-bottom: 12px;
@@ -215,10 +167,6 @@ input.valid {
 .modal-form-content .error {
   font-size: 11px;
 }
-
-/* ─────────────────────────────────────────────
-   10. RESPONSIVIDADE
-───────────────────────────────────────────── */
 
 @media (max-width: 576px) {
   .error {
