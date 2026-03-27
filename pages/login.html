@@ -29,15 +29,21 @@
 
             <h2 id="title-login">Entrar</h2>
 
-            <div id="container-input">
-                <label id="subtitle-input">Informe seu email</label>
-                <input type="text" id="input-email" placeholder="emailexemplo@gmail.com">
+            <div class="container-input">
+                <label class="subtitle-input">Seu e-mail</label>
+                <input type="email" class="input-email" placeholder="E-mail">
+                <span class="error"></span>
             </div>
 
             <div id="container-password">
-                <div id="container-input">
-                    <label id="subtitle-input">Informe sua senha</label>
-                    <input type="password" id="input-password" placeholder="Sua senha">
+                <div class="container-input">
+                    <label class="subtitle-input">Crie uma senha</label>
+                    <div id="container-input-password">
+                        <input type="password" class="input-password form-control" placeholder="Senha"
+                            autocomplete="off">
+                        <i class="fa-regular fa-eye-slash password-icon"></i>
+                    </div>
+                    <span class="error"></span>
                 </div>
                 <a href="passwordReset.html">
                     <p id="recovery-password">Esqueci minha senha</p>
@@ -55,6 +61,13 @@
     </form>
 
     <script type="module" src="../js/login.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/form-login.js"></script>
+    <script src="/js/lucide-icons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
