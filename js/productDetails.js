@@ -1,15 +1,9 @@
-// ============================================================
-// productDetails.js — Carregamento Dinâmico e Lógica de Carrinho
-// ============================================================
-
 import { getProductById } from "./products.js";
 import { addToCart } from "./cart.js";
 
-// ── Seleção de Elementos ──────────────────────────────────────
 const btnCarrinho = document.querySelector(".detalhes-produto .botao");
 const feedbackEl = document.createElement("p");
 
-// ── Helper: Tradução de Modalidade para o Caminho da Imagem ──
 function translateModality(modality) {
     if (!modality) return "geral";
 
@@ -42,7 +36,6 @@ function translateModality(modality) {
 
 function getImagePath(product) {
     const modalityEN = translateModality(product.modality);
-    // Ajuste o caminho se necessário (ex: removendo o ../ se estiver na raiz)
     return `../img/products/${modalityEN}/${product.imageName}.avif`;
 }
 
@@ -50,7 +43,6 @@ function formatBRL(value) {
     return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-// ── Lógica Principal ─────────────────────────────────────────
 
 async function init() {
     const params = new URLSearchParams(window.location.search);
@@ -79,15 +71,12 @@ async function init() {
 }
 
 function renderProduct(product) {
-    // Título da Aba
     document.title = `PD Sports | ${product.name}`;
 
-    // Textos Básicos
     document.querySelector(".detalhes-produto h1").textContent = product.name;
     document.querySelector(".produto-preco").textContent = formatBRL(product.price);
     document.querySelector(".descricao-produto p").textContent = product.description;
 
-    // Lista de Info (Modalidade e Disponibilidade)
     const infoDds = document.querySelectorAll(".info-produto dl dd");
     if (infoDds.length >= 2) {
         infoDds[0].textContent = product.modality || "—";
@@ -106,14 +95,11 @@ function renderProduct(product) {
     if (img) {
         img.src = getImagePath(product);
         img.alt = product.name;
-        // Fallback para erro de imagem
         img.onerror = () => { img.src = "/img/products/product-placeholder.avif"; };
     }
 
-    // Renderização de Variações (Tamanhos)
     renderVariations(product, article);
 
-    // Ícones Lucide (se houver)
     if (window.lucide) {
         lucide.createIcons();
     }
@@ -143,22 +129,18 @@ function renderVariations(product, container) {
             btn.addEventListener("click", () => {
                 sizeButtons.forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
-                // Armazena o tamanho selecionado no objeto do produto temporariamente
                 product.selectedSize = btn.textContent;
             });
         });
 
-        // Ativa o primeiro por padrão
         if (sizeButtons.length > 0) sizeButtons[0].click();
     }
 }
 
-// ── Lógica do Carrinho ───────────────────────────────────────
 
 function wireAddToCart(product) {
     if (!btnCarrinho) return;
 
-    // Estilização básica do feedback
     feedbackEl.style.cssText = "margin-top:8px;font-size:.85rem;font-family:var(--fonte-montserrat);font-weight:bold;";
     btnCarrinho.insertAdjacentElement("afterend", feedbackEl);
 
@@ -168,7 +150,6 @@ function wireAddToCart(product) {
             return;
         }
 
-        // Adiciona ao carrinho (passando o produto com o tamanho selecionado se houver)
         addToCart({
             ...product,
             size: product.selectedSize || null
@@ -193,5 +174,4 @@ function showError(msg) {
     }
 }
 
-// Inicializa a página
 init();
