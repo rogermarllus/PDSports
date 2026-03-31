@@ -136,7 +136,20 @@
 
             <header class="cabecalho-lista-produtos">
                 <h2 id="products-list-title">Estoque</h2>
+
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-6">
+                            <form class="d-flex flex-column flex-sm-row gap-3 " id="search-form-products">
+                                <input type="email" id="search-list-products" class="form-control" placeholder="Busque por um produto">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
                 <button class="botao" id="btn-novo-produto">Novo Produto</button>
+
             </header>
 
             <div id="products-list" role="list" aria-live="polite" aria-atomic="true"></div>
