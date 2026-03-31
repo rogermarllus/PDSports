@@ -17,6 +17,7 @@ async function init() {
     showLoading();
     try {
         allProducts = await getAllProducts();
+        sortProducts()
         render();
     } catch (err) {
         showError();
@@ -26,6 +27,9 @@ async function init() {
 
 window.addEventListener("product:saved", async () => {
     allProducts = await getAllProducts();
+
+    sortProducts()
+
     render();
 });
 
@@ -211,4 +215,12 @@ function escapeHTML(str) {
         .replace(/"/g, "&quot;");
 }
 
+// CRIA UMA FUNÇÃO PARA ORDENAR OS ITENS EM ORDEM ALFABÉTICA
+function sortProducts(){
+    allProducts.sort((a, b) => 
+        a.name.localeCompare(b.name, "pt-BR", {sensitivity: "base"})
+    );
+}
+
 init();
+
