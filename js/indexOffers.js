@@ -40,6 +40,10 @@ function getImagePath(product) {
   return `/img/products/${modalityEN}/${product.imageName}.avif`;
 }
 
+function formatBRL(value) {
+    return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
 // Card de produto (igual ao modality.js)
 function createProductCard(product) {
   return `
@@ -51,7 +55,7 @@ function createProductCard(product) {
         </div>
           <h3>${product.name}</h3>
         <div>
-          <p>R$ ${Number(product.price).toFixed(2)}</p>
+          <p>R$  ${formatBRL(product.price)}</p>
           <button aria-label="Adicionar ao carrinho">
             <i data-lucide="handbag" class="icon icon-card"></i>
           </button>
