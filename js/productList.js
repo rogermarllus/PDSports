@@ -6,12 +6,18 @@ let allProducts = [];
 let currentPage = 1;
 let pendingDeleteId = null;
 
+let filterProducts = [];
+let searchTerm = ""
+
+
 const listContainer = document.getElementById("products-list");
 const listTitle = document.getElementById("products-list-title");
 const paginationEl = document.getElementById("pagination");
 const modalDelete = document.getElementById("modal-delete");
 const btnModalCancel = document.getElementById("btn-modal-cancel");
 const btnModalConfirm = document.getElementById("btn-modal-confirm");
+
+const searchListProducts = document.getElementById("search-list-products");
 
 async function init() {
     showLoading();
@@ -34,10 +40,11 @@ window.addEventListener("product:saved", async () => {
 });
 
 function render() {
-    const total = allProducts.length;
+    const source = searchTerm ? filterProducts : allProducts;
+    const total = source.length;
     const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    const slice = allProducts.slice(start, start + ITEMS_PER_PAGE);
+    const slice = source.slice(start, start + ITEMS_PER_PAGE);
 
     listTitle.textContent = `Estoque (${total} Produto${total !== 1 ? "s" : ""})`;
 
@@ -220,6 +227,38 @@ function sortProducts(){
     allProducts.sort((a, b) => 
         a.name.localeCompare(b.name, "pt-BR", {sensitivity: "base"})
     );
+}
+
+
+searchListProducts.addEventListener("input", handleSearch);
+
+// CRIA UMA FUNÇÃO PARA BUSCAR OS PRODUTOS
+function handleSearch(e){
+    searchTerm = e.target.value.toLowerCase().trim();
+
+    applyFilter();
+}
+
+// CRIA UMA FUNÇÃO QUE DECIDE QUAL LISTA SERÁ RENDERIZADA
+function applyFilter(){
+    if(!searchTerm){
+        filterProducts = [...allProducts];
+    }else{
+        filterProducts = allProducts.filter(product =>
+            normalize(product.name).includes(normalize(searchTerm))
+        );
+    }
+
+    currentPage = 1;
+    render();
+}
+
+// CRIA UM FILTRO MELHOR PARA IGNORAR ACENTOS E SIMBOLOS
+function normalize(text) {
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 }
 
 init();
