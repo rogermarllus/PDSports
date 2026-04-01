@@ -313,23 +313,6 @@ a:hover {
     align-items: center;
 }
 
-/* Imagens de fundo */
-.hero-1 {
-    background-image: url("../img/banner/banner-1.png");
-}
-
-.hero-2 {
-    background-image: url("../img/banner/banner-2.png");
-}
-
-.hero-3 {
-    background-image: url("../img/banner/banner-3.png");
-}
-
-.hero-4 {
-    background-image: url("../img/banner/banner-4.png");
-}
-
 /* Indicadores */
 #hero-carousel .carousel-indicators button {
     width: 16px;
