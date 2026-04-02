@@ -81,6 +81,9 @@ function setupCartBadges() {
   window.addEventListener("storage", (e) => {
     if (e.key === CART_KEY) updateBadges();
   });
+
+  // Quando acontecer um evento chamado cartUpdated, executa a função updateBadges
+  document.addEventListener("cartUpdated", updateBadges);
 }
 
 
@@ -143,5 +146,7 @@ function setupNavbar() {
 
   setupCartBadges();
 }
+
+
 
 setupNavbar();
