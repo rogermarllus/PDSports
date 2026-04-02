@@ -256,6 +256,18 @@ main {
 }
 
 
+.modal-body::-webkit-scrollbar {
+    background-color: var(--fundo-secundario);
+    color: var(--cor-destaque);
+    border-left: 1px solid #1C1C1C;
+    width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--cor-destaque);
+    border-radius: 5px;
+}
+
 /* MEDIAS QUERIES */
 @media (max-width: 1200px) {
 
