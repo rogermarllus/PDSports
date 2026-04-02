@@ -9,6 +9,71 @@ main {
     margin: 60px 0 80px;
 }
 
+
+.admin-navbar {
+    background-color: var(--fundo-terciario);
+    padding: 1rem 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.admin-navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-logo img {
+    width: 160px;
+}
+
+.admin-nav-actions {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.btn-admin-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: transparent;
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-weight: 600;
+    font-size: var(--texto-desktop);
+    padding: 0.35em 0.9em;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.btn-admin-nav svg {
+    width: 1em;
+    height: 1em;
+}
+
+.btn-admin-nav:hover {
+    background-color: var(--cor-destaque);
+    color: #1D0F28;
+}
+
+.admin-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.container-input-produtos{
+    border: 2px solid red;
+    width: 100%;
+}
+
+/*=================================================================================*/
+
 .cabecalho-lista-produtos {
     display: flex;
     justify-content: space-between;
@@ -148,7 +213,7 @@ main {
 
 .lista-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     margin-top: 32px;
     gap: 1rem;
