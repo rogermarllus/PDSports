@@ -54,7 +54,7 @@ function createProductCard(product) {
         <img src="${getImagePath(product)}" alt="${product.name}" onerror="this.onerror=null;this.src='/img/products/product-placeholder.avif';">
         <h3>${product.name}</h3>
         <div>
-          <p>R$ ${formatBRL(product.price)}</p>
+          <p>${formatBRL(product.price)}</p>
           <button aria-label="Adicionar ao carrinho">
             <i data-lucide="handbag" class="icon icon-card"></i>
           </button>
