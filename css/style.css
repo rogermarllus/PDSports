@@ -357,6 +357,10 @@ a:hover {
         height: 38px;
         font-size: 0.85rem;
     }
+
+    .hero-4 {
+        background-image: url("../img/banner/HeroSection.png");
+    }
 }
 
 /* Imagens de cada slide */
@@ -1127,5 +1131,23 @@ footer {
 @media (max-width: 768px) {
     .hero-slide {
         background-position: 65% center;
+    }
+}
+
+@media (max-width: 850px) {
+    .hero-1 {
+        background-image: url("../img/banner/banner-mobile-1.png");
+    }
+ 
+    .hero-2 {
+        background-image: url("../img/banner/banner-mobile-2.png");
+    }
+ 
+    .hero-3 {
+        background-image: url("../img/banner/banner-mobile-3.png");
+    }
+ 
+    .hero-4 {
+        background-image: url("../img/banner/banner-mobile.png");
     }
 }
