@@ -189,12 +189,6 @@ function setupFilter() {
     }
 
     if (item.dataset.sort) {
-      currentSort = item.dataset.sort;
-      applyFiltersAndSort(currentRange);
-      updateSortButton();
-    }
-
-    if (item.dataset.sort) {
       if (item.dataset.sort === "none") {
         currentSort = null;
       } else {
