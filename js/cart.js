@@ -38,17 +38,20 @@ export function addToCart(product) {
     }
 
     saveItems(items);
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function removeFromCart(productId) {
     const items = loadItems().filter(i => String(i.id) !== String(productId));
     saveItems(items);
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function incrementItem(productId) {
     const items = loadItems();
     const item = items.find(i => String(i.id) === String(productId));
     if (item) { item.quantity += 1; saveItems(items); }
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function decrementItem(productId) {
@@ -61,14 +64,15 @@ export function decrementItem(productId) {
     } else {
         item.quantity -= 1;
         saveItems(items);
+        document.dispatchEvent(new Event("cartUpdated"));
     }
 }
 
-export function calculateSubtotal(items) {
+export function calculateSubtotal(items ) {
     return items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 }
 
-export function totalQuantity(items) {
+export function totalQuantity(items = loadItems()) {
     return items.reduce((sum, i) => sum + i.quantity, 0);
 }
 
