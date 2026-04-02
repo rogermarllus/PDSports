@@ -313,23 +313,6 @@ a:hover {
     align-items: center;
 }
 
-/* Imagens de fundo */
-.hero-1 {
-    background-image: url("../img/banner/banner-1.png");
-}
-
-.hero-2 {
-    background-image: url("../img/banner/banner-2.png");
-}
-
-.hero-3 {
-    background-image: url("../img/banner/banner-3.png");
-}
-
-.hero-4 {
-    background-image: url("../img/banner/banner-4.png");
-}
-
 /* Indicadores */
 #hero-carousel .carousel-indicators button {
     width: 16px;
@@ -495,13 +478,22 @@ footer {
 }
 
 /* Icones do rodape */
-.icon-rodape {
-    font-size: 30px;
+.lista-contato{
+    flex-direction: column;
 }
 
-.icon-rodape:hover {
-    transition: .3s;
-    color: var(--cor-destaque);
+.lista-contato li{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.lista-contato li p{
+    margin: 0;
+}
+
+.icon-rodape {
+    font-size: 20px;
 }
 
 .copy {

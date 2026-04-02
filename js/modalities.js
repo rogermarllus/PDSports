@@ -2,6 +2,8 @@ import { getProductsByModality } from "./products.js";
 
 let allProducts = [];
 let currentModality = "";
+let currentSort = null;
+let currentRange = "all";
 
 // Tradução de modalidade
 function translateModality(modality) {
@@ -41,7 +43,7 @@ function getImagePath(product) {
 }
 
 function formatBRL(value) {
-    return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 // Card de produto
@@ -180,13 +182,83 @@ function setupFilter() {
     const item = e.target.closest(".dropdown-item");
     if (!item) return;
 
-    const range = item.dataset.range;
+    if (item.dataset.range) {
+      currentRange = item.dataset.range;
+      applyFiltersAndSort(currentRange);
+      updatePriceButton();
+    }
 
-    const filtered = filterByPrice(range);
+    if (item.dataset.sort) {
+      currentSort = item.dataset.sort;
+      applyFiltersAndSort(currentRange);
+      updateSortButton();
+    }
 
-    renderProducts(filtered);
+    if (item.dataset.sort) {
+      if (item.dataset.sort === "none") {
+        currentSort = null;
+      } else {
+        currentSort = item.dataset.sort;
+      }
+
+      applyFiltersAndSort(currentRange);
+      updateSortButton(); 
+    }
   });
 }
+
+function updatePriceButton() {
+  const priceText = document.getElementById("price-text");
+
+  const labels = {
+    "all": "Preço",
+    "0-50": "Até R$ 50",
+    "50-100": "R$ 50 - 100",
+    "100-300": "R$ 100 - 300",
+    "300-1000": "R$ 300+"
+  };
+
+  priceText.textContent = labels[currentRange] || "Preço";
+}
+
+function sortProducts(products, order) {
+  const sorted = [...products];
+
+  if (order === "asc") {
+    sorted.sort((a, b) => a.price - b.price);
+  } else if (order === "desc") {
+    sorted.sort((a, b) => b.price - a.price);
+  }
+
+  return sorted;
+}
+
+function applyFiltersAndSort(range) {
+  let result = filterByPrice(range);
+
+  if (currentSort) {
+    result = sortProducts(result, currentSort);
+  }
+
+  renderProducts(result);
+}
+
+function updateSortButton() {
+  const sortText = document.getElementById("sort-text");
+
+  if (!currentSort) {
+    sortText.textContent = "Ordenar";
+    return;
+  }
+
+  if (currentSort === "asc") {
+    sortText.textContent = "Menor preço";
+  } else if (currentSort === "desc") {
+    sortText.textContent = "Maior preço";
+  }
+}
+
+
 
 // Inicialização
 loadProducts();
