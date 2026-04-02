@@ -1,5 +1,6 @@
 import { getProductById } from "./products.js";
 import { addToCart } from "./cart.js";
+import { requireAuth } from "./guard.js";
 
 const btnCarrinho = document.querySelector(".detalhes-produto .botao");
 const feedbackEl = document.createElement("p");
@@ -145,18 +146,20 @@ function wireAddToCart(product) {
     btnCarrinho.insertAdjacentElement("afterend", feedbackEl);
 
     btnCarrinho.addEventListener("click", () => {
-        if (Number(product.amount) <= 0) {
-            showFeedback("Produto indisponível no estoque.", "error");
-            return;
-        }
+    if (Number(product.amount) <= 0) {
+        showFeedback("Produto indisponível no estoque.", "error");
+        return;
+    }
 
-        addToCart({
-            ...product,
-            size: product.selectedSize || null
-        });
+    if (!requireAuth()) return;
 
-        showFeedback("Produto adicionado ao carrinho!", "success");
+    addToCart({
+        ...product,
+        size: product.selectedSize || null
     });
+
+    showFeedback("Produto adicionado ao carrinho!", "success");
+});
 }
 
 function showFeedback(msg, type) {

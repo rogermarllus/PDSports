@@ -17,3 +17,15 @@ if (route === "admin") {
     redirectToLogin();
   }
 }
+
+// Se o usupario não estiver logado, emite um alerta de aviso que precisa logar para poder adicionar itens ao carrinho
+export function requireAuth() {
+  if (!isAuthenticated()) {
+    alert("Para executar esta ação, você precisa estar logado!");
+    
+    return false;
+  }
+  return true;
+}
+
+

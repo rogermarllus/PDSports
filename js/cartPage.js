@@ -9,6 +9,8 @@ import {
     calcularFrete
 } from "./cart.js";
 
+import { requireAuth } from "./guard.js";
+
 const listEl = document.getElementById("container-products-cart");
 const quantityBadge = document.getElementById("quantity-product-buy-cart");
 const subtotalEl = document.getElementById("title-price-total-buy-cart");
@@ -460,6 +462,10 @@ render();
 
     // Inicializar 
     bindModalEvents();
-    btnFinish.addEventListener("click", openModal);
+    btnFinish.addEventListener("click", () => {
+        if (!requireAuth()) return;
+
+        openModal()
+    } );
 
 })();
