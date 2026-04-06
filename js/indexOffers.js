@@ -1,4 +1,6 @@
 import { getProductById } from "./products.js";
+import { addToCart } from "./cart.js";
+import { isAuthenticated } from "./auth.js";
 
 // IDs dos produtos em destaque
 const FEATURED_IDS = [7, 34, 128, 132, 96, 23, 86, 88];
@@ -41,14 +43,14 @@ function getImagePath(product) {
 }
 
 function formatBRL(value) {
-    return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 // Card de produto (igual ao modality.js)
 function createProductCard(product) {
   return `
     <div class="col">
-      <article class="card" onclick="window.location.href='/pages/productDetails.html?id=${product.id}'">
+      <article class="card" data-id="${product.id}">
         <div class="img-card">
           <img src="${getImagePath(product)}" alt="${product.name}" onerror="this.onerror=null;this.src='/img/products/product-placeholder.avif';">
           <span>EM OFERTA</span>
@@ -56,7 +58,7 @@ function createProductCard(product) {
           <h3>${product.name}</h3>
         <div>
           <p> ${formatBRL(product.price)}</p>
-          <button aria-label="Adicionar ao carrinho">
+          <button class="btn-add-cart" aria-label="Adicionar ao carrinho">
             <i data-lucide="handbag" class="icon icon-card"></i>
           </button>
         </div>
@@ -81,6 +83,64 @@ function renderProducts(products) {
   if (window.lucide) {
     lucide.createIcons();
   }
+
+  wireProductCards(products, container);
+}
+
+function wireProductCards(products, container) {
+  // Seleciona todos os cards dentro do container específico
+  const cards = container.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    // Recupera o id do produto armazenado no atributo data-id do HTML
+    const productId = card.dataset.id;
+
+    // Busca o objeto completo do produto correspondente a esse card
+    // Conversão para string evita problemas de comparação (number vs string)
+    const product = products.find(
+      p => String(p.id) === String(productId)
+    );
+
+    // Se não encontrar o produto, interrompe para esse card
+    if (!product) return;
+
+    // ── Evento de clique no card inteiro ────────────────────
+    // Redireciona para a página de detalhes do produto
+    card.addEventListener("click", () => {
+      window.location.href = `/pages/productDetails.html?id=${product.id}`;
+    });
+
+    // Seleciona o botão de adicionar ao carrinho dentro do card
+    const btn = card.querySelector(".btn-add-cart");
+
+    // Se o botão não existir, evita erro no código
+    if (!btn) return;
+
+    // ── Evento de clique no botão de adicionar ao carrinho ─
+    btn.addEventListener("click", (e) => {
+      // Impede que o clique do botão dispare também o clique do card
+      // (sem isso, o usuário seria redirecionado para outra página)
+      e.stopPropagation();
+
+      // Verifica se o produto tem estoque disponível
+      if (Number(product.amount) <= 0) {
+        alert("Produto indisponível");
+        return;
+      }
+
+      // Verifica se o usuário está autenticado
+      if (!isAuthenticated()) {
+        alert("Para executar esta ação, você precisa estar logado !");
+        return;
+      }
+
+      // Adiciona o produto ao carrinho (persistido no localStorage)
+      addToCart(product);
+
+      // Feedback simples para o usuário
+      alert("Produto adicionado ao carrinho!");
+    });
+  });
 }
 
 // Carregar produtos em destaque
