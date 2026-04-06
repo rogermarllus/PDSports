@@ -1,4 +1,6 @@
 import { getProductsByModality } from "./products.js";
+import { addToCart } from "./cart.js";
+import { isAuthenticated } from "./auth.js";
 
 let allProducts = [];
 let currentModality = "";
@@ -50,12 +52,12 @@ function formatBRL(value) {
 function createProductCard(product) {
   return `
     <div class="col">
-      <article class="card" onclick="window.location.href='/pages/productDetails.html?id=${product.id}'">
+      <article class="card" data-id="${product.id}">
         <img src="${getImagePath(product)}" alt="${product.name}" onerror="this.onerror=null;this.src='/img/products/product-placeholder.avif';">
         <h3>${product.name}</h3>
         <div>
           <p>${formatBRL(product.price)}</p>
-          <button aria-label="Adicionar ao carrinho">
+          <button class="btn-add-cart" aria-label="Adicionar ao carrinho">
             <i data-lucide="handbag" class="icon icon-card"></i>
           </button>
         </div>
@@ -89,6 +91,64 @@ function renderProducts(products) {
   if (window.lucide) {
     lucide.createIcons();
   }
+
+  wireProductCards(products, container);
+}
+
+function wireProductCards(products, container) {
+  // Seleciona todos os cards dentro do container específico
+  const cards = container.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    // Pega o id do produto armazenado no HTML (data-id)
+    const productId = card.dataset.id;
+
+    // Encontra o objeto completo do produto com base no id
+    // Conversão para string evita problemas de tipo (number vs string)
+    const product = products.find(
+      p => String(p.id) === String(productId)
+    );
+
+    // Se não encontrar o produto correspondente, ignora esse card
+    if (!product) return;
+
+    // ===== Clique no card inteiro ======
+    // Redireciona para a página de detalhes do produto
+    card.addEventListener("click", () => {
+      window.location.href = `/pages/productDetails.html?id=${product.id}`;
+    });
+
+    // Seleciona o botão de adicionar ao carrinho dentro do card
+    const btn = card.querySelector(".btn-add-cart");
+
+    // Se por algum motivo o botão não existir, evita erro
+    if (!btn) return;
+
+    //===== Clique no botão de adicionar ao carrinho ======
+    btn.addEventListener("click", (e) => {
+      // Impede que o clique "suba" para o card
+      // (evita redirecionar ao clicar no botão)
+      e.stopPropagation();
+
+      // Verifica se o produto tem estoque disponível
+      if (Number(product.amount) <= 0) {
+        alert("Produto indisponível");
+        return;
+      }
+
+      // Verifica se o usuário está autenticado
+      if (!isAuthenticated()) {
+        alert("Para executar esta ação, você precisa estar logado !");
+        return;
+      }
+
+      // Adiciona o produto ao carrinho (localStorage + evento global)
+      addToCart(product);
+
+      // Feedbackpara o usuário
+      alert("Produto adicionado ao carrinho!");
+    });
+  });
 }
 
 // Atualizar títulos
@@ -122,6 +182,8 @@ function renderPopular(products) {
   if (window.lucide) {
     lucide.createIcons();
   }
+
+  wireProductCards(randomProducts, container);
 }
 
 // Filtro por preço
@@ -196,7 +258,7 @@ function setupFilter() {
       }
 
       applyFiltersAndSort(currentRange);
-      updateSortButton(); 
+      updateSortButton();
     }
   });
 }
