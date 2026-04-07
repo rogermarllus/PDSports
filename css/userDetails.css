@@ -323,6 +323,15 @@ body {
     color: #1D0F28;
 }
 
+.btn-edit-save{
+    color: var(--cor-destaque);
+    font-weight: 700;
+}
+
+.btn-edit-save:hover{
+    color:#caf40ece ;
+}
+
 @media (max-width: 480px) {
     .conta-wrapper {
         margin: 30px auto;

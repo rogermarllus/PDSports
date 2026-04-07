@@ -4,6 +4,8 @@
 
 const STORAGE_KEY = "cart";
 
+const USE_MOCK = false;
+
 // ── helpers de persistência ──────────────────────────────────
 
 export function loadItems() {
@@ -85,9 +87,22 @@ export function formatBRL(value) {
     });
 }
 
-// ── frete ────────────────────────────────────────────────────
 
 export async function calcularFrete(cep) {
+
+    // MOCK LOCAL (só para desenvolvimento)
+    if (USE_MOCK) {
+        await new Promise(r => setTimeout(r, 300));
+
+        return [
+            { name: "PAC", price: 36.49, delivery_time: 10 },
+            { name: "SEDEX", price: 74.13, delivery_time: 5 },
+            { name: "Econômico", price: 27.73, delivery_time: 9 },
+            { name: "Express", price: 23.39, delivery_time: 12 },
+            { name: "Super Econômico", price: 18.01, delivery_time: 10 }
+        ];
+    }
+
     const res = await fetch("/api/frete", {
         method: "POST",
         headers: {

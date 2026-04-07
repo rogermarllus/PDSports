@@ -184,12 +184,17 @@ function renderShipping(options) {
             data-price="${opt.price}"
             data-name="${escapeHTML(opt.name)}"
             style="cursor:pointer;">
-            <div class="info-service-order">
-                <p class="title-service-order">${escapeHTML(opt.name)}</p>
-                <p class="business-day">${opt.delivery_time ?? "?"}</p>
-                <p>dias úteis</p>
+
+        <div class="service-order-content">
+            <div class="left">
+                <p class="title">${escapeHTML(opt.name)}</p>
+                <p class="delivery">${opt.delivery_time ?? "?"} dias úteis</p>
             </div>
-            <p class="service-order-value-total">${formatBRL(opt.price)}</p>
+
+            <div class="right">
+                <p class="price">${formatBRL(opt.price)}</p>
+            </div>
+        </div>
         </div>
     `).join("");
 
@@ -235,7 +240,9 @@ if (btnCalc) {
 
         try {
             const options = await calcularFrete(cep);
-            renderShipping(options);
+            const sorted = [...options].sort((a, b) => Number(a.price) - Number(b.price));
+            const limited = sorted.slice(0, 3);
+            renderShipping(limited)
         } catch (err) {
             console.error(err);
             if (shippingListEl) {
