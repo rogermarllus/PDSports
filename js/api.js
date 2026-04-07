@@ -29,8 +29,8 @@ export async function post(resource, endpoint, data) {
     return await response.json();
 }
 
-export async function put(resource, endpoint, data) {
-    const response = await fetch(`${BASE_URLS[resource]}/${endpoint}`, {
+export async function put(resource, endpoint, id, data) {
+    const response = await fetch(`${BASE_URLS[resource]}/${endpoint}/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

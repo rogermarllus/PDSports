@@ -137,8 +137,16 @@ function wireProductCards(products, container) {
       // Adiciona o produto ao carrinho (persistido no localStorage)
       addToCart(product);
 
-      // Feedback simples para o usuário
-      alert("Produto adicionado ao carrinho!");
+
+      // Feedbackpara o usuário
+      updateModal({
+        title: "Produto adicionado !",
+        message: "Seu produto foi adicionado à sacola.",
+        subMessage: "Adicione mais produtos ou finalize sua compra ."
+      });
+
+      // Abre o modal
+      openModal()
     });
   });
 }
@@ -164,6 +172,31 @@ async function loadFeaturedProducts() {
     console.error(error);
     container.innerHTML = "<p>Erro ao carregar produtos.</p>";
   }
+}
+
+// Atualiza dinamicamente o conteúdo do modal de feedback para quando um produto for adicionado no carrinho
+function updateModal({ title, message, subMessage }) {
+  // Atualiza o título do modal
+  document.getElementById("modal-pedido-titulo").textContent = title;
+
+  // Atualiza o corpo do modal com mensagem e submensagem
+  const body = document.querySelector(".modal-pedido-body");
+  body.innerHTML = `
+    <p>${message}</p>
+    <p class="modal-pedido-sub">${subMessage}</p>
+  `;
+}
+
+// Abre o modal utilizando o Bootstrap
+function openModal() {
+  // Seleciona o elemento do modal
+  const modalElement = document.getElementById("modal-pedido-indisponivel");
+
+  // Cria uma instância do modal Bootstrap
+  const modal = new bootstrap.Modal(modalElement);
+
+  // Exibe o modal na tela
+  modal.show();
 }
 
 // Inicialização

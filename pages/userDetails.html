@@ -133,9 +133,12 @@
 
             <div class="conta-header">
                 <h1>Minha conta</h1>
+
+
                 <button id="btn-sair" class="btn-sair">
                     Sair <i data-lucide="log-out"></i>
                 </button>
+
             </div>
 
             <div class="conta-card">
@@ -147,28 +150,33 @@
                         <div class="campos-grid">
                             <div class="campo-grupo">
                                 <label>Nome completo</label>
-                                <p class="campo-valor" id="user-fullname">—</p>
+                                <input type="text" id="user-fullname" class="campo-input" disabled>
                             </div>
 
                             <div class="campo-grupo">
                                 <label>Telefone</label>
-                                <p class="campo-valor" id="user-phone">—</p>
+                                <input type="text" id="user-phone" class="campo-input" disabled>
                             </div>
 
                             <div class="campo-grupo">
                                 <label>E-mail</label>
-                                <p class="campo-valor" id="user-email">—</p>
+                                <input type="email" id="user-email" class="campo-input" disabled>
                             </div>
 
                             <div class="campo-grupo">
                                 <label>Data de nascimento</label>
-                                <p class="campo-valor" id="user-birth">—</p>
+                                <input type="date" id="user-birth" class="campo-input" disabled>
                             </div>
                         </div>
+
                     </section>
 
-                    <section class="secao-preferencias">
-                        <h2>Preferências</h2>
+                    <section class="secao-preferencias ">
+                        <div class="d-flex justify-content-between">
+                            <h2>Preferências</h2>
+                            <a id="btn-editar" class="btn-edit-save " >Editar Dados</a>
+                            <a id="btn-salvar" class="d-none btn-edit-save pedido-link">Salvar Dados</a>
+                        </div>
 
                         <div class="preferencias-lista">
                             <label class="preferencia-item">
@@ -289,14 +297,14 @@
         </div>
     </footer>
 
-    <!-- Modal: Pedido Indisponível -->
+    <!-- Modal: feedback dados salvos com sucesso -->
     <div class="modal fade" id="modal-pedido-indisponivel" tabindex="-1" aria-labelledby="modal-pedido-titulo"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-pedido-content">
 
                 <div class="modal-pedido-header">
-                    <i data-lucide="circle-alert" class="modal-pedido-icon"></i>
+                    <i data-lucide="Check" class="modal-pedido-icon"></i>
                     <h5 class="modal-pedido-titulo" id="modal-pedido-titulo">Detalhes do pedido</h5>
                 </div>
 
