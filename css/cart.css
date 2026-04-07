@@ -1010,6 +1010,56 @@ main {
     animation: drawCheck 0.4s cubic-bezier(.65, 0, .45, 1) forwards 0.65s;
 }
 
+/* Ajustes nas opções de fretes */
+
+.service-order {
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    
+}
+
+.service-order-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* lado esquerdo */
+.service-order .left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* nome da transportadora */
+.service-order .title {
+    font-weight: 600;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* prazo */
+.service-order .delivery {
+    font-size: 0.85rem;
+    color: white;
+    font-size: 1rem;
+}
+
+/* preço sempre alinhado */
+.service-order .right {
+    min-width: 90px; 
+    text-align: right;
+}
+
+.service-order .price {
+    font-weight: 600;
+    color: white;
+    font-size: 1.3rem;
+}
+
 @keyframes drawCircle {
     to {
         stroke-dashoffset: 0;
