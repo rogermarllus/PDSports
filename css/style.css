@@ -953,6 +953,84 @@ footer {
     font-size: clamp(0.9rem, 1.2vw, 2rem);
 }
 
+
+/* ── Modal: Feedback produto adicionado ao carrinho ─────────────────────────────── */
+
+.modal-pedido-content {
+    background-color: var(--fundo-secundario);
+    border: 1px solid #444;
+    border-radius: 12px;
+    color: var(--cor-branca);
+    font-family: var(--fonte-montserrat);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.modal-pedido-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65em;
+}
+
+.modal-pedido-icon {
+    width: 1.4em;
+    height: 1.4em;
+    color: var(--cor-destaque);
+    flex-shrink: 0;
+    stroke-width: 2px;
+}
+
+.modal-pedido-titulo {
+    font-size: var(--titulo-sessao-desktop);
+    font-weight: 700;
+    color: var(--cor-destaque);
+    margin: 0;
+}
+
+.modal-pedido-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-pedido-body p {
+    margin: 0;
+    font-size: var(--texto-desktop);
+    line-height: 1.55;
+    color: var(--cor-branca);
+}
+
+.modal-pedido-sub {
+    color: #aaa !important;
+    font-size: 0.875rem !important;
+}
+
+.modal-pedido-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-modal-fechar {
+    background: transparent;
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    font-family: var(--fonte-montserrat);
+    font-weight: 600;
+    font-size: var(--texto-desktop);
+    padding: 0.45em 1.4em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s, color 0.25s;
+}
+
+.btn-modal-fechar:hover {
+    background-color: var(--cor-destaque);
+    color: #1D0F28;
+}
+
+
 /* RESPONSIVIDADE NEWSLETTER*/
 /* Em telas menores que 991px, ajusta a seção de newsletter para melhor responsividade */
 @media (max-width: 991px) {
